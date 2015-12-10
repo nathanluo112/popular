@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   var coordinates = function() {
     window.navigator.geolocation.getCurrentPosition(function(args){
-      var coords = {
+      coords = {
         lat: args['coords']['latitude'],
         lng: args['coords']['longitude']
       };
@@ -25,45 +25,44 @@ $(document).ready(function(){
       map: map,
       title: 'Your location'
     });
-
-    map.addListener('click', function(event) {
-      addMarker(event.latLng);
-    });
+    nearBy();
   };
 
-  function nearByMap(coordinates){
+  function nearBy(){
+    var request = {
+      location: new google.maps.LatLng(coords),
+      radius: 4000,
+      types: ['bar','night_club','stadium']
+    };
+
+    var callback = function(results, status) {
+      // debugger
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          var place = results[i];
+          console.log(place.name);
+          createMarker(results[i]);
+        }
+      }
+    }
+    // debugger
+    service = new google.maps.places.PlacesService(map)
+    service.nearbySearch(request, callback);
+
   }
 
-  // function addMarker(location) {
-  //   var marker = new google.maps.Marker({
-  //     position: location,
-  //     map: map
-  //   });
-  //   markers.push(marker);
-  // }
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
 
-  // // Sets the map on all markers in the array.
-  // function setMapOnAll(map) {
-  //   for (var i = 0; i < markers.length; i++) {
-  //     markers[i].setMap(map);
-  //   }
-  // }
-
-  // // Removes the markers from the map, but keeps them in the array.
-  // function clearMarkers() {
-  //   setMapOnAll(null);
-  // }
-
-  // // Shows any markers currently in the array.
-  // function showMarkers() {
-  //   setMapOnAll(map);
-  // }
-
-  // // Deletes all markers in the array by removing references to them.
-  // function deleteMarkers() {
-  //   clearMarkers();
-  //   markers = [];
-  // }
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
 
   coordinates();
 
