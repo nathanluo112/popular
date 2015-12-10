@@ -1,0 +1,21 @@
+<%= link_to "back", root_path %>
+<div class="event_show">
+  <%= @event.venue_name %>
+  <%= @event.description %>
+  <%= @event.address %>
+  <%= @event.score %>
+</div>
+
+<div class="event_image">
+  <img src="#">
+</div>
+
+<% if logged_in? %>
+  <%= form_for [@event, Vote.new], url: "events/<%= @event.id %>/votes", method: "POST" %>
+  <%= f.hidden_field vote_direction, :value => 1 %>
+  <%= f.submit "" %>
+
+  <%= form_for [@event, Vote.new], url: "events/<%= @event.id %>/votes", method: "POST" %>
+  <%= f.hidden_field vote_direction, :value => -1 %>
+  <%= f.submit "" %>
+<% end %>

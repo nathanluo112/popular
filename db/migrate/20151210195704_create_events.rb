@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :latlng, null: false
       t.string :address
       t.string :venue_name, null: false
-      t.integer :final_score, null: false
+      t.integer :score, null: false
       t.timestamps null: false
     end
   end
