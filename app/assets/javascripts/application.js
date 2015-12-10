@@ -9,6 +9,6 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require fb.js
 //= require jquery-2.1.4.js
 //= require_tree .
