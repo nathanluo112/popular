@@ -6,11 +6,6 @@ class EventsController < ApplicationController
     @event = Event.find(4)
   end
 
-  def near
-    events = Event.near(params[:latlng_bounds]);
-    render json: events.to_json
-  end
-
   def new
   end
 
