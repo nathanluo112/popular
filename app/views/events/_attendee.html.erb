@@ -4,20 +4,20 @@
   <%= %> username <%= user.popularity %>
 </div>
 
-<div class="shade_buttons">
+<div class="remark_buttons">
 
-  <%= form_for event, method: "POST" do |f| %>
+  <%= form_for [event, Remark.new], method: "POST" do |f| %>
   <%= f.hidden_field :vote_direction, value: "1" %>
   <%= f.submit "love" %>
   <%  end %>
 
-  <%= form_for event, method: "POST" do |f| %>
+  <%= form_for [event, Remark.new], method: "POST" do |f| %>
   <%= f.hidden_field :vote_direction, value: "-1" %>
   <%= f.submit "hate" %>
   <%  end %>
   
 </div>
 
-<div class="shade_display">
+<div class="remark_display">
 
 </div>
