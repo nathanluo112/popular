@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.first
+    @event = Event.first
+  end
 
   def near
     events = Event.near(params[:latlng_bounds]);

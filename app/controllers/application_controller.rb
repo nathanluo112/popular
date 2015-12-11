@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    !!sessions[:user_id]
+    !!session[:user_id]
   end
 
 end

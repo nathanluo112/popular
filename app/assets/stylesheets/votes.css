@@ -2,6 +2,12 @@
   background-image: "/src";
 }
 
+.vote input[type="submit"] {
+  color: blue;
+  width: 5em;
+}
+
 .voted {
   visibility: hidden;
-}
+
+
