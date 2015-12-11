@@ -1,0 +1,10 @@
+<%= form_for event do |f| %>
+  <h2><%= event.venue_name %></h2>
+  <p><%= event.address %></p>
+  <%= f.text_field :lat, value: place.geometry.location.lat %>
+  <%= f.text_field :lng, value: place.geometry.location.lng %>
+  <%= f.text_field :address, value: place.vicinity %>
+  <%= f.text_field :venue_name, value: place.name %>
+  <%= f.number_field :score, value: current_user.popularity %>
+  <%= f.submit %>
+<% end %>
