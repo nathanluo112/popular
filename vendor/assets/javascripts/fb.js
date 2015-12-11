@@ -18,6 +18,7 @@
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
+      $("#connect-directions").show();
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
     }
@@ -76,7 +77,12 @@
     FB.api('/me', function(response) {
       console.log(response);
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
+      document.getElementById('fb-status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+  }
+
+function fb_login_after() {
+     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id,email'}, function(response){
+           console.log(response);});
   }
