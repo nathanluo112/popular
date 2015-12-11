@@ -7,7 +7,7 @@ $(document).ready(function(){
     $.ajax({
       method: "post",
       url:    $(event.target).attr("action"),
-      data:   $(event.target).serialize(); 
+      data:   $(event.target).serialize()
     }).done(function(response){
       console.log("You voted.")
     }).fail(function(error){

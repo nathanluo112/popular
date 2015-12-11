@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
   end
 
   def show
@@ -16,5 +15,10 @@ class EventsController < ApplicationController
   end
 
   def create
+  end
+
+  def near
+    events = Event.near(params[:bound])
+    render json: events.to_json
   end
 end

@@ -1,69 +1,100 @@
-// $(document).ready(function(){
-//   var map;
-//   // var markers = [];
+$(document).ready(function(){
+  var map;
+  var markers = [];
 
-//   var coordinates = function() {
-//     window.navigator.geolocation.getCurrentPosition(function(args){
-//       coords = {
-//         lat: args['coords']['latitude'],
-//         lng: args['coords']['longitude']
-//       };
-//       initMap(coords);
-//     });
-//   };
 
-//   function initMap(coordinates) {
-//   // Create a map object and specify the DOM element for display.
-//     map = new google.maps.Map(document.getElementById('map'), {
-//       center: coordinates,
-//       scrollwheel: false,
-//       zoom: 13
-//     });
+  new Promise(function(resolve, reject){
+    window.navigator.geolocation.getCurrentPosition(function(args){
+      coords = {
+        lat: args['coords']['latitude'],
+        lng: args['coords']['longitude']
+      };
+      resolve(coords);
+    });
 
-//     var marker = new google.maps.Marker({
-//       position: coordinates,
-//       map: map,
-//       title: 'Your location'
-//     });
-//     nearBy();
-//   };
+  }).then(function(coords){
+      initMap(coords);
+      return coords;
+  }).then(function(){
+    // var bounds = map.getBounds();
+    // var maxlat = Math.max(bounds.O.j, bounds.O.O);
+    // var minlat = Math.min(bounds.O.j, bounds.O.O);
+    // var maxlng = Math.max(bounds.j.O, bounds.j.j);
+    // var minlng = Math.min(bounds.j.O, bounds.j.j);
+    var maxlat = coords.lat + 0.05;
+    var minlat = coords.lat - 0.05;
+    var maxlng = coords.lng + 0.05;
+    var minlng = coords.lng - 0.05;
+    var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
 
-//   function nearBy(){
-//     var request = {
-//       location: new google.maps.LatLng(coords),
-//       radius: 4000,
-//       types: ['bar','night_club','stadium']
-//     };
+    $.get(url).done(function(data){
+      for (var i = 0; i < data.length; i++){
+        addMarker(data[i]);
+      }
 
-//     var callback = function(results, status) {
-//       // debugger
-//       if (status == google.maps.places.PlacesServiceStatus.OK) {
-//         for (var i = 0; i < results.length; i++) {
-//           var place = results[i];
-//           console.log(place.name);
-//           createMarker(results[i]);
-//         }
-//       }
-//     }
-//     // debugger
-//     service = new google.maps.places.PlacesService(map)
-//     service.nearbySearch(request, callback);
+    }).fail(function(error){
+      console.log(error);
+    });
 
-//   }
+    map.addListener("bounds_changed", function(){
 
-// function createMarker(place) {
-//   var placeLoc = place.geometry.location;
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: place.geometry.location
-//   });
+      newBoundQuery();
+    });
+  })
 
-//   google.maps.event.addListener(marker, 'click', function() {
-//     infowindow.setContent(place.name);
-//     infowindow.open(map, this);
-//   });
-// }
+  function newBoundQuery(){
+    var bounds = map.getBounds();
+    var maxlat = Math.max(bounds.O.j, bounds.O.O);
+    var minlat = Math.min(bounds.O.j, bounds.O.O);
+    var maxlng = Math.max(bounds.j.O, bounds.j.j);
+    var minlng = Math.min(bounds.j.O, bounds.j.j);
+    var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
+    console.log(bounds);
+    $.get(url).done(function(data){
+      for (var i = 0; i < data.length; i++){
+        addMarker(data[i]);
+      }
 
-//   coordinates();
+    }).fail(function(error){
+      console.log(error);
+    });
+  }
 
-// });
+
+
+
+
+
+  function initMap(coordinates) {
+  // Create a map object and specify the DOM element for display.
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: coordinates,
+      scrollwheel: false,
+      zoom: 13
+    });
+    console.log("in")
+    var marker = new google.maps.Marker({
+      position: coordinates,
+      map: map,
+      title: 'Your location'
+    });
+    var bounds = map.getBounds();
+    return bounds;
+  };
+
+
+  function addMarker(event){
+    var marker = new google.maps.Marker({
+      map: map,
+      position: {lat: parseFloat(event.lat), lng: parseFloat(event.lng)}
+    });
+
+    google.maps.event.addListener(marker, 'click', function(){
+      map.setCenter(this.position);
+      map.setZoom(16);
+      console.log();
+    })
+
+  }
+
+});
