@@ -11,4 +11,5 @@
 // about supported directives.
 //= require fb.js
 //= require jquery-2.1.4.js
+//= require angular.js
 //= require_tree .

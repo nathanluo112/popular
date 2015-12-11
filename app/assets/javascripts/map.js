@@ -85,7 +85,7 @@ $(document).ready(function(){
   }
 
   function eventMarkerExists(event){
-    if (markers.length > 0 && markers[0].position.lat() == parseFloat(event.lat) && markers[0].position.lng() == parseFloat(event.lng)){
+    if (markers.length > 0 && markers[0].position.lat().toFixed(13) == parseFloat(event.lat).toFixed(13) && markers[0].position.lng().toFixed(13) == parseFloat(event.lng).toFixed(13)){
       return true;
     } else {
       return false;
