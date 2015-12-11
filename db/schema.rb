@@ -38,7 +38,11 @@ ActiveRecord::Schema.define(version: 20151211193651) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "popularity"
+    t.integer  "popularity",      default: 0
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "facebook_id"
+    t.string   "profile_pic_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

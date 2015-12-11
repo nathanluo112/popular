@@ -13,13 +13,13 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
+      document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       $("#connect-directions").show();
-      document.getElementById('status').innerHTML = 'Please log ' +
+      document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into Facebook.';
     }
   }
@@ -59,6 +59,11 @@
     statusChangeCallback(response);
   });
 
+  FB.logout(function(response) {
+    console.log(response);
+  });
+
+
   };
 
   // Load the SDK asynchronously
@@ -70,34 +75,15 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log(response);
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('fb-status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-
 function fb_login_after() {
-     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id'}, function(response){
-           console.log(response);
+     FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
+        FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
+        $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url});
+         } });
 
-           FB.api(
-    "/{user-id}/picture",
-    function (response) {
-      if (response && !response.error) {
-        console.log(response);
-      }
-    }
-);
+        $("#connect-directions").hide();
+        $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
+      });
+} //  end function fb_login_after() {
 
 
-         });
-
-
-
-  }

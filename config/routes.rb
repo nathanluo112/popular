@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   get 'events/near' => 'events#near'
+  get 'logout' => 'users#logout'
+
+
   resources :events do
     resources :votes
     resources :remarks
   end
 
+  resources :users
   root 'events#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
