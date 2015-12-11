@@ -5,18 +5,14 @@
 </div>
 
 <div class="remark_buttons">
-
-  <%= form_for [event, Remark.new], method: "POST" do |f| %>
-  <%= f.hidden_field :vote_direction, value: "1" %>
-  <%= f.submit "love" %>
-  <%  end %>
-
-  <%= form_for [event, Remark.new], method: "POST" do |f| %>
-  <%= f.hidden_field :vote_direction, value: "-1" %>
-  <%= f.submit "hate" %>
-  <%  end %>
   
+  <%= link_to "love", new_event_remark_path(event), data:{direction: 1}  %>
+  <%= link_to "hate", new_event_remark_path(event), data:{direction: -1} %>
 </div>
+  
+  <div class="remark_form">
+    <%= render partial: "remark", locals: { event: event, user: user } %>
+  </div>
 
 <div class="remark_display">
 

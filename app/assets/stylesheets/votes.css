@@ -38,11 +38,3 @@ div.user_info img {
   height: 60px;
   width: 60px;
 }
-
-div.shade_buttons {
-  display: inline;
-}
-
-div.shade_buttons input{
-  color: purple;
-}

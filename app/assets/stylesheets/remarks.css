@@ -1,0 +1,11 @@
+div.remark_buttons {
+  display: inline;
+}
+
+div.remark_buttons input{
+  color: purple;
+}
+
+div.remark_form {
+  visibility: hidden;
+}

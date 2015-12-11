@@ -1,8 +1,12 @@
 class RemarksController < ApplicationController
 
+  def new
+    render partial: "remark", layout: false, locals: {event: event, remark: Remark.new(remark_direction: params[:remark_direction])}
+  end
+
   def create
     remark = Remark.new(permit_params.merge(giver_id: 1, receiver_id: 2,event_id: params[:event_id]))
-    # binding.pry
+    binding.pry
     if remark.save
       render text: "You've totally just put your rep on the line, person."
     else
