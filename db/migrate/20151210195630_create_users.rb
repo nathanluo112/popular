@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :facebook_id
       t.string :profile_pic_url
+
       t.timestamps
     end
   end
