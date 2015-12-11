@@ -26,7 +26,6 @@ $(document).ready(function(){
       for (var i = 0; i < data.length; i++){
         addMarker(data[i]);
       }
-
     }).fail(function(error){
       console.log(error);
     });
@@ -47,7 +46,7 @@ $(document).ready(function(){
     var maxlng = Math.max(bounds.j.O, bounds.j.j);
     var minlng = Math.min(bounds.j.O, bounds.j.j);
     var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
-    console.log(bounds);
+
     $.get(url).done(function(data){
       for (var i = 0; i < data.length; i++){
         addMarker(data[i]);
@@ -82,13 +81,11 @@ $(document).ready(function(){
       map: map,
       position: {lat: parseFloat(event.lat), lng: parseFloat(event.lng)}
     });
-
+    markers.push(marker);
     google.maps.event.addListener(marker, 'click', function(){
       map.setCenter(this.position);
       map.setZoom(16);
-      console.log();
     })
-    markers << marker;
 
   }
 
