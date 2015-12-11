@@ -83,6 +83,21 @@
   }
 
 function fb_login_after() {
-     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id,email'}, function(response){
-           console.log(response);});
+     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id'}, function(response){
+           console.log(response);
+
+           FB.api(
+    "/{user-id}/picture",
+    function (response) {
+      if (response && !response.error) {
+        console.log(response);
+      }
+    }
+);
+
+
+         });
+
+
+
   }
