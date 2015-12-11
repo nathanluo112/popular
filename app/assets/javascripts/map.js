@@ -16,20 +16,6 @@ $(document).ready(function(){
       initMap(coords);
       return coords;
   }).then(function(){
-    var maxlat = coords.lat + 0.05;
-    var minlat = coords.lat - 0.05;
-    var maxlng = coords.lng + 0.05;
-    var minlng = coords.lng - 0.05;
-    var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
-
-    // $.get(url).done(function(data){
-    //   for (var i = 0; i < data.length; i++){
-    //     addMarker(data[i]);
-    //   }
-    // }).fail(function(error){
-    //   console.log(error);
-    // });
-  }).then(function(){
     var timoutId;
     map.addListener("bounds_changed", function(){
       clearTimeout(timoutId);
@@ -85,7 +71,7 @@ $(document).ready(function(){
   }
 
   function eventMarkerExists(event){
-    if (markers.length > 0 && markers[0].position.lat() == parseFloat(event.lat) && markers[0].position.lng() == parseFloat(event.lng)){
+    if (markers.length > 0 && markers[0].position.lat().toFixed(13) == parseFloat(event.lat).toFixed(13) && markers[0].position.lng().toFixed(13) == parseFloat(event.lng).toFixed(13)){
       return true;
     } else {
       return false;
@@ -106,7 +92,6 @@ $(document).ready(function(){
     if (center){
       markers.push(center);
     }
-
   }
 
   function newBoundQuery(){
@@ -127,3 +112,4 @@ $(document).ready(function(){
     });
   }
 });
+
