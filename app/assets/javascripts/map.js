@@ -16,11 +16,6 @@ $(document).ready(function(){
       initMap(coords);
       return coords;
   }).then(function(){
-    // var bounds = map.getBounds();
-    // var maxlat = Math.max(bounds.O.j, bounds.O.O);
-    // var minlat = Math.min(bounds.O.j, bounds.O.O);
-    // var maxlng = Math.max(bounds.j.O, bounds.j.j);
-    // var minlng = Math.min(bounds.j.O, bounds.j.j);
     var maxlat = coords.lat + 0.05;
     var minlat = coords.lat - 0.05;
     var maxlng = coords.lng + 0.05;
@@ -36,9 +31,12 @@ $(document).ready(function(){
       console.log(error);
     });
 
+    var timoutId;
     map.addListener("bounds_changed", function(){
-
-      newBoundQuery();
+      clearTimeout(timoutId);
+      timoutId = setTimeout(function(){
+        newBoundQuery();
+      }, 600);
     });
   })
 
@@ -59,10 +57,6 @@ $(document).ready(function(){
       console.log(error);
     });
   }
-
-
-
-
 
 
   function initMap(coordinates) {
@@ -94,6 +88,7 @@ $(document).ready(function(){
       map.setZoom(16);
       console.log();
     })
+    markers << marker;
 
   }
 
