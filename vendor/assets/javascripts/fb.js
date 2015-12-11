@@ -8,6 +8,7 @@
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
+      $("#connect-directions").hide();
       // Logged into your app and Facebook.
       testAPI();
     } else if (response.status === 'not_authorized') {
@@ -17,6 +18,7 @@
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
+      $("#connect-directions").show();
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
     }
@@ -73,8 +75,29 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
+      console.log(response);
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
+      document.getElementById('fb-status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+  }
+
+function fb_login_after() {
+     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id'}, function(response){
+           console.log(response);
+
+           FB.api(
+    "/{user-id}/picture",
+    function (response) {
+      if (response && !response.error) {
+        console.log(response);
+      }
+    }
+);
+
+
+         });
+
+
+
   }
