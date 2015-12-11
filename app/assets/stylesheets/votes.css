@@ -1,7 +1,48 @@
-.vote form{
+div#event_show {
+  background-image: url("placerholder.jpg");
+}
+
+div.vote form{
   background-image: "/src";
+}
+
+div.vote input[type="submit"] {
+  color: red;
+  width: 5em;
+  vertical-align: center;
+}
+
+
+div#event_show div.name {
+  display: inline;
+  font-size: 2.5em;
+  color: blue;
+}
+
+div#event_show div.score {
+  display: inline;
+  font-size: 2.5em;
+  color: pink;
 }
 
 .voted {
   visibility: hidden;
+  background-color: green;
+}
+
+div.user_info {
+  display: inline;
+}
+
+div.user_info img {
+  height: 60px;
+  width: 60px;
+}
+
+div.shade_buttons {
+  display: inline;
+}
+
+div.shade_buttons input{
+  color: purple;
 }

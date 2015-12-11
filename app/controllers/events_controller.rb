@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.find(params[:id])
+    @event = Event.find(4)
   end
 
   def near
