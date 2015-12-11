@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210195704) do
+ActiveRecord::Schema.define(version: 20151211193651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151210195704) do
   create_table "events", force: :cascade do |t|
     t.float    "lat",        null: false
     t.float    "lng",        null: false
+    t.string   "place_id"
     t.string   "address"
     t.string   "venue_name", null: false
     t.integer  "score"
@@ -26,18 +27,31 @@ ActiveRecord::Schema.define(version: 20151210195704) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "remarks", force: :cascade do |t|
+    t.string   "description",      limit: 200, null: false
+    t.integer  "event_id"
+    t.integer  "giver_id"
+    t.integer  "receiver_id"
+    t.integer  "remark_direction",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer  "popularity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id",        null: false
-    t.integer  "event_id",       null: false
+    t.integer  "votable_id"
+    t.string   "votable_type"
     t.integer  "vote_direction", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
 
 end

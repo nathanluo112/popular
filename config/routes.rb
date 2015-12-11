@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'events/near' => 'events#near'
   resources :events do
     resources :votes
+    resources :remarks
   end
 
   root 'events#index'

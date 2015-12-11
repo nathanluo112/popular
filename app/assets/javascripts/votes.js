@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   $(".vote").on("submit", "form", function(event){
     event.preventDefault();

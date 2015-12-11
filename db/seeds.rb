@@ -9,7 +9,14 @@ Event.create(lat: 40.71766400377538, lng: -74.00004386901855, venue_name: "Aplac
 Event.create(lat: 40.715387077160194, lng: -74.00579452514648, venue_name: "Bplace", score: 0)
 Event.create(lat: 40.72449431636692, lng: -73.9793586730957, venue_name: "Cplace", score: 0)
 
-
-User.create(popularity: 0)
 User.create(popularity: 5)
 User.create(popularity: 10)
+User.create(popularity: 15)
+
+Vote.create(user_id: 1, votable: Event.first, vote_direction: 1)
+Vote.create(user_id: 2, votable: Event.first, vote_direction: 1)
+Vote.create(user_id: 1, votable: Event.last, vote_direction: -1)
+Vote.create(user_id: 3, votable: Event.last, vote_direction: -1)
+
+Remark.create(description: "Hey hair is wonderful", giver_id: 1, receiver_id: 2, event: Event.last, remark_direction: 1)
+Remark.create(description: "boots are terrible bruh",giver_id: 3, receiver_id: 1, event: Event.last, remark_direction: -1)
