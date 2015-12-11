@@ -1,0 +1,7 @@
+.vote form{
+  background-image: "/src";
+}
+
+.voted {
+  visibility: hidden;
+}
