@@ -87,7 +87,7 @@ function fb_login_after() {
            console.log(response);
 
            FB.api(
-    "/{user-id}/picture",
+    "/me/picture", {type: "large" },
     function (response) {
       if (response && !response.error) {
         console.log(response);
