@@ -83,21 +83,15 @@
   }
 
 function fb_login_after() {
-     FB.api('/me',{fields: 'last_name,first_name,age_range,gender,id'}, function(response){
-           console.log(response);
-
-           FB.api(
-    "/me/picture", {type: "large" },
-    function (response) {
-      if (response && !response.error) {
-        console.log(response);
-      }
-    }
-);
-
-
-         });
+     FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
+        FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
+        console.log(response2); } });
+        $.post("/users", {first_name: response1.first_name,last_name: response1.last_name,gender: response1.gender, facebook_id: response1.id, profile_pic_url: response2.data.url});
+        $("#connect-directions").hide();
+        $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
+      });
 
 
 
-  }
+
+}
