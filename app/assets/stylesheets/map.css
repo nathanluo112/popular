@@ -3,3 +3,9 @@
   max-height: 40em;
   width: 100%;
 }
+
+#new-map {
+  min-height: 25em;
+  max-height: 40em;
+  width: 100%;
+}

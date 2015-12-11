@@ -10,4 +10,10 @@ class EventsController < ApplicationController
     events = Event.near(params[:latlng_bounds]);
     render json: events.to_json
   end
+
+  def new
+  end
+
+  def create
+  end
 end
