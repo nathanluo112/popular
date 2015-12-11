@@ -6,10 +6,6 @@
   <%= @event.score %>
 </div>
 
-<div class="event_image">
-  <img src="#">
-</div>
-
 <div class="vote">
   
     <%= form_for [@event, Vote.new], method: "POST" do |f| %>
@@ -24,4 +20,15 @@
   
 </div>
 
-<div class="voted"> </div>
+
+<div class="voted"> 
+
+</div>
+
+<div class="shade">
+  
+</div>
+
+<div class="shaded">
+  
+</div>

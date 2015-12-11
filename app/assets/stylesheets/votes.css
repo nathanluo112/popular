@@ -9,5 +9,5 @@
 
 .voted {
   visibility: hidden;
-
-
+  background-color: green;
+}
