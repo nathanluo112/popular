@@ -1,5 +1,6 @@
 $(document).ready(function(){
   var map;
+  var newEventList = [];
 
   var coordinates = function() {
     window.navigator.geolocation.getCurrentPosition(function(args){
@@ -45,6 +46,7 @@ $(document).ready(function(){
           console.log(place.name);
           createMarker(results[i]);
         }
+        drawList(results);
       }
     }
     service.nearbySearch(request, callback);
@@ -63,6 +65,14 @@ function createMarker(place) {
     infowindow.setContent('<h2>' + place.name + '</h2><p>' + place.vicinity + '</p><p>' + (multiplyString('$', place.price_level)) + ' &middot; <a href="#">Make a Scene</a>' + '</p>');
     infowindow.open(map, this);
   });
+}
+
+function drawList(results) {
+  for (var i = 0; i < results.length; i++) {
+    var place = results[i];
+    var location = ('<div class="location"><h2>' + place.name + '</h2><p> ' + place.vicinity + '</p><p> ' + (multiplyString('$', place.price_level)) + ' &middot; <a href="#">Make a Scene</a>' + '</p></div>');
+    $('#newEventList').append(location);
+  }
 }
 
 function multiplyString(str, num) {
