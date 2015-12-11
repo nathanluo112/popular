@@ -7,10 +7,6 @@ class Event < ActiveRecord::Base
     where("lat < ? and lat > ? and lng < ? and lng > ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f).limit(25)
   end
 
-<<<<<<< 14b81f6ce5f19c79fc12dd53f1c22e4708068aa4
-end
-=======
-  # at 5AM
   def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
@@ -33,4 +29,3 @@ end
     attendees.each {|u| u.save}
   end
 end
->>>>>>> Add methods for updating Event Score and doling out popularity points.
