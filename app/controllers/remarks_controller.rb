@@ -17,7 +17,7 @@ class RemarksController < ApplicationController
 
 private
   def permit_params
-    params.require(:remark).permit(:remark_direction, :description)
+    params.require(:remark).permit(:remark_direction, :description, :photo)
   end
 
 end
