@@ -77,8 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # AWS and Paperclip
-
+  # AWS and Paperclip to upload images to s3
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
@@ -87,6 +86,5 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_KEY']
     }
   }
-
 
 end
