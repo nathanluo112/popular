@@ -9,14 +9,14 @@ $(document).ready(function(){
 
   $(".remark_buttons").on("click", "a", function(event){
     event.preventDefault();
-    $(event.target).parent().toggle();
-    $(event.target).parent().next().toggle();
+    $(event.target).parent().hide();
+    $(event.target).parent().next().show();
   });
 
-  $("#back").on("click", function(event){
+  $("[name = 'back']").on("click", function(event){
     event.preventDefault();
-    $(event.target).parent().toggle();
-    $(event.target).parent().parent().prev().toggle();
+    $(event.target).parent().hide();
+    $(event.target).parent().parent().prev().show();
   });
 
   $(".remark_form").on("submit", "form", function(event){
