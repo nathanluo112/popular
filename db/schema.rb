@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151211223912) do
     t.integer  "giver_id"
     t.integer  "receiver_id"
     t.integer  "remark_direction",               null: false
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"

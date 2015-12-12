@@ -6,22 +6,26 @@ class UsersController < ApplicationController
       params["facebook_id"], profile_pic_url: params["profile_pic_url"])
       if user.save
         session[:user_id] = user.id
+        render text: "User created & Logged in"
       end
     else
       user.update(first_name: params["first_name"], last_name: params["last_name"],profile_pic_url: params["profile_pic_url"])
       session[:user_id] = user.id
+      render text: "logged in"
     end
   end
 
 
   def logout
     session.clear
-    render text: "L"
+    render text: "Logged out"
   end
 
   def show
-
   end
 
+  def test_user_login
+    render "test_user_login", locals: {current_user: current_user}
+  end
 
 end
