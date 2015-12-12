@@ -29,6 +29,9 @@ gem 'paperclip'
 gem 'aws-sdk-v1'
 gem 'remotipart'
 
+# Foundation for styling
+gem 'foundation-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
