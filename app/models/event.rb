@@ -18,6 +18,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+
+  # at 5AM
   def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
