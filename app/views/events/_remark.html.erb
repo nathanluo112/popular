@@ -1,5 +1,3 @@
 <div class="remark row">
-  <% giver = User.find(remark.giver_id) %>
-  <% receiver = User.find(remark.receiver_id) %>
-  <%= giver.first_name + " said '" + remark.description + "' about " + receiver.first_name %>
+  <%= remark.giver.first_name + " said '" + remark.description + "' about " + remark.receiver.first_name %>
 </div>
