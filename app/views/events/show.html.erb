@@ -3,7 +3,7 @@
   <div class="name"><%= @event.venue_name || "PlaceHolder" %></div>
   <div class="address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></div>
 </div>
-<% if User.last.voted_for?(@event) %>
+<% if current_user.voted_for?(@event) %>
   <div class="vote row">
     
     <div class="small-6 large-4 columns vote_button">

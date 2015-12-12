@@ -7,13 +7,6 @@ $(document).ready(function(){
   //   debugger
   // });
 
-  // $(".remark_buttons").on("click", "a", function(event){
-  //   event.preventDefault();
-    
-  //   $(event.target).parent().hide();
-  //   $(event.target).parent().next().show();
-  // });
-
   $(".remark_buttons").on("click", "a.hate", function(event){
     event.preventDefault();
     
@@ -49,9 +42,8 @@ $(document).ready(function(){
       url:    $(event.target).attr("action"),
       data:   $(event.target).serialize()
     }).done(function(response){ 
-       
+      
       $(event.target).parent().hide();
-      $(event.target).parent().next().css("visibility", "visible");
     }).fail(function(error){
       console.log("You've already made a remark.");
     });
@@ -64,9 +56,8 @@ $(document).ready(function(){
       url:    $(event.target).attr("action"),
       data:   $(event.target).serialize()
     }).done(function(response){ 
-       
+      
       $(event.target).parent().hide();
-      $(event.target).parent().next().css("visibility", "visible");
     }).fail(function(error){
       console.log("You've already made a remark.");
     });

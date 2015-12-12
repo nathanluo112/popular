@@ -20,5 +20,5 @@ Vote.create(user_id: 2, votable: Event.first, vote_direction: 1)
 Vote.create(user_id: 1, votable: Event.last, vote_direction: -1)
 Vote.create(user_id: 3, votable: Event.last, vote_direction: -1)
 
-Remark.create(description: "Hey hair is wonderful", giver_id: 1, receiver_id: 2, event: Event.last, remark_direction: 1)
-Remark.create(description: "boots are terrible bruh",giver_id: 3, receiver_id: 1, event: Event.last, remark_direction: -1)
+Remark.create(description: "Her hair is wonderful", giver_id: 1, receiver_id: 2, event: Event.last, remark_direction: 1)
+Remark.create(description: "Those boots are terrible bruh",giver_id: 3, receiver_id: 1, event: Event.last, remark_direction: -1)
