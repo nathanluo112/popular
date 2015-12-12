@@ -18,4 +18,10 @@ class UsersController < ApplicationController
     session.clear
     render text: "L"
   end
+
+  def show
+
+  end
+
+
 end
