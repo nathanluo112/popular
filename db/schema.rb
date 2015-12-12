@@ -38,15 +38,11 @@ ActiveRecord::Schema.define(version: 20151211193651) do
   end
 
   create_table "users", force: :cascade do |t|
-<<<<<<< 14b81f6ce5f19c79fc12dd53f1c22e4708068aa4
     t.integer  "popularity",      default: 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "facebook_id"
     t.string   "profile_pic_url"
-=======
-    t.integer  "popularity", default: 0
->>>>>>> Add methods for updating Event Score and doling out popularity points.
     t.datetime "created_at"
     t.datetime "updated_at"
   end
