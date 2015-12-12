@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'events/near' => 'events#near'
   get 'logout' => 'users#logout'
-
+  get 'test_user_login' => 'user#test_user_login'
 
   resources :events do
     resources :votes
