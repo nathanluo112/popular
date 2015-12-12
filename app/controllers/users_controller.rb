@@ -16,5 +16,6 @@ class UsersController < ApplicationController
 
   def logout
     session.clear
+    render text: "L"
   end
 end

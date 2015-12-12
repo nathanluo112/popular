@@ -1,4 +1,4 @@
-
+  var fb_login_after;
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -10,7 +10,6 @@
     if (response.status === 'connected') {
       $("#connect-directions").hide();
       // Logged into your app and Facebook.
-      testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('fb-status').innerHTML = 'Please log ' +
@@ -43,26 +42,24 @@
      version    : 'v2.5'
   });
 
-  // Now that we've initialized the JavaScript SDK, we call
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
 
-  FB.logout(function(response) {
-    console.log(response);
-  });
+FB.Event.subscribe('auth.logout', logout_event);
+  function logout_event(){$.get("/logout", function(res) {console.log(res);})}
 
+
+  fb_login_after = function($el) {
+  FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
+    FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
+    $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url});
+    } });
+
+    $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
+    });
+} //  end function fb_login_after() {
 
   };
 
@@ -75,15 +72,6 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-function fb_login_after() {
-     FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
-        FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
-        $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url});
-         } });
 
-        $("#connect-directions").hide();
-        $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
-      });
-} //  end function fb_login_after() {
 
 
