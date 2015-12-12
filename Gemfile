@@ -27,6 +27,7 @@ gem 'rufus-scheduler', '~> 3.1', '>= 3.1.10'
 # Paperclip for saving photos
 gem 'paperclip'
 gem 'aws-sdk-v1'
+gem 'remotipart'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -19,7 +19,7 @@ $(document).ready(function(){
 
   $(".remark_form").on("submit", "form", function(event){
     event.preventDefault();
-    // debugger
+    debugger
     $.ajax({
       method: "post",
       url:    $(event.target).attr("action"),
