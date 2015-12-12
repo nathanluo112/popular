@@ -1,5 +1,7 @@
   <%= form_for [event, Remark.new], method: "POST" do |f| %>
   <%= f.hidden_field :remark_direction, value: 1 %>
+  <%= f.hidden_field :user_id, value: user.id %>
   <%= f.text_field :description %>
-  <%= f.submit "love" %>
+  <%= f.file_field :photo %>
+  <%= f.submit "tell em how you feel" %>
   <%  end %>

@@ -6,7 +6,7 @@ class CreateRemarks < ActiveRecord::Migration
       t.integer     :giver_id
       t.integer     :receiver_id
       t.integer     :remark_direction, null: false
-
+      t.integer     :score
       t.timestamps
     end
   end

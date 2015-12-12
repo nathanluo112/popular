@@ -15,13 +15,13 @@ div.vote input[type="submit"] {
 
 div#event_show div.name {
   display: inline;
-  font-size: 2.5em;
+  font-size: 5em;
   color: blue;
 }
 
 div#event_show div.score {
   display: inline;
-  font-size: 2.5em;
+  font-size: 5em;
   color: pink;
 }
 

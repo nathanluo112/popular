@@ -3,12 +3,12 @@ class Vote < ActiveRecord::Base
   belongs_to :votable, polymorphic: true
   validates_uniqueness_of :user, scope: :votable
 
-
   before_save :add_popularity_to_votable
 
-  private
+private
   def add_popularity_to_votable
     self.votable.score += (self.user.popularity * self.vote_direction)
     self.votable.save
   end
+
 end
