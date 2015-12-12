@@ -1,9 +1,19 @@
-<div id="map"></div>
-
-<div class="events-list" ng-app="listing-event">
+<div ng-app="listing-event">
   <div ng-controller="listController">
-    {{data}}
+    <div id="map"></div>
+
+    <div class="event-list">
+      <div ng-click="eventDetail()" ng-repeat="item in data">
+        <h5>{{item.venue_name}}</h5>
+
+      </div>
+
+    </div>
+
+    <div ng-bind="test">
+    </div>
   </div>
 </div>
+
 
 
