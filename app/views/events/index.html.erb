@@ -20,7 +20,7 @@
             {{item.venue_name}}
           </div>
           <div ng-if="item.joinable">
-            <button>Join</button>
+            <button ng-click="redirectTo(item.id); $event.stopPropagation()">Join</button>
           </div>
         </div>
       </div>

@@ -1,15 +1,17 @@
 var map;
 var markers = [];
-
+const SEARCH_MODE = 0;
+const CREATE_MODE = 1;
 
 angular.module('listing-event', []);
 
-angular.module('listing-event').controller("listController", function($scope, $http){
+angular.module('listing-event').controller("listController", function($scope, $http, $window){
   $scope.joinableEvents = [];
   $scope.data = [];
   $scope.currentLocationMarker;
   $scope.focusEvent;
   $scope.focusMarker;
+  $scope.mode = SEARCH_MODE;
 
   new Promise(function(resolve, reject){
     window.navigator.geolocation.getCurrentPosition(function(args){
@@ -24,12 +26,19 @@ angular.module('listing-event').controller("listController", function($scope, $h
       initMap(coords);
       return coords;
   }).then(function(){
-    var timoutId;
+    var timeoutId;
     map.addListener("bounds_changed", function(){
-      clearTimeout(timoutId);
-      timoutId = setTimeout(function(){
-      newBoundQuery();
-      }, 200);
+      if ($scope.mode == SEARCH_MODE) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function(){
+          newBoundQuery();
+        }, 200);
+      } else {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function(){
+          nearBy();
+        }, 200);
+      }
     })
   });
 
@@ -47,23 +56,21 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }
 
   $scope.joinEvent = function(){
+    $scope.mode = SEARCH_MODE;
     map.panTo($scope.currentLocationMarker.position)
     map.setZoom(20);
   }
 
-  $scope.votable = function(id){
-    var event = findEventById(id);
-    for (var i = 0; i < $scope.joinableEvents; i++) {
-      if (event == $scope.joinableEvents[i]){
-        return true;
-      }
-    }
-    return false;
+  $scope.createEvent = function(){
+    map.setCenter($scope.currentLocationMarker.position);
+    map.setZoom(20);
+    $scope.mode = CREATE_MODE;
+    $scope.bounds = map.getBounds();
   }
 
-
-
-
+  $scope.redirectTo = function(id) {
+    $window.location.href = '/events/' + id;
+  }
 
   function rad(x) {
     return x * Math.PI / 180;
@@ -105,9 +112,6 @@ angular.module('listing-event').controller("listController", function($scope, $h
     });
     $scope.currentLocationMarker = new GeolocationMarker(map);
     $scope.currentLocationMarker.setCircleOptions({visible: false})
-
-    var bounds = map.getBounds();
-    return bounds;
   };
 
 
@@ -166,11 +170,12 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   function newBoundQuery(){
     removeAllMarkersExceptCenterAndFocus();
-    var bounds = map.getBounds();
-    var maxlat = Math.max(bounds.O.j, bounds.O.O);
-    var minlat = Math.min(bounds.O.j, bounds.O.O);
-    var maxlng = Math.max(bounds.j.O, bounds.j.j);
-    var minlng = Math.min(bounds.j.O, bounds.j.j);
+    console.log("query");
+    $scope.bounds = map.getBounds();
+    var maxlat = Math.max($scope.bounds.O.j, $scope.bounds.O.O);
+    var minlat = Math.min($scope.bounds.O.j, $scope.bounds.O.O);
+    var maxlng = Math.max($scope.bounds.j.O, $scope.bounds.j.j);
+    var minlng = Math.min($scope.bounds.j.O, $scope.bounds.j.j);
     var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
 
     $http({method: "get", url: url}).then(function(data){
@@ -201,6 +206,26 @@ angular.module('listing-event').controller("listController", function($scope, $h
         $scope.data[i].joinable = false;
       }
     }
+  }
+
+  function nearBy(){
+    var request = {
+      bounds: $scope.bounds,
+      types: ['bar','night_club','stadium']
+    };
+    service = new google.maps.places.PlacesService(map);
+
+    service.nearbySearch(request, function(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        venues = results;
+        console.log("Venues")
+        console.log(venues);
+        for (var i = 0; i < venues.length; i++) {
+          var place = venues[i];
+        }
+        // drawList(results);
+      }
+    });
   }
 
 });
