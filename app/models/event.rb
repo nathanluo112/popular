@@ -7,6 +7,17 @@ class Event < ActiveRecord::Base
     where("lat < ? and lat > ? and lng < ? and lng > ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f).limit(25)
   end
 
+  scheduler = Rufus::Scheduler.new
+
+  scheduler.every '1h' do
+    events_to_close = Event.where("is_active = true and created_at < ?", (Time.now - 30000));
+    events_to_close.each do |event|
+      event.calculate_popularity
+      event.is_active = false
+      event.save
+    end
+  end
+
   def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
