@@ -1,20 +1,19 @@
-
-<div class="user_info">
-  <%= image_tag(user.profile_pic_url) %>
-  <%= user.first_name %> <%= user.popularity %>
-</div>
-
-<div class="remark_buttons">
-  
-  <%= link_to "love", new_event_remark_path(event), data:{direction: 1}  %>
-  <%= link_to "hate", new_event_remark_path(event), data:{direction: -1} %>
-</div>
-  
-  <div class="remark_form">
-    <%= render partial: "remark", locals: { event: event, user: user } %>
+<div class="row">
+  <div class="small-3 large-3 columns user_info">
+    <%= image_tag(user.profile_pic_url) %>
+    <%= user.first_name %> <%= user.popularity %>
   </div>
 
-<div class="remark_display">
+  <div class="small-3 large-3 columns remark_buttons">  
+    <%= link_to "love", new_event_remark_path(event), data:{direction: 1}  %>
+    <%= link_to "hate", new_event_remark_path(event), data:{direction: -1} %>
+  </div>
+    
+    <div class="small-3 large-3 columns remark_form">
+      <%= render partial: "remark", locals: { event: event, user: user } %>
+    </div>
 
+  <div class="small-3 large-3 columns remark_display">
+
+  </div>
 </div>
-

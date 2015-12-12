@@ -1,9 +1,10 @@
 $(document).ready(function(){
+
   
   $(".remark_buttons").on("click", "a", function(event){
     event.preventDefault();
     $(event.target).parent().hide();
-    $(event.target).parent().next().css("visibility", "visible");
+    $(event.target).parent().next().toggle();
   });
 
   $(".remark_form").on("submit", "form", function(event){

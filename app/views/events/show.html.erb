@@ -6,13 +6,13 @@
 
 <div class="vote row">
   
-  <div class="small-2 large-4 columns">
+  <div class="small-6 large-4 columns vote_button">
     <%= form_for [@event, Vote.new], method: "POST" do |f| %>
     <%= f.hidden_field :vote_direction, value: "1" %>
     <%= f.submit "bumpin" %>
     <%  end %>
   </div>
-  <div class="small-2 large-4 columns">
+  <div class="small-6 large-4 columns vote_button">
     <%= form_for [@event, Vote.new], method: "POST" do |f| %>
     <%= f.hidden_field :vote_direction, value: "-1" %>
     <%= f.submit "just sad" %>
@@ -22,12 +22,16 @@
 </div>
 
 <div class="voted"> 
-
+  
 </div>
 
 <div class="attendees">
-<p class="title"> Who else is here? </p>  
+  <p class="title"> Who else is here? </p>  
   <% @event.users.each do |user| %>
     <%= render partial: "attendee", locals: { event: @event, user: user } %>
   <% end %>
+</div>
+
+<div class="remarks">
+  <p class="title"> What are they saying? </p>
 </div>
