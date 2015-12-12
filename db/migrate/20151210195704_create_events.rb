@@ -7,6 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
       t.string :venue_name, null: false
       t.integer :score
+      t.boolean :is_active, default: true
+
       t.timestamps null: false
     end
   end
