@@ -1,7 +1,5 @@
-  <%= form_for [event, Remark.new], :html => { :multipart => true }, :remote => true, method: "post" do |f| %>
-  <%= f.hidden_field :remark_direction, value: 1 %>
-  <%= f.hidden_field :user_id, value: user.id %>
-  <%= f.text_field :description %>
-  <%= f.file_field :photo %>
-  <%= f.submit "tell em how you feel" %>
-  <% end %>
+<div class="remark row">
+  <% giver = User.find(remark.giver_id) %>
+  <% receiver = User.find(remark.receiver_id) %>
+  <%= giver.first_name + " said '" + remark.description + "' about " + receiver.first_name %>
+</div>
