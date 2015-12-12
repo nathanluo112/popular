@@ -13,27 +13,33 @@ class Event < ActiveRecord::Base
     num_of_attendees = positive_votes.count
     attendees = positive_votes.map {|vote| vote.user}
 
-    ninetieth_percentile = (num_of_attendees * 0.1).to_i
-    eightieth_percentile = (num_of_attendees * 0.2).to_i
-    seventieth_percentile = (num_of_attendees * 0.3).to_i
-    sixtieth_percentile = (num_of_attendees * 0.4).to_i
-    fiftieth_percentile = (num_of_attendees * 0.5).to_i
+    dissers = self.votes.where(vote_direction: -1).map {|vote| vote.user}
 
-    attendees[0].popularity += (self.score * 0.1)
-    attendees[1..ninetieth_percentile].each {|u| u.popularity += (self.score * 0.08).to_i}
-    attendees[(ninetieth_percentile + 1)..eightieth_percentile].each {|u| u.popularity += (self.score * 0.07).to_i}
-    attendees[(eightieth_percentile + 1)..seventieth_percentile].each {|u| u.popularity += (self.score * 0.06).to_i}
-    attendees[(seventieth_percentile + 1)..sixtieth_percentile].each {|u| u.popularity += (self.score * 0.05).to_i}
-    attendees[(sixtieth_percentile + 1)..fiftieth_percentile].each {|u| u.popularity += (self.score * 0.04).to_i}
-    attendees[(fiftieth_percentile + 1)..-1].each {|u| u.popularity += (self.score * 0.03).to_i}
+    if positive_votes.count > 10 && self.score > 0
+      ninetieth_percentile = (num_of_attendees * 0.1).to_i
+      eightieth_percentile = (num_of_attendees * 0.2).to_i
+      seventieth_percentile = (num_of_attendees * 0.3).to_i
+      sixtieth_percentile = (num_of_attendees * 0.4).to_i
+      fiftieth_percentile = (num_of_attendees * 0.5).to_i
+
+      attendees[0].popularity += (self.score * 0.1)
+      attendees[1..ninetieth_percentile].each {|u| u.popularity += (self.score * 0.08).to_i}
+      attendees[(ninetieth_percentile + 1)..eightieth_percentile].each {|u| u.popularity += (self.score * 0.07).to_i}
+      attendees[(eightieth_percentile + 1)..seventieth_percentile].each {|u| u.popularity += (self.score * 0.06).to_i}
+      attendees[(seventieth_percentile + 1)..sixtieth_percentile].each {|u| u.popularity += (self.score * 0.05).to_i}
+      attendees[(sixtieth_percentile + 1)..fiftieth_percentile].each {|u| u.popularity += (self.score * 0.04).to_i}
+      attendees[(fiftieth_percentile + 1)..-1].each {|u| u.popularity += (self.score * 0.03).to_i}
+
+    else
+      popularity_array = attendees.map {|attendee| attendee.popularity}
+      popularity_of_most_popular = popularity_array.max
+
+      attendees.each {|attendee| attendee.popularity = (attendee.popularity * 0.9).to_i}
+      dissers.each {|disser| disser.popularity += (popularity_of_most_popular * 0.1).to_i}
+
+      dissers.each {|u| u.save}
+    end
 
     attendees.each {|u| u.save}
   end
 end
-
-
-# rake db:drop && rake db:create && rake db:migrate && rake db:seed
-
-# u1 = User.first
-# u8 = User.last
-# e = Event.first
