@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20151211223912) do
   end
 
   create_table "remarks", force: :cascade do |t|
-    t.string   "description",        limit: 200, null: false
+    t.string   "description",        limit: 200,             null: false
     t.integer  "event_id"
     t.integer  "giver_id"
     t.integer  "receiver_id"
-    t.integer  "remark_direction",               null: false
-    t.integer  "score"
+    t.integer  "remark_direction",                           null: false
+    t.integer  "score",                          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
