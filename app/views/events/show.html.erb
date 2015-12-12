@@ -3,27 +3,32 @@
   <div class="name"><%= @event.venue_name || "PlaceHolder" %></div>
   <div class="address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></div>
 </div>
+<% if User.last.voted_for?(@event) %>
+  <div class="vote row">
+    
+    <div class="small-6 large-4 columns vote_button">
+      <%= form_for [@event, Vote.new], method: "POST" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "1" %>
+      <%= f.submit "bumpin" %>
+      <%  end %>
+    </div>
 
-<div class="vote row">
-  
-  <div class="small-6 large-4 columns vote_button">
-    <%= form_for [@event, Vote.new], method: "POST" do |f| %>
-    <%= f.hidden_field :vote_direction, value: "1" %>
-    <%= f.submit "bumpin" %>
-    <%  end %>
+    <div class="small-6 large-4 columns vote_button">
+      <%= form_for [@event, Vote.new], method: "POST" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "-1" %>
+      <%= f.submit "just sad" %>
+      <%  end %>
+    </div>
+
   </div>
-  <div class="small-6 large-4 columns vote_button">
-    <%= form_for [@event, Vote.new], method: "POST" do |f| %>
-    <%= f.hidden_field :vote_direction, value: "-1" %>
-    <%= f.submit "just sad" %>
-    <%  end %>
+
+<% else %>
+
+  <div class="voted"> 
+    <p>Vote recorded<p>
   </div>
 
-</div>
-
-<div class="voted"> 
-  
-</div>
+<% end %>
 
 <div class="attendees">
   <p class="title"> Who else is here? </p>  
@@ -34,4 +39,7 @@
 
 <div class="remarks">
   <p class="title"> What are they saying? </p>
+    <% @event.remarks.each do |remark| %>
+    <%= render partial: "remark", locals: { event: @event, remark: remark } %>
+  <% end %>
 </div>

@@ -1,7 +1,6 @@
 class RemarksController < ApplicationController
 
   def create
-    binding.pry
     remark = Remark.new(permit_params.merge(giver_id: 1, receiver_id: params[:remark][:user_id], event_id: params[:event_id]))
     binding.pry
     if remark.save

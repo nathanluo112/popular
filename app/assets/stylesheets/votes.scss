@@ -1,10 +1,12 @@
 div#event_show {
-  background-image: url("/assets/placerholder.jpg");
+  background: url("placeholder.jpg");
+  background-size: cover;
+  opacity: 0.8;
   text-align: center;
 }
 
-div.vote form{
-  background-image: "/src";
+div.vote {
+  padding-top: 10px;
 }
 
 div.vote input[type="submit"] {
@@ -22,22 +24,26 @@ div.vote input[type="submit"] {
 div#event_show div.name {
   display: inline;
   font-size: 5em;
-  color: #92A8D1;
+  color: white;
 }
 
 div#event_show div.score {
-  display: inline;
+  display: none;
   font-size: 5em;
-  color: #F7CAC9;
+  color: white;
 }
 
 div#event_show div.address {
-  padding-bottom: 10px;
+  color: white;
 }
 
 div.voted {
-  display: none;
-  background-color: green;
+  font-family: 'Abel', sans-serif;
+  font-size: 2em;
+  background-color: #F7CAC9;
+  color: white;
+  width: 100%;
+  text-align: center;
 }
 
 div.user_info {
