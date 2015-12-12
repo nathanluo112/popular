@@ -14,3 +14,5 @@
 //= require jquery.remotipart
 //= require angular.js
 //= require_tree .
+
+$(function(){ $(document).foundation(); });
