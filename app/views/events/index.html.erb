@@ -1,7 +1,9 @@
-<div ng-app="listing-event">
+<div ng-app="listing-event" class="row">
   <div ng-controller="listController">
     <div id="map"></div>
+    <button ng-click="joinEvent()">Near</button>
 
+    <button ng-click="createEvent()">Host</button>
     <div ng-if="focusEvent">
       <div class="focus-event debug" ng-click="focusEventItem()">
         <h5>Focus Event</h5>
@@ -17,15 +19,14 @@
           <div class="venue-name">
             {{item.venue_name}}
           </div>
+          <div ng-if="item.joinable">
+            <button>Join</button>
+          </div>
         </div>
       </div>
     </div>
 
-
-    <button ng-click="joinEvent()">Join Event</button>
-
-    <button ng-click="createEvent()">Create Event</button>
-
+    <i
   </div>
 </div>
 

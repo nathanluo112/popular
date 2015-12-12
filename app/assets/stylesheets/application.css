@@ -29,3 +29,16 @@
 body {
   font-family: 'Abel', sans-serif;
 }
+
+.event-item{
+  height: 3em;
+  cursor: pointer;
+}
+
+.focus-event{
+  height: 8em;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.debug {border: 1px solid red;}

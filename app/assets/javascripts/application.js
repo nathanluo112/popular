@@ -13,6 +13,7 @@
 //= require jquery-2.1.4.js
 //= require jquery.remotipart
 //= require angular.js
+//= require geolocation-marker.js
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });
