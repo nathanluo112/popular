@@ -1,7 +1,10 @@
 var map;
 var markers = [];
-$(document).ready(function(){
 
+
+angular.module('listing-event', []);
+
+angular.module('listing-event').controller("listController", function($scope, $http){
 
   new Promise(function(resolve, reject){
     window.navigator.geolocation.getCurrentPosition(function(args){
@@ -20,13 +23,14 @@ $(document).ready(function(){
     map.addListener("bounds_changed", function(){
       clearTimeout(timoutId);
       timoutId = setTimeout(function(){
-        newBoundQuery();
+      newBoundQuery();
       }, 200);
     });
   });
 
+  $scope.eventDetail = function(){
 
-
+  }
 
   function initMap(coordinates) {
   // Create a map object and specify the DOM element for display.
@@ -35,7 +39,6 @@ $(document).ready(function(){
       scrollwheel: false,
       zoom: 12
     });
-    console.log("in")
     var marker = new google.maps.Marker({
       position: coordinates,
       map: map,
@@ -71,19 +74,21 @@ $(document).ready(function(){
   }
 
   function eventMarkerExists(event){
-    if (markers.length > 0 && markers[0].position.lat().toFixed(13) == parseFloat(event.lat).toFixed(13) && markers[0].position.lng().toFixed(13) == parseFloat(event.lng).toFixed(13)){
-      return true;
+    if (markers.length > 0 ){
+      for (var i = 0; i < markers.length; i++){
+        if (markers[i].position.lat().toFixed(13) == parseFloat(event.lat).toFixed(13) && markers[i].position.lng().toFixed(13) == parseFloat(event.lng).toFixed(13)){
+          return true;
+        }
+      }
     } else {
       return false;
     }
   }
 
   function removeAllMarkers(){
-    console.log(markers);
     for(var i = 0; i < markers.length; i++) {
       if (markers[i].position.lat() != map.center.lat() || markers[i].position.lng() != map.center.lng()){
         markers[i].setMap(null);
-        console.log("remove a marker");
       } else {
         var center = markers[i];
       }
@@ -103,13 +108,17 @@ $(document).ready(function(){
     var minlng = Math.min(bounds.j.O, bounds.j.j);
     var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
 
-    $.get(url).done(function(data){
-      for (var i = 0; i < data.length; i++){
-        addMarker(data[i]);
+    $http({method: "get", url: url}).then(function(data){
+      var events = data.data;
+      for (var i = 0; i < events.length; i++){
+        addMarker(events[i]);
       }
-    }).fail(function(error){
+      $scope.data = events;
+    }, function(error){
       console.log(error);
     });
   }
+
 });
+
 
