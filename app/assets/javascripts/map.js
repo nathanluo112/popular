@@ -90,8 +90,13 @@ angular.module('listing-event').controller("listController", function($scope, $h
     $http({
       method: 'post',
       url: '/events',
-      data: {event: event}
-    }).then(function(data){
+      data: {
+        event: event,
+        current_location: {
+          lat: $scope.currentLocationMarker.position.lat(),
+          lng: $scope.currentLocationMarker.position.lng()
+        }
+    }}).then(function(data){
       $scope.redirectTo(data.data.id);
     }, function(error){
       console.log(error);
@@ -100,7 +105,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }
 
   $scope.redirectTo = function(id) {
-    $window.location.href = '/events/' + id;
+    $window.location.href = '/events/' + id + "?current_location[lat]=" + $scope.currentLocationMarker.position.lat() + "&current_location[lng]=" + $scope.currentLocationMarker.position.lng();
   }
 
   function rad(x) {
@@ -156,55 +161,54 @@ angular.module('listing-event').controller("listController", function($scope, $h
       if (places.length == 0){
         return;
       }
-      debugger
       map.panTo(places[0].geometry.location);
       map.setZoom(16);
     })
   };
 
-var rq = "F7CAC9";
-var rq2 = "DE8A89";
-var rq3 = "C55452";
-var rq4 = "AC6B6A";
-var rq5 = "933F3D";
+  var rq = "F7CAC9";
+  var rq2 = "DE8A89";
+  var rq3 = "C55452";
+  var rq4 = "AC6B6A";
+  var rq5 = "933F3D";
 
-var vPopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq,
-  null,
-  null,
-  null,
-  new google.maps.Size(24, 40));
+  var vPopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq,
+    null,
+    null,
+    null,
+    new google.maps.Size(24, 40));
 
-var popular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq2,
-  null,
-  null,
-  null,
-  new google.maps.Size(21, 35));
+  var popular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq2,
+    null,
+    null,
+    null,
+    new google.maps.Size(21, 35));
 
-var average = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq3,
-  null,
-  null,
-  null,
-  new google.maps.Size(18, 30));
+  var average = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq3,
+    null,
+    null,
+    null,
+    new google.maps.Size(18, 30));
 
-var unpopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq4,
-  null,
-  null,
-  null,
-  new google.maps.Size(15, 25));
+  var unpopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq4,
+    null,
+    null,
+    null,
+    new google.maps.Size(15, 25));
 
-var vUnpopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq5,
-  null,
-  null,
-  null,
-  new google.maps.Size(12, 20));
+  var vUnpopular = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + rq5,
+    null,
+    null,
+    null,
+    new google.maps.Size(12, 20));
 
-function calcPopForPin(event) {
-  if (event.score > 1000) {return vPopular}
-  else if (event.score > 499) {return popular}
-  else if (event.score > 99) {return average}
-  else if (event.score > 9) {return unpopular}
-  else {return vUnpopular}
-};
+  function calcPopForPin(event) {
+    if (event.score > 1000) {return vPopular}
+    else if (event.score > 499) {return popular}
+    else if (event.score > 99) {return average}
+    else if (event.score > 9) {return unpopular}
+    else {return vUnpopular}
+  };
 
   function addMarker(event){
     if (!eventMarkerExists(event)) {
