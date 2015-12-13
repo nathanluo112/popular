@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 20151211223912) do
   end
 
   create_table "remarks", force: :cascade do |t|
-    t.string   "description",        limit: 200,             null: false
+    t.string   "description",        limit: 200,                null: false
     t.integer  "event_id"
     t.integer  "giver_id"
     t.integer  "receiver_id"
-    t.integer  "remark_direction",                           null: false
+    t.integer  "remark_direction",                              null: false
     t.integer  "score",                          default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "is_current",                     default: true
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
