@@ -1,9 +1,9 @@
 <div ng-app="listing-event" class="row">
   <div ng-controller="listController">
     <div id="map"></div>
-    <button ng-click="joinEvent()">Near</button>
+    <button id="join-event" ng-click="joinEvent()">Near</button>
 
-    <button ng-click="listPlaces()">Host</button>
+    <button id="list-places" ng-click="listPlaces()">Host</button>
 
     <div ng-if="mode">
       <div ng-if="focusEvent">
@@ -29,11 +29,13 @@
       </div>
     </div>
 
-    <div ng-if="!mode && places.length > 0">
+    <div ng-if="!mode">
       <h4>Places</h4>
       <div class="place-list" ng-repeat="item in places">
         <div class="place-item">
           <div class="name-block">{{item.name}}</div>
+          <div class="address">{{item.vicinity}}</div>
+          <div class="rating">Rating: {{item.rating}}</div>
           <div>
             <button class="host-btn" ng-click="createEvent(item)">Host Here</button>
           </div>
