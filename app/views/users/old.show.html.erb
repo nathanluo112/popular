@@ -1,20 +1,12 @@
 <div>
 <div ng-controller="usercontroller">
-<div class="Top-stay">
-<div class="user_image"><img src={{user.profile_pic_url}}></div>
-<div class="user-name"><h1>{{user.first_name}} {{user.last_name}}</h1></div>
-<div>
-<input type="text" ng-model="usersearch" id="user-search-bar" placeholder="Search users">
-<div class="search-results-div">
-<p ng-repeat="x in search_results">
-<a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a></p>
-</div>
-</div>
-<p ng-bind="user_search_results"></p>
-<div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5></div>
-</div>
-<div class="bottom-move">
-<div class="accordian" id="user-events-top">
+<div class="user_image"><img src={{user.profile_pic_url}}></div><h1>{{user.first_name}} {{user.last_name}}</h1>
+
+
+<div class="outer">
+
+<h3 class="switch">User Events</h3>
+<div  class="accordian">
 <div ng-show="!user.events.length">
 <p>You have not attended any events yet</p>
 </div>
@@ -32,7 +24,8 @@
 </div>
 </div>
 
-<div class="accordian" id="user-made-top">
+<h3 class="switch">User remarks made</h3>
+<div class="accordian">
 <div ng-show="!user.remarks_made.length">
   <p>You have not made any remarks yet</p>
 </div>
@@ -55,7 +48,8 @@
 </div>
 </div>
 
-<div class="accordian" id="user-received-top">
+<h3 class="switch">User remarks received</h3>
+<div class="accordian">
 <div ng-show="!user.remarks_received.length">
   <p>You have not received any remarks yet</p>
 </div>
@@ -77,6 +71,9 @@
 </div>
 </div>
 </div>
+
+
+
 
 </div>
 </div>
