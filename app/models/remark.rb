@@ -1,8 +1,8 @@
 class Remark < ActiveRecord::Base
   has_many :votes, as: :votable, dependent: :destroy
   belongs_to :event
-  belongs_to :giver, class_name: "User"
-  belongs_to :receiver, class_name: "User"
+  belongs_to :giver, class_name: :User
+  belongs_to :receiver, class_name: :User
 
 
   has_attached_file :photo,
