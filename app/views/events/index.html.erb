@@ -7,14 +7,14 @@
 
     <div ng-if="mode">
       <div ng-if="focusEvent">
-        <div class="focus-event debug" ng-click="focusEventItem()">
+        <div class="focus-event" ng-click="focusEventItem()">
           <h5>Focus Event</h5>
           <div class="focus-venue-name">{{focusEvent.venue_name}}</div>
           <div>{{focusEvent.score}}</div>
         </div>
       </div>
 
-      <div class="event-list debug">
+      <div class="event-list">
         <h4>Event List</h4>
         <div ng-repeat="item in data">
           <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
