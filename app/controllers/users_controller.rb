@@ -6,12 +6,12 @@ class UsersController < ApplicationController
       params["facebook_id"], profile_pic_url: params["profile_pic_url"])
       if user.save
         session[:user_id] = user.id
-        render text: "User created & Logged in"
+        render json: user
       end
     else
       user.update(first_name: params["first_name"], last_name: params["last_name"],profile_pic_url: params["profile_pic_url"])
       session[:user_id] = user.id
-      render text: "logged in"
+      render json: user
     end
   end
 
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def get_user_data
+    @user = User.find(session[:user_id])
+    render json: @user.to_json(:include=> {:events=>{}, :votes=>{}, :remarks_made=>{:include=>{:receiver=>{}, :event=>{}}}, :remarks_received=>{:include=>{:giver=>{}, :event=>{}}}})
   end
 
   def test_user_login

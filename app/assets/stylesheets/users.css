@@ -1,0 +1,9 @@
+div.user_image img {
+  border-radius: 50%;
+}
+
+div.user_image {
+    text-align: center;
+    padding: 1em;
+    background-color: lightgray;
+}

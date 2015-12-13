@@ -1,5 +1,75 @@
-<div ng-app="user-show">
-<div ng-controller="user-controller">
-<img src={user.profil_pic_url}><h1>{{user.first_name user.last_name}}</h1>
+<div>
+<div ng-controller="usercontroller">
+<div class="user_image"><img src={{user.profile_pic_url}}></div><h1>{{user.first_name}} {{user.last_name}}</h1>
+
+
+<h3>User Events<h3>
+<div ng-show="!user.events.length">
+<p>You have not attended any events yet</p>
+</div>
+
+<div id="user_events" ng-show="user.events.length">
+<div ng-repeat="x in user.events" on-events-finish>
+<h5>Venue</h5>
+<p>{{x.venue_name}}</p>
+<h5>Address</h5>
+<p>{{x.address}}</p>
+<h5>Date</h5>
+<p>{{x.created_at | date: "shortDate"}}</p>
+<h5>Popularity</h5>
+<p>{{x.score}}</p>
+</div>
+
+
+
+</div>
+
+<h3>User remarks made</h3>
+<div ng-show="!user.remarks_made.length">
+  <p>You have not made any remarks yet</p>
+</div>
+<div id="user_remarks_made" ng-show="user.remarks_made.length">
+<div ng-repeat="x in user.remarks_made">
+<h5>Description</h5>
+<p>{{x.description}}</p>
+<h5>Love or Hate</h5>
+<p>{{x.remark_direction}}</p>
+<h5>Directed At</h5>
+<p>{{x.receiver.first_name +" "+x.receiver.last_name}} <img src='/assets/{{x.receiver.profile_pic_url}}'></p>
+<h5>Date</h5>
+<p>{{x.created_at | date: "shortDate"}}</p>
+<h5>Venue</h5>
+<p>{{x.event.venue_name}}</p>
+<p>{{x.event.address}}</p>
+<h5>Score</h5>
+<p>{{x.score}}</p>
+</div>
+</div>
+
+
+<h3>User remarks received</h3>
+<div ng-show="!user.remarks_received.length">
+  <p>You have not received any remarks yet</p>
+</div>
+<div id="user_remarks_received" ng-show="user.remarks_received.length">
+<div ng-repeat="x in user.remarks_received">
+<h5>Description</h5>
+<p>{{x.description}}</p>
+<h5>Love or Hate</h5>
+<p>{{x.remark_direction}}</p>
+<h5>Made by</h5>
+<p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
+<h5>Date</h5>
+<p>{{x.created_at | date: "shortDate"}}</p>
+<h5>Venue</h5>
+<p>{{x.event.venue_name}}</p>
+<p>{{x.event.address}}</p>
+<h5>Score</h5>
+<p>{{x.score}}</p>
+</div>
+</div>
+
+
+
 </div>
 </div>
