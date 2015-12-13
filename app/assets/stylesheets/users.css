@@ -55,11 +55,10 @@ div.user_image {
 
 .user-page-link {
   position: absolute;
-  top: 6px;
+  top: 11px;
   z-index: 5;
   padding-left: 7px;
   padding-right: 7px;
-  margin-left: 6px;
   background-color: #fff;
   border: 1px solid #999;
   border-radius: 50%;

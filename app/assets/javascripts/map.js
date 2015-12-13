@@ -153,7 +153,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
     $scope.currentLocationMarker.setCircleOptions({visible: false})
     var input = document.getElementById('search-box');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
     searchBox.addListener('places_changed', function(){
       searchBox.setBounds($scope.bounds);
       var places = searchBox.getPlaces();

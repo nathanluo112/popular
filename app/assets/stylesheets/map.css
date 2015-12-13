@@ -38,3 +38,7 @@ h4 {
   color: #9DC49D;
 }
 
+#search-box {
+  width: 70%;
+  margin-top: 5px;
+}
