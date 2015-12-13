@@ -5,10 +5,6 @@ div#event_show {
   text-align: center;
 }
 
-div.vote {
-  padding-top: 10px;
-}
-
 div.vote input[type="submit"] {
   font-family: 'Abel', sans-serif;
   font-size: 2em;
@@ -17,8 +13,8 @@ div.vote input[type="submit"] {
   background-color: #F7CAC9;
   color: white;
   width: 100%;
-  vertical-align: center;
-  height: 2em;  
+  height: 6em;
+  margin-top: 1em;
 }
 
 div#event_show div.name {

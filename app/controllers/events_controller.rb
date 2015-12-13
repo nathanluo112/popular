@@ -3,14 +3,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(3)
+    @event = Event.find_by(id: params[:id]) || Event.find(3)
   end
 
   def new
   end
 
   def create
-
     event_params = permitted_params.merge(score: 0)
     event = Event.new(event_params)
     if event.save

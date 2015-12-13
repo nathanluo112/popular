@@ -87,12 +87,27 @@ div.remark_display {
   display: none;
 }
 
-div.remarks {
+div.remarks.top_margin {
+  vertical-align: center;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div.remark img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+div.remark.row {
+  width: 100%;
+  vertical-align: center;
+}
+
+div.attendees div.row {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: auto;
+  padding-right: auto
 }

@@ -1,3 +1,8 @@
+div.main {
+  font-family: 'Abel', sans-serif;
+  vertical-align: center;
+}
+
 #map {
   min-height: 25em;
   max-height: 40em;
@@ -13,3 +18,23 @@
 .location {
   line-height: .5em;
 }
+
+div.main button {
+  display: inline;
+  font-family: 'Abel', sans-serif;
+  background: none;
+  border: none;
+  background-color: #92A8D1;
+  color: white;
+  font-size: 1em;
+  width: 50%;
+  height: 4em;
+}
+
+h4 {
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  font-size: 2em;
+  color: #9DC49D;
+}
+
