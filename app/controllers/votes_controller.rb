@@ -1,8 +1,9 @@
 class VotesController < ApplicationController
   
   def create
-    vote = Vote.new(permit_params.merge(user_id: 1, event_id: params[:event_id]))
-    # binding.pry
+    event = Event.find(params[:event_id])
+    vote = Vote.new(permit_params.merge(user: current_user, votable: event))
+    binding.pry
     if vote.save
       render text: "You've totally just put your rep on the line, person."
     else

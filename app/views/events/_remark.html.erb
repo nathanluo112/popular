@@ -1,5 +1,9 @@
 <div class="remark row">
-  <% giver = User.find(remark.giver_id) %>
-  <% receiver = User.find(remark.receiver_id) %>
-  <%= giver.first_name + " said '" + remark.description + "' about " + receiver.first_name %>
+  <%= image_tag(remark.giver.profile_pic_url)%>
+  <% if remark.remark_direction == 1 %>
+    <%= " said '" + remark.description + "' about " %>
+  <% else %>
+    <%= " said '" + remark.description + "' about " %>
+  <% end %>
+  <%= image_tag(remark.receiver.profile_pic_url)%>
 </div>

@@ -24,6 +24,7 @@ div.vote input[type="submit"] {
 div#event_show div.name {
   display: inline;
   font-size: 5em;
+  font-weight: bolder;
   color: white;
 }
 
@@ -53,11 +54,24 @@ div.user_info {
 div.user_info img {
   height: 60px;
   width: 60px;
+  border-radius: 50%;
 }
 
-.title {
+p.title {
   font-family: 'Oleo Script', cursive;
   text-align: center;
   font-size: 2em;
   color: #92A8D1;
+}
+
+div.pos {
+  background-color: #9DC49D;
+}
+
+div.neg {
+  background-color: #5c7cb8;
+}
+
+div.top_margin {
+  margin-top: 10px;
 }

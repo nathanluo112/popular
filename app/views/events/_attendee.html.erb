@@ -1,23 +1,23 @@
 <div class="row">
   <div class="small-3 large-3 columns user_info">
     <%= image_tag(user.profile_pic_url) %>
-    <%= user.first_name %> <%= user.popularity %>
+    <%= user.first_name %> <%= user.popularity.to_s + " pop"%>
   </div>
-
+  <% if user.id != current_user.id %>
   <div class="small-3 large-3 columns remark_buttons">  
     <%= link_to "hate", new_event_remark_path(event), data:{direction: -1}, class: "hate" %>
     <%= link_to "love", new_event_remark_path(event), data:{direction: 1}, class: "love"  %>
   </div>
-    
+  <% end %>  
   <div class="small-3 large-3 columns love_form">
-    <%= render partial: "remark_form", locals: { event: event, user: user, message: "tell em how you feel" } %>
+    <%= render partial: "remark_form", locals: { event: event, user: user, message: "tell em how you feel", val: 1 } %>
   </div>
 
   <div class="small-3 large-3 columns hate_form">
-    <%= render partial: "remark_form", locals: { event: event, user: user, message: "feel my wrath" } %>
+    <%= render partial: "remark_form", locals: { event: event, user: user, message: "feel my wrath", val: -1 } %>
   </div>
 
   <div class="small-3 large-3 columns remark_display">
-    Type of remark love/hate
+    
   </div>
 </div>
