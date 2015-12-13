@@ -6,7 +6,6 @@ angular.module('listing-event', []);
 angular.module('listing-event').controller("listController", function($scope, $http, $window){
   $scope.SEARCH_MODE = 1;
   $scope.CREATE_MODE = 0;
-  $scope.displayPlaces = false;
   $scope.joinableEvents = [];
   $scope.data = [];
   $scope.currentLocationMarker;
@@ -26,22 +25,20 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   }).then(function(coords){
       initMap(coords);
-      return coords;
   }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
-      if ($scope.mode == $scope.SEARCH_MODE) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(function(){
-          newBoundQuery();
-        }, 200);
-      } else {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(function(){
-          nearBy();
-        }, 200);
-      }
-    })
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(function(){
+        newBoundQuery();
+      }, 200);
+    });
+
+    google.maps.event.addDomListener(window, 'resize', function() {
+      var center = map.getCenter();
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(center);
+    });
   });
 
   $scope.eventItem = function(){
@@ -62,15 +59,41 @@ angular.module('listing-event').controller("listController", function($scope, $h
     $scope.displayPlaces = false;
     map.panTo($scope.currentLocationMarker.position)
     map.setZoom(20);
+    var timeoutId;
+    map.addListener("bounds_changed", function(){
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(function(){
+        newBoundQuery();
+      }, 200);
+    });
+    newBoundQuery();
   }
 
   $scope.listPlaces = function(){
+    google.maps.event.clearListeners(map, "bounds_changed");
     map.setCenter($scope.currentLocationMarker.position);
     map.setZoom(20);
     $scope.mode = $scope.CREATE_MODE;
     // --------------- Comment out for testing --------------
     // $scope.bounds = map.getBounds();
     // ---------------------------------------------------
+    new Promise(function(resolve, reject){
+      var searchRequest = {
+        bounds: $scope.bounds,
+        types: ['bar','night_club','stadium']
+      };
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(searchRequest, function(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          $scope.places = results;
+          console.log($scope.places);
+
+          resolve("Done");
+        }
+      });
+    }).then(function(){
+      $scope.mode = $scope.CREATE_MODE;
+    });
   }
 
   $scope.createEvent = function(place){
@@ -134,7 +157,10 @@ angular.module('listing-event').controller("listController", function($scope, $h
     map = new google.maps.Map(document.getElementById('map'), {
       center: coordinates,
       scrollwheel: false,
-      zoom: 12
+      zoom: 12,
+      mapTypeControl: false,
+      rotateControl: false,
+
     });
     $scope.currentLocationMarker = new GeolocationMarker(map);
     $scope.currentLocationMarker.setCircleOptions({visible: false})
@@ -234,21 +260,9 @@ angular.module('listing-event').controller("listController", function($scope, $h
     }
   }
 
-  function nearBy(){
-    var request = {
-      bounds: $scope.bounds,
-      types: ['bar','night_club','stadium']
-    };
-    service = new google.maps.places.PlacesService(map);
+  // function nearBy(){
 
-    service.nearbySearch(request, function(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        $scope.places = results;
-        console.log($scope.places);
-        // drawList(results);
-      }
-    });
-  }
+  // }
 
 });
 
