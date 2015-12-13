@@ -1,7 +1,7 @@
 <div class="row">
   <div class="small-3 large-3 columns user_info">
     <%= image_tag(user.profile_pic_url) %>
-    <%= user.first_name %> <%= user.popularity %>
+    <%= user.first_name %> <%= user.popularity.to_s + " pop"%>
   </div>
   <% if user.id != current_user.id %>
   <div class="small-3 large-3 columns remark_buttons">  

@@ -1,3 +1,9 @@
 <div class="remark row">
-  <%= remark.giver.first_name + " said '" + remark.description + "' about " + remark.receiver.first_name %>
+  <%= image_tag(remark.giver.profile_pic_url)%>
+  <% if remark.remark_direction == 1 %>
+    <%= " said '" + remark.description + "' about " %>
+  <% else %>
+    <%= " said '" + remark.description + "' about " %>
+  <% end %>
+  <%= image_tag(remark.receiver.profile_pic_url)%>
 </div>

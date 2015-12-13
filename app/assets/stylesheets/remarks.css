@@ -90,3 +90,9 @@ div.remark_display {
 div.remarks {
   text-align: center;
 }
+
+div.remark img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
