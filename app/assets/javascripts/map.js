@@ -162,7 +162,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
         return;
       }
       map.panTo(places[0].geometry.location);
-      map.setZoom(16);
+      map.setZoom(13);
     })
   };
 

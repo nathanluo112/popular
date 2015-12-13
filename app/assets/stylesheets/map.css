@@ -39,6 +39,7 @@ h4 {
 }
 
 #search-box {
-  width: 70%;
+  width: 66%;
   margin-top: 5px;
+  /*margin-left: 40px;*/
 }
