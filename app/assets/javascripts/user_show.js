@@ -45,18 +45,23 @@ app.controller('usercontroller', function($scope, $http) {
 
      // /current_user_data
      $http.get("/current_user_data/"+window.location.pathname.split("/").pop()).then(function(res){
-      console.log(res.data);
       $scope.user = res.data;
     });
 
      $("#user-search-bar").keyup(function(){
       name=this.value;
+      console.log("test "+name);
+      if (name=="") {
+        $scope.search_results=[];
+        $scope.$apply();}
+      else {
       $.get("/user_search", {name: name}).done(function(res){
         console.log(res);
         $scope.search_results=res;
+        $scope.$apply();
       });
-
-     }); //$("#search-bar").keyup(function(
+        }
+     }); //$("#user-search-bar").keyup(function(
 
 
 
