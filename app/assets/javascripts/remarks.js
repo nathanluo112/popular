@@ -63,9 +63,4 @@ $(document).ready(function(){
     });
   });
 
-  // $(".remark").on("click", "a", function(event){
-  //   event.preventDefault();
-    
-  // });
-
 });

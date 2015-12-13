@@ -1,5 +1,5 @@
 <div class="remark small-12 columns">
-  <a href="#" data-reveal-id="modal">
+  <a href="#" <%="data-reveal-id=modal#{remark.id}"%>>
   <%= image_tag(remark.giver.profile_pic_url)%>
   <% if remark.remark_direction == 1 %>
     <%= " said '" + remark.description + "' about " %>
@@ -10,6 +10,22 @@
   </a>
 </div>
 
-<div id="modal" class="reveal-modal" data-reveal>
-  <%= image_tag(remark.giver.profile_pic_url)%>
+<div <%="id=modal#{remark.id}"%> class="reveal-modal" data-reveal>
+  <p class="small-4 columns"><%= image_tag(remark.giver.profile_pic_url)%></p>
+    <p class="small-4 columns emotion">
+    <% if remark.remark_direction == 1 %>
+      <i class="fi-heart"></i>
+    <% else %>
+      <i class="fi-skull"></i>
+    <% end %>
+
+    </p>
+  <p class="small-4 columns"><%= image_tag(remark.receiver.profile_pic_url)%></p>
+  <div class="small 12 description">
+    <%= remark.description %>
+  </div>
+  <div class="small-12 picture">
+    <%= image_tag(remark.photo) if remark.photo %>
+  </div>
+
 </div>

@@ -31,6 +31,8 @@ gem 'remotipart'
 
 # Foundation for styling
 gem 'foundation-rails'
+gem 'coffee-rails'
+gem 'foundation-icons-sass-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
