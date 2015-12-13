@@ -1,9 +1,10 @@
 <div ng-app="listing-event" class="row">
   <div ng-controller="listController">
+    <input id="search-box" ng-model="searchItem" placeholder="Search">
     <div id="map"></div>
     <button id="join-event" ng-click="joinEvent()">Near</button>
 
-    <button ng-if="show" id="list-places" ng-click="listPlaces()">Host your own</button>
+    <button id="list-places" ng-click="listPlaces()">Host your own</button>
 
     <div ng-if="mode">
       <div ng-if="focusEvent">

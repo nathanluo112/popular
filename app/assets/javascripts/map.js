@@ -13,6 +13,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   $scope.mode = $scope.SEARCH_MODE;
   $scope.places = [];
 
+  // searchBox = new google.maps.places.SearchBox(angular.element("#search-box"));
   new Promise(function(resolve, reject){
     window.navigator.geolocation.getCurrentPosition(function(args){
       coords = {
@@ -64,17 +65,16 @@ angular.module('listing-event').controller("listController", function($scope, $h
       }, 200);
     });
     map.panTo($scope.currentLocationMarker.position)
-    map.setZoom(20);
+    map.setZoom(19);
   }
 
   $scope.listPlaces = function(){
     google.maps.event.clearListeners(map, "bounds_changed");
+    $scope.mode = $scope.CREATE_MODE;
     map.setCenter($scope.currentLocationMarker.position);
-    map.setZoom(20);
+    map.setZoom(19);
+    $scope.bounds = map.getBounds();
     nearBy();
-    // --------------- Comment out for testing --------------
-    // $scope.bounds = map.getBounds();
-    // ---------------------------------------------------
 
   }
 
@@ -146,6 +146,20 @@ angular.module('listing-event').controller("listController", function($scope, $h
     });
     $scope.currentLocationMarker = new GeolocationMarker(map);
     $scope.currentLocationMarker.setCircleOptions({visible: false})
+    var input = document.getElementById('search-box');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    searchBox.addListener('places_changed', function(){
+      searchBox.setBounds($scope.bounds);
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0){
+        return;
+      }
+      debugger
+      map.panTo(places[0].geometry.location);
+      map.setZoom(16);
+    })
   };
 
 var rq = "F7CAC9";
@@ -286,10 +300,10 @@ function calcPopForPin(event) {
   }
 
   function nearBy(){
+    $scope.places = [];
     var searchRequest = {
       bounds: $scope.bounds,
       types: ['bar','night_club','stadium']
-      // type: ['museum']
     };
     service = new google.maps.places.PlacesService(map);
 
@@ -302,8 +316,6 @@ function calcPopForPin(event) {
               $scope.places.push(results[i]);
             }
           }
-          console.log($scope.places);
-          $scope.mode = $scope.CREATE_MODE;
         }
       });
 
@@ -318,6 +330,7 @@ function calcPopForPin(event) {
     }
     return false;
   }
+
 
 });
 
