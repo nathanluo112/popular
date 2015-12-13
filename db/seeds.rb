@@ -10,7 +10,7 @@ default_pic = "default_face.png"
 Event.create(lat: 40.71766400377538, lng: -74.00004386901855, venue_name: "Aplace", score: 0)
 Event.create(lat: 40.715387077160194, lng: -74.00579452514648, venue_name: "Bplace", score: 0)
 Event.create(lat: 40.72449431636692, lng: -73.9793586730957, venue_name: "Cplace", score: 0)
-
+Event.create(lat: 40.706299941436384, lng: -74.0090936422348, venue_name: "DBC", score: 0)
 User.create(first_name: "bob", popularity: 5, profile_pic_url: default_pic)
 User.create(first_name: "tob", popularity: 10, profile_pic_url: default_pic)
 User.create(first_name: "rob", popularity: 15, profile_pic_url: default_pic)
