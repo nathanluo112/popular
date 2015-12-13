@@ -1,17 +1,19 @@
 var map;
 var markers = [];
-const SEARCH_MODE = 0;
-const CREATE_MODE = 1;
 
 angular.module('listing-event', []);
 
 angular.module('listing-event').controller("listController", function($scope, $http, $window){
+  $scope.SEARCH_MODE = 1;
+  $scope.CREATE_MODE = 0;
+  $scope.displayPlaces = false;
   $scope.joinableEvents = [];
   $scope.data = [];
   $scope.currentLocationMarker;
   $scope.focusEvent;
   $scope.focusMarker;
-  $scope.mode = SEARCH_MODE;
+  $scope.mode = $scope.SEARCH_MODE;
+  $scope.places = [];
 
   new Promise(function(resolve, reject){
     window.navigator.geolocation.getCurrentPosition(function(args){
@@ -28,7 +30,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
-      if ($scope.mode == SEARCH_MODE) {
+      if ($scope.mode == $scope.SEARCH_MODE) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(function(){
           newBoundQuery();
@@ -56,16 +58,40 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }
 
   $scope.joinEvent = function(){
-    $scope.mode = SEARCH_MODE;
+    $scope.mode = $scope.SEARCH_MODE;
+    $scope.displayPlaces = false;
     map.panTo($scope.currentLocationMarker.position)
     map.setZoom(20);
   }
 
-  $scope.createEvent = function(){
+  $scope.listPlaces = function(){
     map.setCenter($scope.currentLocationMarker.position);
     map.setZoom(20);
-    $scope.mode = CREATE_MODE;
-    $scope.bounds = map.getBounds();
+    $scope.mode = $scope.CREATE_MODE;
+    // --------------- Comment out for testing --------------
+    // $scope.bounds = map.getBounds();
+    // ---------------------------------------------------
+  }
+
+  $scope.createEvent = function(place){
+    var event = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng(),
+      venue_name: place.name,
+      address: place.vicinity,
+      place_id: place.place_id
+    };
+
+    $http({
+      method: 'post',
+      url: '/events',
+      data: {event: event}
+    }).then(function(data){
+      $scope.redirectTo(data.data.id);
+    }, function(error){
+      console.log(error);
+    });
+
   }
 
   $scope.redirectTo = function(id) {
@@ -217,12 +243,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
     service.nearbySearch(request, function(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        venues = results;
-        console.log("Venues")
-        console.log(venues);
-        for (var i = 0; i < venues.length; i++) {
-          var place = venues[i];
-        }
+        $scope.places = results;
+        console.log($scope.places);
         // drawList(results);
       }
     });
