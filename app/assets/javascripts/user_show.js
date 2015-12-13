@@ -1,4 +1,4 @@
-var app=angular.module("usershow", [])
+var app=angular.module("listing-event");
 app.controller('usercontroller', function($scope, $http) {
 
     $("#user-made-top").hide();
@@ -68,17 +68,17 @@ app.controller('usercontroller', function($scope, $http) {
 
 }); // app.controller('usercontroller', fun
 
-app.directive("onEventsFinish", function() {
-return function($scope) {
-if ($scope.$last) {
-  $("#user_events").slideDown("slow");
-} }
+// app.directive("onEventsFinish", function() {
+//   return function($scope) {
+//   if ($scope.$last) {
+//     $("#user_events").slideDown("slow");
+//   } }
 
-});
+// });
 
-angular.element(document).ready(function(){
-  angular.bootstrap(document,["usershow"]);
-  });
+// angular.element(document).ready(function(){
+//   angular.bootstrap(document,["listing-event"]);
+//   });
 
 
 

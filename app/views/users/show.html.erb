@@ -1,4 +1,4 @@
-<div>
+<div ng-app="listing-event">
 <div ng-controller="usercontroller">
 <div class="Top-stay">
 <div class="user_image"><img src={{user.profile_pic_url}}></div>
@@ -18,7 +18,7 @@
 <p>You have not attended any events yet</p>
 </div>
 <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
-<div ng-repeat="x in user.events" on-events-finish>
+<div ng-repeat="x in user.events">
 <h5>Venue</h5>
 <p>{{x.venue_name}}</p>
 <h5>Address</h5>
