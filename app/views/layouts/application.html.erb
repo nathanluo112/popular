@@ -12,8 +12,9 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-  <body class="container">
+<body class="container">
   <div class="row">
+    <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
       <%= yield %>
   </div>
     <% if !logged_in? %>
