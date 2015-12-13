@@ -6,7 +6,6 @@ angular.module('listing-event', []);
 angular.module('listing-event').controller("listController", function($scope, $http, $window){
   $scope.SEARCH_MODE = 1;
   $scope.CREATE_MODE = 0;
-  $scope.joinableEvents = [];
   $scope.data = [];
   $scope.currentLocationMarker;
   $scope.focusEvent;
@@ -56,9 +55,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   $scope.joinEvent = function(){
     $scope.mode = $scope.SEARCH_MODE;
-    $scope.displayPlaces = false;
-    map.panTo($scope.currentLocationMarker.position)
-    map.setZoom(20);
+    $scope.show = !$scope.show;
     var timeoutId;
     map.addListener("bounds_changed", function(){
       clearTimeout(timeoutId);
@@ -66,34 +63,19 @@ angular.module('listing-event').controller("listController", function($scope, $h
         newBoundQuery();
       }, 200);
     });
-    newBoundQuery();
+    map.panTo($scope.currentLocationMarker.position)
+    map.setZoom(20);
   }
 
   $scope.listPlaces = function(){
     google.maps.event.clearListeners(map, "bounds_changed");
     map.setCenter($scope.currentLocationMarker.position);
     map.setZoom(20);
-    $scope.mode = $scope.CREATE_MODE;
+    nearBy();
     // --------------- Comment out for testing --------------
     // $scope.bounds = map.getBounds();
     // ---------------------------------------------------
-    new Promise(function(resolve, reject){
-      var searchRequest = {
-        bounds: $scope.bounds,
-        types: ['bar','night_club','stadium']
-      };
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(searchRequest, function(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-          $scope.places = results;
-          console.log($scope.places);
 
-          resolve("Done");
-        }
-      });
-    }).then(function(){
-      $scope.mode = $scope.CREATE_MODE;
-    });
   }
 
   $scope.createEvent = function(place){
@@ -206,7 +188,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
     }
   }
 
-  function removeAllMarkersExceptCenterAndFocus(){
+  function removeMarkers(){
     var tmp = [];
     for(var i = 0; i < markers.length; i++) {
       if ((markers[i].position.lat() != map.center.lat() || markers[i].position.lng() != map.center.lng()) && (markers[i] != $scope.focusMarker)) {
@@ -221,8 +203,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }
 
   function newBoundQuery(){
-    removeAllMarkersExceptCenterAndFocus();
-    console.log("query");
+    removeMarkers();
     $scope.bounds = map.getBounds();
     var maxlat = Math.max($scope.bounds.O.j, $scope.bounds.O.O);
     var minlat = Math.min($scope.bounds.O.j, $scope.bounds.O.O);
@@ -241,7 +222,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       console.log(error);
     }).then(function(){
       setJoinableEvents();
-    });
+    })
   }
 
   function setJoinableEvents() {
@@ -260,9 +241,39 @@ angular.module('listing-event').controller("listController", function($scope, $h
     }
   }
 
-  // function nearBy(){
+  function nearBy(){
+    var searchRequest = {
+      bounds: $scope.bounds,
+      types: ['bar','night_club','stadium']
+      // type: ['museum']
+    };
+    service = new google.maps.places.PlacesService(map);
 
-  // }
+    service.nearbySearch(searchRequest, function(results, status) {
+
+      $scope.$apply(function(){
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++){
+            if (!containsEvent(results[i])){
+              $scope.places.push(results[i]);
+            }
+          }
+          console.log($scope.places);
+          $scope.mode = $scope.CREATE_MODE;
+        }
+      });
+
+    });
+  }
+
+  function containsEvent(place){
+    for (var i = 0; i < $scope.data.length; i++){
+      if (place.name.toLowerCase() == $scope.data[i].venue_name.toLowerCase()){
+        return true;
+      }
+    }
+    return false;
+  }
 
 });
 
