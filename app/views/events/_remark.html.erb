@@ -1,4 +1,5 @@
-<div class="remark row">
+<div class="remark small-12 columns">
+  <a href="#" <%="data-reveal-id=modal#{remark.id}"%>>
   <%= image_tag(remark.giver.profile_pic_url)%>
   <% if remark.remark_direction == 1 %>
     <%= " said '" + remark.description + "' about " %>
@@ -6,4 +7,28 @@
     <%= " said '" + remark.description + "' about " %>
   <% end %>
   <%= image_tag(remark.receiver.profile_pic_url)%>
+  </a>
+</div>
+
+<div <%="id=modal#{remark.id}"%> class="reveal-modal <%= remark.remark_direction == 1 ? "love" : "hate" %>" data-reveal>
+  <p class="small-4 columns"><%= image_tag(remark.giver.profile_pic_url)%></p>
+    <p class="small-4 columns emotion">
+    <% if remark.remark_direction == 1 %>
+      <i class="fi-heart emotion"></i>
+    <% else %>
+      <i class="fi-skull emotion"></i>
+    <% end %>
+    </p>
+  <p class="small-4 columns"><%= image_tag(remark.receiver.profile_pic_url)%></p>
+  <div class="small 12 description">
+    <%= remark.description %>
+  </div>
+  <div class="small-12 picture">
+    <%= image_tag(remark.photo) if remark.photo %>
+  </div>
+
+  <div class="small-12 score">
+    <%= remark.score %>
+  </div>
+
 </div>

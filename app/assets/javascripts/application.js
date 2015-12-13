@@ -12,6 +12,7 @@
 //= require fb.js
 //= require jquery-2.1.4.js
 //= require jquery.remotipart
+//= require foundation
 //= require angular.js
 //= require geolocation-marker.js
 //= require_tree .

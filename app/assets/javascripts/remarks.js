@@ -14,7 +14,7 @@ $(document).ready(function(){
     $(event.target).parent().next().next().show();
   });
 
-    $(".remark_buttons").on("click", "a.love", function(event){
+  $(".remark_buttons").on("click", "a.love", function(event){
     event.preventDefault();
     
     $(event.target).parent().hide();
@@ -37,13 +37,15 @@ $(document).ready(function(){
 
   $(".love_form").on("submit", "form", function(event){
     event.preventDefault();
+    debugger
     $.ajax({
       method: "post",
       url:    $(event.target).attr("action"),
       data:   $(event.target).serialize()
     }).done(function(response){ 
-      
       $(event.target).parent().hide();
+      debugger
+      location.reload(true);
     }).fail(function(error){
       console.log("You've already made a remark.");
     });
@@ -56,8 +58,8 @@ $(document).ready(function(){
       url:    $(event.target).attr("action"),
       data:   $(event.target).serialize()
     }).done(function(response){ 
-      
       $(event.target).parent().hide();
+      location.reload(true);
     }).fail(function(error){
       console.log("You've already made a remark.");
     });

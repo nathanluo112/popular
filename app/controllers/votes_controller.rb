@@ -3,9 +3,9 @@ class VotesController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     vote = Vote.new(permit_params.merge(user: current_user, votable: event))
-    binding.pry
+    # binding.pry
     if vote.save
-      render text: "You've totally just put your rep on the line, person."
+      render text: "#{vote.vote_direction}"
     else
       render text: "You've managed to mess up clicking."
     end

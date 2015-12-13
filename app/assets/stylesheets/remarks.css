@@ -87,12 +87,69 @@ div.remark_display {
   display: none;
 }
 
-div.remarks {
+div.remarks.top_margin {
+  vertical-align: center;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div.remark img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+div.remark.row {
+  width: 100%;
+  vertical-align: center;
+}
+
+div.attendees div.row {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: auto;
+  padding-right: auto
+}
+
+div.reveal-modal.love{
+  background-color: #F7CAC9;
+}
+
+div.reveal-modal.hate{
+  background-color: #933f3d;
+}
+
+div.reveal-modal img{
+  height: 75px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+i.emotion {
+  color: white;
+  font-size: 40px;
+  float: center; 
+  text-indent: center;
+}
+
+p.emotion {
+  text-align: center;
+}
+
+div.score {
+  color: white;
+  font-size: 5em;
+  text-align: center;
+}
+
+div.description {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+div.picture img {
+  width: 100%;
+  size: cover;
 }
