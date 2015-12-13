@@ -1,3 +1,15 @@
+#user-search-bar {
+  -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+  border-radius: 20px;
+  width: 20em;
+  margin: auto;
+
+}
+
+.search-results-div {
+  background-color: white;
+}
 div.user_image img {
   border-radius: 50%;
 }
@@ -6,4 +18,40 @@ div.user_image {
     text-align: center;
     padding: 1em;
     background-color: lightgray;
+    width: 100%;
+}
+
+.switch {
+  background-color: lightgray;
+  margin:0px;
+  border-bottom: 1px solid gray;
+}
+
+.ng-scope {
+   border-bottom: 2px solid gray;
+}
+
+.user-nav-bar {
+  text-align: center;
+}
+
+.user-nav-bar h5{
+  display: inline;
+  text-align: center;
+  padding: .3em;
+}
+
+.user-name {
+  text-align: center;
+
+}
+
+.Top-stay {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.bottom-move {
+  margin-top: 350px;
 }
