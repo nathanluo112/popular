@@ -42,36 +42,4 @@ $(document).ready(function(){
     $(event.target).parent().parent().prev().prev().show();
   });
 
-  $(".love_form").on("submit", "form", function(event){
-    event.preventDefault();
-    debugger
-    $.ajax({
-      method: "post",
-      url:    $(event.target).attr("action"),
-      data:   $(event.target).serialize()
-    }).done(function(response){ 
-      debugger
-      $(event.target).parent().hide();
-      location.reload(true);
-    }).fail(function(error){
-      console.log("You couldn't make a remark.");
-    });
-  });
-
-  $(".hate_form").on("submit", "form", function(event){
-    event.preventDefault();
-    debugger
-    $.ajax({
-      method: "post",
-      url:    $(event.target).attr("action"),
-      data:   $(event.target).serialize()
-    }).done(function(response){ 
-      debugger
-      $(event.target).parent().hide();
-      location.reload(true);
-    }).fail(function(error){
-      console.log("You couldn't make a remark.");
-    });
-  });
-
 });
