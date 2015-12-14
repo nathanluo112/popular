@@ -112,6 +112,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
       lng: $scope.currentLocationMarker.position.lng(),
       venue_name: party.eventName,
       address: party.eventAddress,
+      description: party.eventDesc,
+      house_party: true
     };
 
     $http({

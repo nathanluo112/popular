@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   private
   def permitted_params
-    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id)
+    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id, :description, :house_party)
   end
 
   def with_in_range?(event)
