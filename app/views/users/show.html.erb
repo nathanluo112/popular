@@ -1,82 +1,82 @@
 <div ng-app="listing-event">
-<div ng-controller="usercontroller">
-<div class="Top-stay">
-<div class="user_image"><img src={{user.profile_pic_url}}></div>
-<div class="user-name"><h1>{{user.first_name}} {{user.last_name}}</h1></div>
-<div>
-<input type="text" ng-model="usersearch" id="user-search-bar" placeholder="Search users">
-<div class="search-results-div">
-<p ng-repeat="x in search_results">
-<a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a></p>
-</div>
-</div>
-<div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5></div>
-</div>
-<div class="bottom-move">
-<div class="accordian" id="user-events-top">
-<div ng-show="!user.events.length">
-<p>You have not attended any events yet</p>
-</div>
-<div id="user_events" ng-show="user.events.length" class="user-page-repeats">
-<div ng-repeat="x in user.events">
-<h5>Venue</h5>
-<p>{{x.venue_name}}</p>
-<h5>Address</h5>
-<p>{{x.address}}</p>
-<h5>Date</h5>
-<p>{{x.created_at | date: "shortDate"}}</p>
-<h5>Popularity</h5>
-<p>{{x.score}}</p>
-</div>
-</div>
-</div>
+  <div ng-controller="usercontroller">
+    <div class="Top-stay row">
+      <div class="user_image"><div class="small-6 user-popularity">{{user.popularity}}</div><img class="small-6" src={{user.profile_pic_url}}></div>
+      <div class="user-name"><h1>{{user.first_name}} {{user.last_name}}</h1></div>
+      <div>
+        <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="Search users">
+        <div class="search-results-div">
+          <p ng-repeat="x in search_results">
+            <a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a></p>
+        </div>
+      </div>
+        <div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5></div>
+    </div>
+      <div class="bottom-move">
+        <div class="accordian" id="user-events-top">
+          <div ng-show="!user.events.length">
+            <p>You have not attended any events yet</p>
+          </div>
+          <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
+            <div ng-repeat="x in user.events">
+              <h5>Venue</h5>
+              <p>{{x.venue_name}}</p>
+              <h5>Address</h5>
+              <p>{{x.address}}</p>
+              <h5>Date</h5>
+              <p>{{x.created_at | date: "shortDate"}}</p>
+              <h5>Popularity</h5>
+              <p>{{x.score}}</p>
+            </div>
+          </div>
+        </div>
 
-<div class="accordian" id="user-made-top">
-<div ng-show="!user.remarks_made.length">
-  <p>You have not made any remarks yet</p>
-</div>
-<div id="user_remarks_made" ng-show="user.remarks_made.length">
-<div ng-repeat="x in user.remarks_made">
-<h5>Description</h5>
-<p>{{x.description}}</p>
-<h5>Love or Hate</h5>
-<p>{{x.remark_direction}}</p>
-<h5>Directed At</h5>
-<p>{{x.receiver.first_name +" "+x.receiver.last_name}} <img src='/assets/{{x.receiver.profile_pic_url}}'></p>
-<h5>Date</h5>
-<p>{{x.created_at | date: "shortDate"}}</p>
-<h5>Venue</h5>
-<p>{{x.event.venue_name}}</p>
-<p>{{x.event.address}}</p>
-<h5>Score</h5>
-<p>{{x.score}}</p>
-</div>
-</div>
-</div>
+        <div class="accordian" id="user-made-top">
+          <div ng-show="!user.remarks_made.length">
+            <p>You have not made any remarks yet</p>
+          </div>
+          <div id="user_remarks_made" ng-show="user.remarks_made.length">
+            <div ng-repeat="x in user.remarks_made">
+              <h5>Description</h5>
+              <p>{{x.description}}</p>
+              <h5>Love or Hate</h5>
+              <p>{{x.remark_direction}}</p>
+              <h5>Directed At</h5>
+              <p>{{x.receiver.first_name +" "+x.receiver.last_name}} <img src='/assets/{{x.receiver.profile_pic_url}}'></p>
+              <h5>Date</h5>
+              <p>{{x.created_at | date: "shortDate"}}</p>
+              <h5>Venue</h5>
+              <p>{{x.event.venue_name}}</p>
+              <p>{{x.event.address}}</p>
+              <h5>Score</h5>
+              <p>{{x.score}}</p>
+            </div>
+          </div>
+        </div>
 
-<div class="accordian" id="user-received-top">
-<div ng-show="!user.remarks_received.length">
-  <p>You have not received any remarks yet</p>
-</div>
-<div id="user_remarks_received" ng-show="user.remarks_received.length">
-<div ng-repeat="x in user.remarks_received">
-<h5>Description</h5>
-<p>{{x.description}}</p>
-<h5>Love or Hate</h5>
-<p>{{x.remark_direction}}</p>
-<h5>Made by</h5>
-<p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
-<h5>Date</h5>
-<p>{{x.created_at | date: "shortDate"}}</p>
-<h5>Venue</h5>
-<p>{{x.event.venue_name}}</p>
-<p>{{x.event.address}}</p>
-<h5>Score</h5>
-<p>{{x.score}}</p>
-</div>
-</div>
-</div>
+        <div class="accordian" id="user-received-top">
+          <div ng-show="!user.remarks_received.length">
+            <p>You have not received any remarks yet</p>
+          </div>
+          <div id="user_remarks_received" ng-show="user.remarks_received.length">
+            <div ng-repeat="x in user.remarks_received">
+              <h5>Description</h5>
+              <p>{{x.description}}</p>
+              <h5>Love or Hate</h5>
+              <p>{{x.remark_direction}}</p>
+              <h5>Made by</h5>
+              <p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
+              <h5>Date</h5>
+              <p>{{x.created_at | date: "shortDate"}}</p>
+              <h5>Venue</h5>
+              <p>{{x.event.venue_name}}</p>
+              <p>{{x.event.address}}</p>
+              <h5>Score</h5>
+              <p>{{x.score}}</p>
+            </div>
+          </div>
+        </div>
 
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
