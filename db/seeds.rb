@@ -25,6 +25,7 @@ Vote.create(user_id: 1, votable: Event.find(1), vote_direction: 1)
 Vote.create(user_id: 2, votable: Event.find(1), vote_direction: 1)
 Vote.create(user_id: 1, votable: Event.find(3), vote_direction: -1)
 Vote.create(user_id: 3, votable: Event.find(3), vote_direction: -1)
+Vote.create(user_id: 2, votable: Event.find(4), vote_direction: 1)
 
 Remark.create(description: "Her hair is wonderful", giver_id: 1, receiver_id: 2, event: Event.find(1), remark_direction: 1)
 Remark.create(description: "Those boots are terrible bruh",giver_id: 3, receiver_id: 1, event: Event.find(3), remark_direction: -1)
