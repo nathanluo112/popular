@@ -37,14 +37,3 @@ h4 {
   font-size: 2em;
   color: #92a8d1;
 }
-
-#search-box {
-  width: 66%;
-  margin-top: 5px;
-  border-radius: 20px;
-}
-
-h4.venue-name {
-  font-family: 'Abel', sans-serif;
-  text-align: left;
-}
