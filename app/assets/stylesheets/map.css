@@ -4,7 +4,7 @@ div.main {
 }
 
 #map {
-  min-height: 25em;
+  min-height: 20em;
   max-height: 40em;
   width: 100%;
 }
@@ -35,11 +35,5 @@ h4 {
   font-family: 'Oleo Script', cursive;
   text-align: center;
   font-size: 2em;
-  color: #9DC49D;
-}
-
-#search-box {
-  width: 66%;
-  margin-top: 5px;
-  /*margin-left: 40px;*/
+  color: #92a8d1;
 }

@@ -1,0 +1,51 @@
+#search-box {
+  width: 66%;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+
+h4.venue-name {
+  font-family: 'Abel', sans-serif;
+  text-align: left;
+}
+
+h5.venue-address {
+  font-family: 'Abel', sans-serif;
+  color: #f7cac9;
+  text-align: left;
+}
+
+h4.join-link {
+  font-family: 'Abel', sans-serif;
+  text-align: right;
+  padding: 0em;
+  width: 100%;
+}
+
+a.join-link {
+  color: #de8a89;
+  font-family: 'Abel', sans-serif;
+  text-align: right;
+}
+
+#join-event {
+  width: 100%;
+  background-color: #92a8d1;
+  padding: .8em 0em .8em 0em;
+}
+
+#list-places {
+  width: 100%;
+  background-color: #5c7cb8;
+  padding: .8em 0em .8em 0em;
+}
+
+#create-house-party {
+  width: 100%;
+  background-color: #2f569f;
+  padding: .8em 0em .8em 0em;
+}
+
+#index-event-list {
+  border-top: 2px solid #f7cac9;
+}

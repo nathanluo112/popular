@@ -13,14 +13,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body class="container">
-  <div class="row">
     <% if logged_in? %>
-    <div class="small-1 columns">
-    <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
+    <div class="row">
+      <div class="small-1 columns">
+      <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
+      </div>
     </div>
+
     <% end %>
-      <%= yield %>
-  </div>
+
+    <%= yield %>
+
     <% if !logged_in? %>
     <div class="center-div" id="connect-directions"><p class="fb-color">Login / Signup</p></div>
     <div class="center-div" id="fb-login-div">
