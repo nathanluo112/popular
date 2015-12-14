@@ -11,13 +11,8 @@
         </div>
       </div>
 
-        <div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5><h5><%= form_tag("https://api.instagram.com/oauth/authorize/?client_id=aa9957e61be84506809478317f133305&redirect_uri=http://localhost:3000/auth&response_type=token") do %><%= submit_tag 'Instagram' %> <%end%></h5></div>
+        <div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5><h5><%= form_tag("https://api.instagram.com/oauth/authorize/?client_id=aa9957e61be84506809478317f133305&redirect_uri=http://localhost:3000/auth&response_type=token") do %><%= submit_tag 'Instagram' %><%end%></h5></div>
     </div>
-      <div ng-repeat="x in images_array">
-        <img src='{{x.images.thumbnail.url}}'>
-      </div>
-
-
       <div class="bottom-move">
         <div class="accordian" id="user-events-top">
           <div ng-show="!user.events.length">
@@ -82,6 +77,23 @@
             </div>
           </div>
         </div>
+
+        <div class="accordian" id="user-instagram-top">
+          <div ng-show="!images_array.length">
+            <p>You have not tagged any images with "#popular" yet</p>
+          </div>
+          <div id="images_array_div" ng-show="images_array.length">
+            <div ng-repeat="x in images_array">
+                <p><img src='{{x.images.thumbnail.url}}'></p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
 
       </div>
     </div>
