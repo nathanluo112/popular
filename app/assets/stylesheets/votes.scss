@@ -17,6 +17,10 @@ div.vote input[type="submit"] {
   margin-top: 1em;
 }
 
+span.checked_in {
+  font-size: 1em;
+}
+
 div#event_show div.name {
   display: inline;
   font-size: 5em;
@@ -36,7 +40,7 @@ div#event_show div.address {
 
 div.voted {
   font-family: 'Abel', sans-serif;
-  font-size: 2em;
+  font-size: 1em;
   background-color: #F7CAC9;
   color: white;
   width: 100%;
@@ -53,7 +57,7 @@ div.user_info img {
   border-radius: 50%;
 }
 
-p.title {
+span.title {
   font-family: 'Oleo Script', cursive;
   text-align: center;
   font-size: 2em;

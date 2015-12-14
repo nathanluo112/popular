@@ -27,18 +27,18 @@
 
   <% if current_user.vote_direction_for(@event) == -1 %>
     <div class="voted neg" <%= "style='display:none'" %>> 
-      <p>ditched this</p>
+      <span class="checked_in">ditched this</span>
     </div>
   <% else %>
     <div class="voted pos"<%= "style='display:none'" %>> 
-      <p>checked in</p>
+      <span class="checked_in">checked in</span>
     </div>
 
     <div class="attendees">
       <% if @event.users.count == 1 %>
-        <p class="title"> Just you so far... </p> 
+        <span class="small-12 columns title centered"> Just you so far... </span> 
       <% else %>
-        <p class="title"> Who else is here? </p>
+        <span class="small-12 columns title centered"> Who else is here? </span>
       <% end %>  
       <% @event.users.each do |user| %>
         <%= render partial: "attendee", locals: { event: @event, user: user } %>
@@ -47,9 +47,9 @@
 
     <div class="remarks top_margin">
       <% if @event.remarks.count < 1 %>
-        <p class="title"> No chatter yet </p>
+        <span class="title"> No chatter yet </span>
       <% else %>
-        <p class="title"> What are they saying? </p>
+        <span class="title"> What are they saying? </span>
       <% end %>
         <% @event.remarks.each do |remark| %>
         <%= render partial: "remark", locals: { event: @event, remark: remark } %>
