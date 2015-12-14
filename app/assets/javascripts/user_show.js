@@ -17,7 +17,8 @@ app.controller('usercontroller', function($scope, $http) {
         method: "GET",
         url: "https://api.instagram.com/v1/users/self/media/recent/?access_token="+token,
         dataType: "jsonp"
-      }).then(function(res){ var images=[];
+      }).then(function(res){
+        var images=[];
         var images_counter = res.data.length;
         for (var i = 0; i< images_counter; i++) {
           var tags_counter = res.data[i].tags.length;
