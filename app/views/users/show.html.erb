@@ -18,7 +18,7 @@
             <p>You have not attended any events yet</p>
           </div>
           <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
-            <div ng-repeat="x in user.events">
+            <div ng-repeat="x in user.events | orderBy: '-created_at'">
               <h5>Venue</h5>
               <p>{{x.venue_name}}</p>
               <h5>Address</h5>
@@ -36,7 +36,7 @@
             <p>You have not made any remarks yet</p>
           </div>
           <div id="user_remarks_made" ng-show="user.remarks_made.length">
-            <div ng-repeat="x in user.remarks_made">
+            <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'">
               <h5>Description</h5>
               <p>{{x.description}}</p>
               <h5>Love or Hate</h5>
@@ -59,7 +59,7 @@
             <p>You have not received any remarks yet</p>
           </div>
           <div id="user_remarks_received" ng-show="user.remarks_received.length">
-            <div ng-repeat="x in user.remarks_received">
+            <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'">
               <h5>Description</h5>
               <p>{{x.description}}</p>
               <h5>Love or Hate</h5>
