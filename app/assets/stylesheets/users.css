@@ -52,3 +52,15 @@ div.user_image {
 .bottom-move {
   margin-top: 350px;
 }
+
+.user-page-link {
+  position: absolute;
+  top: 11px;
+  z-index: 5;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 50%;
+  color: #92a8d1;
+}

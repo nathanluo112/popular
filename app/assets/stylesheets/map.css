@@ -38,3 +38,8 @@ h4 {
   color: #9DC49D;
 }
 
+#search-box {
+  width: 66%;
+  margin-top: 5px;
+  /*margin-left: 40px;*/
+}

@@ -9,25 +9,12 @@ class Event < ActiveRecord::Base
   end
 
   def calculate_popularity
-
-  end
-  scheduler = Rufus::Scheduler.new
-
-  scheduler.every '1h' do
-    events_to_close = Event.where("is_active = true and created_at < ?", (Time.now - 30000));
-    events_to_close.each do |event|
-      event.calculate_popularity
-      event.is_active = false
-      event.save
-    end
-  end
-
-
-  # at 5AM
-  def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
     attendees = positive_votes.map {|vote| vote.user}
+
+    popularity_array = attendees.map {|attendee| attendee.popularity}
+    popularity_of_most_popular = popularity_array.max
 
     dissers = self.votes.where(vote_direction: -1).map {|vote| vote.user}
 
@@ -46,10 +33,10 @@ class Event < ActiveRecord::Base
       attendees[(sixtieth_percentile + 1)..fiftieth_percentile].each {|u| u.popularity += (self.score * 0.04).to_i}
       attendees[(fiftieth_percentile + 1)..-1].each {|u| u.popularity += (self.score * 0.03).to_i}
 
-    else
-      popularity_array = attendees.map {|attendee| attendee.popularity}
-      popularity_of_most_popular = popularity_array.max
+    elsif positive_votes.count > 5 && self.score > 0
+      attendees.each {|u| u.popularity += (popularity_of_most_popular * 0.1).to_i}
 
+    else
       attendees.each {|attendee| attendee.popularity = (attendee.popularity * 0.9).to_i}
       dissers.each {|disser| disser.popularity += (popularity_of_most_popular * 0.1).to_i}
 
