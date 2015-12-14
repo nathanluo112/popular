@@ -259,7 +259,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       google.maps.event.addListener(marker, 'click', function(){
         $scope.focusEvent = event;
         $scope.focusMarker = marker;
-        $scope.$apply(function(){$scope.showFocus = true;});
+        $scope.showFocus = true;
         infowindow.open(map, marker);
         map.panTo(this.position);
         if (map.getZoom() < 16){
@@ -297,9 +297,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   function removeAllMarkers(){
     for(var i = 0; i < markers.length; i++) {
-
       markers[i].setMap(null);
-
     }
     markers = [];
   }
@@ -318,8 +316,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
       for (var i = 0; i < events.length; i++){
         addMarker(events[i]);
       }
-      console.log(markers);
       $scope.data = events;
+      console.log(markers);
     }, function(error){
       console.log(error);
     }).then(function(){
@@ -327,11 +325,6 @@ angular.module('listing-event').controller("listController", function($scope, $h
     })
   }
 
-  function eventGrouping(events){
-    for (var i = 0; i < events; i++){
-
-    }
-  }
 
   function setJoinableEvents() {
     for(var i = 0; i < $scope.data.length; i++) {
