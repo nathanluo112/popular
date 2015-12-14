@@ -8,7 +8,7 @@
 }
 
 .search-results-div {
-  background-color: white;
+  background-color: #f7cac9;
 }
 div.user_image img {
   border-radius: 50%;
@@ -19,6 +19,10 @@ div.user_image {
     padding: 1em;
     background-color: lightgray;
     width: 100%;
+}
+
+.user-name h1{
+  color: #425a86;
 }
 
 .switch {
