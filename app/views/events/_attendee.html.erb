@@ -10,6 +10,8 @@
     <%= link_to "hate", new_event_remark_path(event), data:{direction: -1}, class: "hate" %>
     <%= link_to "love", new_event_remark_path(event), data:{direction: 1}, class: "love"  %>
   </div>
+  <% else %>
+    <span class="small-6 columns centered"> beautiful you</span>
   <% end %>  
   <div class="small-3 large-3 columns love_form">
     <%= render partial: "remark_form", locals: { event: event, user: user, message: "tell em how you feel", val: 1 } %>
