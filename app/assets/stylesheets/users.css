@@ -11,15 +11,35 @@
   background-color: #f7cac9;
 }
 div.user_image img {
+ -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
   border-radius: 50%;
+    width: 100px;
+  height: 100px;
 }
 
 div.user_image {
+    width: 100px;
+    height: 100px;
     text-align: center;
     padding: 1em;
     background-color: lightgray;
     width: 100%;
 }
+
+.user-popularity {
+  background-color:#f7cac9;
+  font-size: 5em;
+ -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+
 
 .user-name h1{
   color: #425a86;
