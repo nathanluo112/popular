@@ -31,9 +31,10 @@
     <%= image_tag(remark.photo) if remark.photo %>
   </div>
 
-  <div class="row score">
-    <%= remark.score %>
-  </div>
+    <div class="row score">
+      <%= remark.score %>
+    </div>
+  
 
   <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
     <div class="row remark_vote">
