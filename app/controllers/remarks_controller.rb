@@ -1,5 +1,7 @@
 class RemarksController < ApplicationController
 
+  
+
   def create
     remark = Remark.new(permit_params.merge(giver_id: current_user.id, receiver_id: params[:remark][:user_id], event_id: params[:event_id]))
     # binding.pry

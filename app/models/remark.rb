@@ -11,6 +11,9 @@ class Remark < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
+  def already_has_vote_from(user)
+    self.votes.where(user_id: user.id).count > 0
+  end
 
   def calculate_popularity
     if self.score > 0

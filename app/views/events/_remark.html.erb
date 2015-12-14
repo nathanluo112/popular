@@ -1,16 +1,20 @@
-<div class="remark small-12 columns">
-  <a href="#" <%="data-reveal-id=modal#{remark.id}"%>>
-  <%= image_tag(remark.giver.profile_pic_url)%>
-  <% if remark.remark_direction == 1 %>
-    <%= " said '" + remark.description + "' about " %>
-  <% else %>
-    <%= " said '" + remark.description + "' about " %>
-  <% end %>
-  <%= image_tag(remark.receiver.profile_pic_url)%>
-  </a>
-</div>
+<a href="#" <%="data-reveal-id=modal#{remark.id}"%>>
+  <div class="remark small-12 columns">
+    <%= image_tag(remark.giver.profile_pic_url)%>
+    <% if remark.remark_direction == 1 %>
+      <%= " showed   " %> <i class="fi-heart red"></i> <%= "  to " %>
+    <% else %>
+      <%= " threw " %> <i class="fi-skull black"></i> <%= "  at " %>
+    <% end %>
+    <%= image_tag(remark.receiver.profile_pic_url)%>
+    <span class="small-12 columns descrip_text"><%= remark.description %></span>
+  </div>
+</a>
 
 <div <%="id=modal#{remark.id}"%> class="reveal-modal <%= remark.remark_direction == 1 ? "love" : "hate" %>" data-reveal>
+  <p class="close_button">
+  <a href="#" class="close-reveal-modal close_button">close</a>
+  </p>
   <p class="small-4 columns"><%= image_tag(remark.giver.profile_pic_url)%></p>
     <p class="small-4 columns emotion">
     <% if remark.remark_direction == 1 %>
@@ -20,15 +24,31 @@
     <% end %>
     </p>
   <p class="small-4 columns"><%= image_tag(remark.receiver.profile_pic_url)%></p>
-  <div class="small 12 description">
+  <div class="row description">
     <%= remark.description %>
   </div>
-  <div class="small-12 picture">
+  <div class="row picture">
     <%= image_tag(remark.photo) if remark.photo %>
   </div>
 
-  <div class="small-12 score">
+  <div class="row score">
     <%= remark.score %>
   </div>
+
+  <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
+    <div class="row remark_vote">
+      
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class:  "small-6" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "1" %>
+      <%= f.submit "yay" %>
+      <% end %>
+      
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "-1" %>
+      <%= f.submit "nay" %>
+      <% end %>
+
+    </div>
+  <% end %>
 
 </div>

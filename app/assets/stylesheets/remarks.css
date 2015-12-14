@@ -26,6 +26,7 @@ div.remark_buttons a.hate{
 }
 
 div.love_form {
+  margin-top: 2px;
   display: none;
   text-align: center;
   font-size: 2em;
@@ -55,6 +56,7 @@ div.love_form button{
 }
 
 div.hate_form {
+  margin-top: 2px;
   display: none;
   text-align: center;
   font-size: 2em;
@@ -100,6 +102,12 @@ div.remark img {
   border-radius: 50%;
 }
 
+div.remark {
+  background-color: #f1f1f1;
+  padding-top: 4px;
+  margin-bottom: 2px;
+}
+
 div.remark.row {
   width: 100%;
   vertical-align: center;
@@ -128,8 +136,7 @@ div.reveal-modal img{
 
 i.emotion {
   color: white;
-  font-size: 40px;
-  float: center; 
+  font-size: 40px; 
   text-indent: center;
 }
 
@@ -152,4 +159,51 @@ div.description {
 div.picture img {
   width: 100%;
   size: cover;
+}
+
+div.remark_vote {
+  font-size: 6em;
+  text-align: center;
+  width: 100%;
+}
+
+div.remark_vote i{
+  color: white;
+  display: inline;
+}
+
+div.remark_vote input[type="submit"] {
+  font-size: .5em;
+  color: white;
+  background: none;
+  border: none;
+}
+
+.descript_text {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: red;
+}
+
+.centered {
+  text-align: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+p.close_button {
+  margin-bottom: 5px;
+  padding-bottom: 20px;
+}
+
+a.close_button {
+  color: white;
 }

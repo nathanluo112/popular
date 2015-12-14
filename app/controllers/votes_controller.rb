@@ -1,9 +1,8 @@
 class VotesController < ApplicationController
   
   def create
-    event = Event.find(params[:event_id])
-    vote = Vote.new(permit_params.merge(user: current_user, votable: event))
-    # binding.pry
+    params[:remark_id] ? votable = Remark.find(params[:remark_id]) : votable = Event.find(params[:event_id])
+    vote = Vote.new(permit_params.merge(user: current_user, votable: votable))
     if vote.save
       render text: "#{vote.vote_direction}"
     else

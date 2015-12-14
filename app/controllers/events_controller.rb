@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id]) || Event.find(3)
+    @event = Event.find_by(id: params[:id]) || Event.find(3)
     if with_in_range?(@event)
       render "show"
     else
