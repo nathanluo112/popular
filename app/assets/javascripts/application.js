@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require fb.js
-//= require jquery-2.1.4.js
+/* Don't remove jquery_ujs if you want remote: true and things like delete links to work
+//= require jquery
+//= require jquery_ujs
 //= require jquery.remotipart
 //= require foundation
 //= require angular.js

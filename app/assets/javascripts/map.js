@@ -158,12 +158,15 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   function findMarkerByEvent(event){
     for (var i = 0; i < markers.length; i ++) {
-      if (markers[i].position.lat().toFixed(13) == event.lat.toFixed(13) && markers[i].position.lng().toFixed(13) == event.lng.toFixed(13) && markers[i].title == event.venue_name){
+      if (markers[i].position.lat().toFixed(13) == event.lat.toFixed(13) 
+         && markers[i].position.lng().toFixed(13) == event.lng.toFixed(13) 
+         && markers[i].title == event.venue_name){
         return markers[i];
       }
     }
   }
 
+  // Check whether there's a built-in angular find function for this.
   function findEventById(id){
     for (var i = 0; i < $scope.data.length; i++) {
       if ($scope.data[i].id == id){
@@ -171,6 +174,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       }
     }
   }
+  
   function initMap(coordinates) {
   // Create a map object and specify the DOM element for display.
     map = new google.maps.Map(document.getElementById('map'), {

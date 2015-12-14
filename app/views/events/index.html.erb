@@ -21,11 +21,13 @@
           <div class="small-12 columns">
             <div class="small-6 columns focus-event" ng-click="focusEventItem()">
               <i class="fi-minus close-icon" ng-click="closeFocus()"></i>
+              <!-- Think about ng-bind rather than {{}} interpolation -->
               <h4 class="venue-name">{{focusEvent.venue_name}}</h4>
               <h5 class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</h5>
             </div>
             <div class="small-6 columns">
               <div ng-if="item.joinable">
+              <!-- I would move this into a method on the scope with a meaningful name -->
                 <h4 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h4>
               </div>
             </div>
@@ -37,6 +39,7 @@
         <h4>Event List</h4>
         <div ng-repeat="item in data">
           <div id="index-event-list" class="row collapse">
+          <!-- eventItem() doesn't feel like the best name - what does it return ? -->
             <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
               <div class="small-7 columns">
                 <div class="venue-name">

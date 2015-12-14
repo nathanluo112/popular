@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  
+  def cre2
+    user = User.find_or_create_by(facebook_id: params["facebook_id"])
+    user.assign_attributes(first_name: params["first_name"], last_name: params["last_name"],profile_pic_url: params["profile_pic_url"])
+    user.save if user.changed?
+    session[:user_id] = user.id
+    render json: user
+  end
+
   def create
     user = User.find_by(facebook_id: params["facebook_id"])
     if !user

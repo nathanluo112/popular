@@ -14,6 +14,13 @@ class Remark < ActiveRecord::Base
   def already_has_vote_from(user)
     self.votes.where(user_id: user.id).count > 0
   end
+  
+  # This can be fragile. You don't have an obvious way of recalculating
+  # popularity from scratch   
+  # Either don't cache popularity or 
+  # instead of an increment recalc from scratch each time - 
+  # tell the giver/receiver to go sum their popularity
+  
 
   def calculate_popularity
     if self.score > 0
