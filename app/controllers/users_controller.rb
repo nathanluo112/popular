@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    users = User.where("lower(first_name) LIKE ? OR lower(last_name) LIKE ?", "%#{params[:name].downcase}%", "%#{params[:name].downcase}%");
+    users = User.where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(concat(first_name,' ',last_name)) LIKE ?", "%#{params[:name].downcase}%", "%#{params[:name].downcase}%", "%#{params[:name].downcase}%");
     render json: users
   end
 
