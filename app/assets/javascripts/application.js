@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require fb.js
-//= require jquery-2.1.4.js
+//= require jquery
+//= require jquery_ujs
 //= require jquery.remotipart
 //= require foundation
 //= require angular.js
