@@ -20,15 +20,31 @@
     <% end %>
     </p>
   <p class="small-4 columns"><%= image_tag(remark.receiver.profile_pic_url)%></p>
-  <div class="small 12 description">
+  <div class="row description">
     <%= remark.description %>
   </div>
-  <div class="small-12 picture">
+  <div class="row picture">
     <%= image_tag(remark.photo) if remark.photo %>
   </div>
 
-  <div class="small-12 score">
+  <div class="row score">
     <%= remark.score %>
   </div>
+
+  <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
+    <div class="row remark_vote">
+      
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class:  "small-6" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "1" %>
+      <%= f.submit "yay" %>
+      <% end %>
+      
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6" do |f| %>
+      <%= f.hidden_field :vote_direction, value: "-1" %>
+      <%= f.submit "nay" %>
+      <% end %>
+
+    </div>
+  <% end %>
 
 </div>

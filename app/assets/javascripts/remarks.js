@@ -1,12 +1,19 @@
 $(document).ready(function(){
   
-  // var address = $(".address").text();
-  // var place = $.get("https://maps.googleapis.com/maps/api/place/textsearch/json?", function(data){
-  //   address;
-  // }).done(function(response){
-  //   debugger
-  // });
+  $(".remark_vote").on("submit", "form", function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "post",
+      url:    $(event.target).attr("action"),
+      data:   $(event.target).serialize()
+    }).done(function(response){
+      location.reload(true);
 
+    }).fail(function(error){
+      console.log("You've already voted.");
+    });
+  });
+  
   $(".remark_buttons").on("click", "a.hate", function(event){
     event.preventDefault();
     
@@ -37,14 +44,12 @@ $(document).ready(function(){
 
   $(".love_form").on("submit", "form", function(event){
     event.preventDefault();
-    debugger
     $.ajax({
       method: "post",
       url:    $(event.target).attr("action"),
       data:   $(event.target).serialize()
     }).done(function(response){ 
       $(event.target).parent().hide();
-      debugger
       location.reload(true);
     }).fail(function(error){
       console.log("You've already made a remark.");

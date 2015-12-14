@@ -128,8 +128,7 @@ div.reveal-modal img{
 
 i.emotion {
   color: white;
-  font-size: 40px;
-  float: center; 
+  font-size: 40px; 
   text-indent: center;
 }
 
@@ -153,3 +152,22 @@ div.picture img {
   width: 100%;
   size: cover;
 }
+
+div.remark_vote {
+  font-size: 6em;
+  text-align: center;
+  width: 100%;
+}
+
+div.remark_vote i{
+  color: white;
+  display: inline;
+}
+
+div.remark_vote input[type="submit"] {
+  font-size: .5em;
+  color: white;
+  background: none;
+  border: none;
+}
+
