@@ -1,17 +1,23 @@
-<div ng-app="listing-event" class="row">
+<div ng-app="listing-event">
   <div ng-controller="listController">
-    <input id="search-box" ng-model="searchItem" placeholder="Search">
-    <div id="map"></div>
-    <button id="join-event" ng-click="joinEvent()">Near By Events</button>
-
-    <button id="list-places" ng-click="listPlaces()">Host Your Own</button>
-
-    <button id="create-house-party" ng-click="houseEventForm()">New House Party</button>
-
+    <div class="row">
+      <input id="search-box" ng-model="searchItem" placeholder="Search">
+      <div id="map" class="small-12 columns"></div>
+    </div>
+    <div class="row small-collapse">
+      <div class="small-4 columns">
+        <button id="join-event" ng-click="joinEvent()">vote on your scene</button>
+      </div>
+      <div class="small-4 columns">
+        <button id="list-places" ng-click="listPlaces()">get it started</button>
+      </div>
+      <div class="small-4 columns">
+        <button id="create-house-party" ng-click="houseEventForm()">House Party</button>
+      </div>
+    </div>
     <div ng-if="mode == SEARCH_MODE">
       <div ng-if="focusEvent">
         <div class="focus-event" ng-click="focusEventItem()">
-          <h5>Focus Event</h5>
           <div class="focus-venue-name">{{focusEvent.venue_name}}</div>
           <div>{{focusEvent.score}}</div>
         </div>
@@ -19,13 +25,17 @@
 
       <div class="event-list">
         <h4>Event List</h4>
-        <div ng-repeat="item in data">
-          <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
-            <div class="venue-name">
-              {{item.venue_name}}
-            </div>
-            <div ng-if="item.joinable">
-              <button ng-click="redirectTo(item.id); $event.stopPropagation()">Join</button>
+        <div class="row">
+          <div class="small-12 columns">
+            <div ng-repeat="item in data">
+              <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
+                <div class="venue-name">
+                  <h4 class="venue-name">{{item.venue_name}}</h4>
+                </div>
+                <div ng-if="item.joinable">
+                  <button ng-click="redirectTo(item.id); $event.stopPropagation()">Join</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
