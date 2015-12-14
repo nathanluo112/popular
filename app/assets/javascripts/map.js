@@ -6,6 +6,7 @@ angular.module('listing-event', []);
 angular.module('listing-event').controller("listController", function($scope, $http, $window){
   $scope.SEARCH_MODE = 1;
   $scope.CREATE_MODE = 0;
+  $scope.HOUSE_MODE = 2;
   $scope.data = [];
   $scope.currentLocationMarker;
   $scope.focusEvent;
@@ -28,10 +29,12 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(function(){
-        newBoundQuery();
-      }, 200);
+      if ($scope.mode == $scope.SEARCH_MODE){
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function(){
+          newBoundQuery();
+        }, 200);
+      }
     });
 
     google.maps.event.addDomListener(window, 'resize', function() {
@@ -56,26 +59,18 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   $scope.joinEvent = function(){
     $scope.mode = $scope.SEARCH_MODE;
-    $scope.show = !$scope.show;
-    var timeoutId;
-    map.addListener("bounds_changed", function(){
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(function(){
-        newBoundQuery();
-      }, 200);
-    });
+    newBoundQuery();
     map.panTo($scope.currentLocationMarker.position)
     map.setZoom(19);
   }
 
   $scope.listPlaces = function(){
-    google.maps.event.clearListeners(map, "bounds_changed");
-    $scope.mode = $scope.CREATE_MODE;
     map.setCenter($scope.currentLocationMarker.position);
     map.setZoom(19);
+    removeAllMarkers();
+    $scope.mode = $scope.CREATE_MODE;
     $scope.bounds = map.getBounds();
     nearBy();
-
   }
 
   $scope.createEvent = function(place){
@@ -101,7 +96,37 @@ angular.module('listing-event').controller("listController", function($scope, $h
     }, function(error){
       console.log(error);
     });
+  }
 
+  $scope.houseEventForm = function(){
+    map.setCenter($scope.currentLocationMarker.position);
+    map.setZoom(19);
+    $scope.mode = $scope.HOUSE_MODE;
+  }
+
+  $scope.createHouseEvent = function(party){
+
+    var event = {
+      lat: $scope.currentLocationMarker.position.lat(),
+      lng: $scope.currentLocationMarker.position.lng(),
+      venue_name: party.eventName,
+      address: party.eventAddress,
+    };
+
+    $http({
+      method: 'post',
+      url: '/events',
+      data: {
+        event: event,
+        current_location: {
+          lat: $scope.currentLocationMarker.position.lat(),
+          lng: $scope.currentLocationMarker.position.lng()
+        }
+    }}).then(function(data){
+      $scope.redirectTo(data.data.id);
+    }, function(error){
+      console.log(error);
+    });
   }
 
   $scope.redirectTo = function(id) {
@@ -113,7 +138,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }
 
   function distance(p1, p2) {
-    var R = 6378137; // Earth’s mean radius in meter
+    var R = 6378137;
     var dLat = rad(p2.lat - p1.lat);
     var dLong = rad(p2.lng - p1.lng);
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -121,7 +146,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       Math.sin(dLong / 2) * Math.sin(dLong / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
-    return d; // returns the distance in meter
+    return d;
   }
 
   function findMarkerByEvent(event){
@@ -264,6 +289,15 @@ angular.module('listing-event').controller("listController", function($scope, $h
     markers = tmp;
   }
 
+  function removeAllMarkers(){
+    for(var i = 0; i < markers.length; i++) {
+
+      markers[i].setMap(null);
+
+    }
+    markers = [];
+  }
+
   function newBoundQuery(){
     removeMarkers();
     $scope.bounds = map.getBounds();
@@ -295,7 +329,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
         lng: $scope.currentLocationMarker.position.lng()
       }
 
-      if (distance(eventPoint, currentPoint) < 500){
+      if (distance(eventPoint, currentPoint) < 100){
         $scope.data[i].joinable = true;
       } else {
         $scope.data[i].joinable = false;

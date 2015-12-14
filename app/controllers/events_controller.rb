@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     if with_in_range?(@event)
       render "show"
     else
-      redirect_to root_path
+      redirect_to root_path, flash: {alert: "Event is out of range"}
     end
   end
 

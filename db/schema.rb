@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151211223912) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "popularity",      default: 0
+    t.integer  "popularity",      default: 50
     t.string   "first_name"
     t.string   "last_name"
     t.string   "facebook_id"
