@@ -1,5 +1,38 @@
+var token;
 var app=angular.module("listing-event");
 app.controller('usercontroller', function($scope, $http) {
+    var t=''+window.location+'';
+    t=t.split("#access_token=");
+    if (t.length == 2)
+      {token=t[1];
+        $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
+        }); }
+    else
+      $http.get("/get_instagram_token").then(function(res){
+        token=res;
+      });
+
+    if (token!=null){
+      $.ajax({
+        method: "GET",
+        url: "https://api.instagram.com/v1/users/self/media/recent/?access_token="+token,
+        dataType: "jsonp"
+      }).then(function(res){
+        var images=[];
+        var images_counter = res.data.length;
+        for (var i = 0; i< images_counter; i++) {
+          var tags_counter = res.data[i].tags.length;
+          for (var j=0; j < tags_counter; j++) {
+            if (res.data[i].tags[j].toLowerCase() == "popular"){
+              images.push(res.data[i]);
+              break; }
+          }
+        };
+        $scope.images_array = images;
+        $scope.$apply();
+      });
+
+    }
 
     $("#user-made-top").hide();
         $("#user-received-top").hide();

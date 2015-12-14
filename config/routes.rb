@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'test_user_login' => 'users#test_user_login'
   get 'current_user_data/:id' => 'users#get_user_data'
   get 'user_search' => 'users#search'
-
+  get 'auth' => 'users#instragram_signin'
+  get 'get_instagram_token' => 'users#get_instagram_token'
+  post 'set_instagram_token' => 'users#set_instagram_token'
 
 
   resources :events do

@@ -10,8 +10,14 @@
             <a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a></p>
         </div>
       </div>
-        <div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5></div>
+
+        <div class="user-nav-bar"><h6><a href="">Events</a></h5><h5><a href="">Shade/Love Given</a></h5><h5><a href="">Shade/Love Received</a></h5><h5><%= form_tag("https://api.instagram.com/oauth/authorize/?client_id=aa9957e61be84506809478317f133305&redirect_uri=http://localhost:3000/auth&response_type=token") do %><%= submit_tag 'Instagram' %> <%end%></h5></div>
     </div>
+      <div ng-repeat="x in images_array">
+        <img src='{{x.images.thumbnail.url}}'>
+      </div>
+
+
       <div class="bottom-move">
         <div class="accordian" id="user-events-top">
           <div ng-show="!user.events.length">
