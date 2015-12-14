@@ -39,6 +39,20 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def instragram_signin
+    @t = request.fullpath
+    p "this should work:   #{params['#access_token']}"
+    redirect_to "/users/#{current_user.id}"
+  end
+
+  def get_instagram_token
+    render json: session[:instagram_token].to_json
+  end
+
+  def set_instagram_token
+    session[:instagram_token] = params[:token]
+    render json: session[:instagram_token].to_json
+  end
 
 
 end
