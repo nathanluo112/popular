@@ -9,9 +9,11 @@ app.controller('usercontroller', function($scope, $http) {
         }); }
     else
       $http.get("/get_instagram_token").then(function(res){
-        token=res;
+        token=res.data;
+        getInstagramPics();
       });
 
+    function getInstagramPics() {
     if (token!=null){
       $.ajax({
         method: "GET",
@@ -31,13 +33,14 @@ app.controller('usercontroller', function($scope, $http) {
         $scope.images_array = images;
         $scope.$apply();
       });
-
+    }
     }
 
     $("#user-made-top").hide();
         $("#user-received-top").hide();
         $("#user-events-top").hide();
         $("#user-events-top").slideDown();
+        $("user-instagram-top").hide();
 
     $(".user-nav-bar a").click(function(e){
       e.preventDefault();
@@ -48,18 +51,21 @@ app.controller('usercontroller', function($scope, $http) {
         $("#user-received-top").hide();
         $("#user-events-top").hide();
         $("#user-events-top").slideDown();
+        $("user-instagram-top").hide();
       }
       else if (nav == "Shade/Love Given") {
         $("#user-made-top").hide();
         $("#user-received-top").hide();
         $("#user-events-top").hide();
         $("#user-made-top").slideDown();
+        $("user-instagram-top").hide();
       }
       else if (nav == "Shade/Love Received") {
         $("#user-made-top").hide();
         $("#user-received-top").hide();
         $("#user-events-top").hide();
         $("#user-received-top").slideDown();
+        $("user-instagram-top").hide();
       }
 
 
