@@ -2,30 +2,53 @@
   width: 66%;
   margin-top: 5px;
   border-radius: 20px;
+  opacity: 0.75;
 }
 
 h4.venue-name {
   font-family: 'Abel', sans-serif;
   text-align: left;
+  color: #5c7cb8;
 }
 
 h5.venue-address {
   font-family: 'Abel', sans-serif;
   color: #f7cac9;
-  text-align: left;
+  line-height: 0em;
 }
 
 h4.join-link {
   font-family: 'Abel', sans-serif;
-  text-align: right;
-  padding: 0em;
   width: 100%;
 }
 
 a.join-link {
+  color: #FFF;
+  font-family: 'Abel', sans-serif;
+}
+
+a.join-link:hover {
+  color: #ac6b6a;
+}
+
+.rose-quartz-highlighter {
+  background-color: #f7cac9;
+  border-right: 2px solid #FFF;
+  border-bottom: 2px solid #FFF;
+}
+
+h4.host-link {
+  font-family: 'Abel', sans-serif;
+  width: 100%;
+}
+
+a.host-link {
   color: #de8a89;
   font-family: 'Abel', sans-serif;
-  text-align: right;
+}
+
+a.host-link:hover {
+  color: #ac6b6a;
 }
 
 #join-event {
@@ -34,13 +57,13 @@ a.join-link {
   padding: .8em 0em .8em 0em;
 }
 
-#list-places {
+#create-venue {
   width: 100%;
   background-color: #5c7cb8;
   padding: .8em 0em .8em 0em;
 }
 
-#create-house-party {
+#house-party {
   width: 100%;
   background-color: #2f569f;
   padding: .8em 0em .8em 0em;
@@ -48,4 +71,71 @@ a.join-link {
 
 #index-event-list {
   border-top: 2px solid #f7cac9;
+}
+
+.event-list {
+  border-bottom: 2px solid #f7cac9;
+  margin-bottom: 4px;
+}
+
+#new-index-event-list {
+  border-top: 2px solid #92a8d1;
+}
+
+.new-event-list {
+  border-bottom: 2px solid #92a8d1;
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.rating {
+  font-family: 'Abel', sans-serif;
+  color: #92a8d1;
+  text-align: right;
+  line-height: 0em;
+}
+
+.round-form {
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border: 2px inset #999;
+  margin-top: .7em;
+  line-height: 2em;
+  width: 100%;
+}
+
+h5.house-party-name {
+  font-family: 'Abel', sans-serif;
+  font-size: 1.5em;
+  color: #5c7cb8;
+  margin-right: -1em;
+  text-align: left;
+}
+
+h5.house-party-address {
+  font-family: 'Abel', sans-serif;
+  font-size: 1.5em;
+  color: #de8a89;
+  text-align: left;
+}
+
+.turn-it-up {
+  width: 100%;
+  font-size: 2em;
+  color: #FFF;
+  background-color: #c55452;
+  margin-bottom: 0em;
+}
+
+#blue-bar {
+  height: 2em;
+  background-color: #92a8d1;
+}
+
+textarea#house-party-description {
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border: 2px inset #999;
 }
