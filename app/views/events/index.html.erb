@@ -2,11 +2,13 @@
   <div ng-controller="listController">
     <input id="search-box" ng-model="searchItem" placeholder="Search">
     <div id="map"></div>
-    <button id="join-event" ng-click="joinEvent()">Near</button>
+    <button id="join-event" ng-click="joinEvent()">Near By Events</button>
 
-    <button id="list-places" ng-click="listPlaces()">Host your own</button>
+    <button id="list-places" ng-click="listPlaces()">Host Your Own</button>
 
-    <div ng-if="mode">
+    <button id="create-house-party" ng-click="houseEventForm()">New House Party</button>
+
+    <div ng-if="mode == SEARCH_MODE">
       <div ng-if="focusEvent">
         <div class="focus-event" ng-click="focusEventItem()">
           <h5>Focus Event</h5>
@@ -30,7 +32,7 @@
       </div>
     </div>
 
-    <div ng-if="!mode">
+    <div ng-if="mode == CREATE_MODE">
       <h4>Places</h4>
       <div class="place-list" ng-repeat="item in places">
         <div class="place-item">
@@ -42,6 +44,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div ng-if="mode == HOUSE_MODE">
+      <form novalidate class="simple-form">
+        <div>
+          Party Name: <input type="text" ng-model="party.eventName" />
+        </div>
+        <div>
+          Address: <input type="text" ng-model="party.eventAddress" />
+        </div>
+
+        <input type="submit" ng-click="createHouseEvent(party)" value="Save" />
+      </form>
     </div>
 
   </div>
