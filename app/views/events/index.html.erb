@@ -16,12 +16,18 @@
       </div>
     </div>
     <div ng-if="mode == SEARCH_MODE">
-      <div ng-if="focusEvent">
+      <div ng-if="showFocus">
         <div class="row">
           <div class="small-12 columns">
-            <div class="focus-event" ng-click="focusEventItem()">
+            <div class="small-6 columns focus-event" ng-click="focusEventItem()">
+              <i class="fi-minus close-icon" ng-click="closeFocus()"></i>
               <h4 class="venue-name">{{focusEvent.venue_name}}</h4>
-              <h5 class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</h3>
+              <h5 class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</h5>
+            </div>
+            <div class="small-6 columns">
+              <div ng-if="item.joinable">
+                <h4 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h4>
+              </div>
             </div>
           </div>
         </div>

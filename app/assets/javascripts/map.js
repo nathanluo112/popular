@@ -13,6 +13,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   $scope.focusMarker;
   $scope.mode = $scope.SEARCH_MODE;
   $scope.places = [];
+  $scope.showFocus = false;
 
   // searchBox = new google.maps.places.SearchBox(angular.element("#search-box"));
   new Promise(function(resolve, reject){
@@ -131,6 +132,10 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   $scope.redirectTo = function(id) {
     $window.location.href = '/events/' + id + "?current_location[lat]=" + $scope.currentLocationMarker.position.lat() + "&current_location[lng]=" + $scope.currentLocationMarker.position.lng();
+  }
+
+  $scope.closeFocus = function(){
+    $scope.showFocus = false;
   }
 
   function rad(x) {
@@ -254,6 +259,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       google.maps.event.addListener(marker, 'click', function(){
         $scope.focusEvent = event;
         $scope.focusMarker = marker;
+        $scope.$apply(function(){$scope.showFocus = true;});
         infowindow.open(map, marker);
         map.panTo(this.position);
         if (map.getZoom() < 16){
@@ -312,13 +318,19 @@ angular.module('listing-event').controller("listController", function($scope, $h
       for (var i = 0; i < events.length; i++){
         addMarker(events[i]);
       }
-      $scope.data = events;
       console.log(markers);
+      $scope.data = events;
     }, function(error){
       console.log(error);
     }).then(function(){
       setJoinableEvents();
     })
+  }
+
+  function eventGrouping(events){
+    for (var i = 0; i < events; i++){
+
+    }
   }
 
   function setJoinableEvents() {
