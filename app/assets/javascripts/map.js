@@ -13,6 +13,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
   $scope.focusMarker;
   $scope.mode = $scope.SEARCH_MODE;
   $scope.places = [];
+  $scope.showFocus = false;
 
   // searchBox = new google.maps.places.SearchBox(angular.element("#search-box"));
   new Promise(function(resolve, reject){
@@ -111,6 +112,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
       lng: $scope.currentLocationMarker.position.lng(),
       venue_name: party.eventName,
       address: party.eventAddress,
+      description: party.eventDesc,
+      house_party: true
     };
 
     $http({
@@ -131,6 +134,10 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   $scope.redirectTo = function(id) {
     $window.location.href = '/events/' + id + "?current_location[lat]=" + $scope.currentLocationMarker.position.lat() + "&current_location[lng]=" + $scope.currentLocationMarker.position.lng();
+  }
+
+  $scope.closeFocus = function(){
+    $scope.showFocus = false;
   }
 
   function rad(x) {
@@ -254,6 +261,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       google.maps.event.addListener(marker, 'click', function(){
         $scope.focusEvent = event;
         $scope.focusMarker = marker;
+        $scope.showFocus = true;
         infowindow.open(map, marker);
         map.panTo(this.position);
         if (map.getZoom() < 16){
@@ -291,9 +299,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   function removeAllMarkers(){
     for(var i = 0; i < markers.length; i++) {
-
       markers[i].setMap(null);
-
     }
     markers = [];
   }
@@ -320,6 +326,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       setJoinableEvents();
     })
   }
+
 
   function setJoinableEvents() {
     for(var i = 0; i < $scope.data.length; i++) {

@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   def create
     event_params = permitted_params.merge(score: 0)
     event = Event.new(event_params)
+    binding.pry
     if with_in_range?(event)
       if event.save
         Vote.create(user: current_user, votable: event, vote_direction: 1)
@@ -36,7 +37,7 @@ class EventsController < ApplicationController
 
   private
   def permitted_params
-    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id)
+    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id, :description, :house_party)
   end
 
   def with_in_range?(event)
@@ -49,7 +50,6 @@ class EventsController < ApplicationController
         return true
       end
     end
-
     false
   end
 
