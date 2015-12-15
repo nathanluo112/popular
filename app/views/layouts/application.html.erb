@@ -3,7 +3,7 @@
 <head>
   <title>Popular</title>
 
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDcdmzWshAoNT1jQDASmXcafk6VmDNYJhk"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&<%= ENV['GOOGLE_API_KEY'] %>"></script>
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all'%>
