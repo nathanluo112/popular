@@ -17,14 +17,17 @@ ActiveRecord::Schema.define(version: 20151215194807) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.float    "lat",                    null: false
-    t.float    "lng",                    null: false
+    t.float    "lat",                         null: false
+    t.float    "lng",                         null: false
     t.string   "place_id"
     t.string   "address"
-    t.string   "venue_name",             null: false
-    t.integer  "score",      default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "venue_name",                  null: false
+    t.string   "description"
+    t.integer  "score",       default: 0
+    t.boolean  "is_active",   default: true
+    t.boolean  "house_party", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "remarks", force: :cascade do |t|
