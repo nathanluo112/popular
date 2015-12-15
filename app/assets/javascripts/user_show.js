@@ -1,5 +1,4 @@
 var token;
-var app=angular.module("listing-event");
 app.controller('usercontroller', function($scope, $http) {
     var t=''+window.location+'';
     t=t.split("#access_token=");
