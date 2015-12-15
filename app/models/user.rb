@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
     ActiveRecord::Base.connection.execute(sql).entries
   end
 
+  def has_remarked_on? user
+    remarks_made.where(receiver: user).exists?
+  end
+
 end

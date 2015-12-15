@@ -5,13 +5,19 @@
     <%= user.first_name %> <%= user.popularity.to_s + "p"%>
   </div>
   <% end %>
-  <% if user.id != current_user.id %>
+  <% if current_user && current_user.has_remarked_on?(user) %>
+  <div class="small-3 large-3 columns remark_buttons">  
+    <span class='small-6 columns remarked_already centered'> remarked </span>
+  </div>
+  <% elsif user.id != current_user.id %>
   <div class="small-3 large-3 columns remark_buttons">  
     <%= link_to "hate", new_event_remark_path(event), data:{direction: -1}, class: "hate" %>
     <%= link_to "love", new_event_remark_path(event), data:{direction: 1}, class: "love"  %>
   </div>
   <% else %>
-    <span class="small-6 columns centered"> beautiful you</span>
+  <div class="small-3 large-3 columns remark_buttons">
+    <span class="small-6 columns current_user centered"> me </span>
+  </div>
   <% end %>  
   <div class="small-3 large-3 columns love_form">
     <%= render partial: "remark_form", locals: { event: event, user: user, message: "tell em how you feel", val: 1 } %>

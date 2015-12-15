@@ -214,3 +214,19 @@ a.close_button {
 form#new_vote {
   margin-top: 5px;
 }
+
+span.remarked_already {
+  color: white;
+  background-color: #92a8d1;
+  width: 100%;
+  padding: 0px 2px 0px 2px;
+  float: right;
+}
+
+span.current_user {
+  color: white;
+  background-color: #9DC49D;
+  width: 100%;
+  padding: 0px 2px 0px 2px;
+  float: right;
+}
