@@ -12,13 +12,13 @@
       // Logged into your app and Facebook.
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      $.get("/logout");
+     // $.get("/logout");
       document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      $.get("/logout");
+     // $.get("/logout");
       $("#connect-directions").show();
       document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into Facebook.';
