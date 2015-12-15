@@ -378,8 +378,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
       for (var i = 0; i < events.length; i++){
         addMarker(events[i]);
       }
-      addVotedFieldToEvents(events);
-      $scope.data = events;
+
+      $scope.data = addVotedFieldToEvents(events);
       console.log(markers);
     }, function(error){
       console.log(error);
