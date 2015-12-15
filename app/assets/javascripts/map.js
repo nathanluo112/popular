@@ -59,10 +59,12 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }
 
   $scope.joinEvent = function(){
+    removeAllMarkers();
+    $scope.places = [];
     $scope.mode = $scope.SEARCH_MODE;
-    newBoundQuery();
     map.panTo($scope.currentLocationMarker.position)
     map.setZoom(19);
+    newBoundQuery();
   }
 
   $scope.listPlaces = function(){
@@ -82,11 +84,10 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       address: place.vicinity,
       place_id: place.place_id
     };
-    var tok=$("meta[name='csrf-token']").attr("content");
-    var url = "/events?authenticity_token=" + tok;
+
     $http({
       method: 'post',
-      url: url,
+      url: '/events',
       data: {
         event: event,
         current_location: {
@@ -101,13 +102,14 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }
 
   $scope.houseEventForm = function(){
+    $scope.places = [];
+    removeAllMarkers();
     map.setCenter($scope.currentLocationMarker.position);
     map.setZoom(19);
     $scope.mode = $scope.HOUSE_MODE;
   }
 
   $scope.createHouseEvent = function(party){
-
     var event = {
       lat: $scope.currentLocationMarker.position.lat(),
       lng: $scope.currentLocationMarker.position.lng(),
@@ -305,7 +307,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     }
   };
 
-  function addMarker(event){
+  function addMarkerForEvent(event){
     if (!eventMarkerExists(event)) {
       var marker = new google.maps.Marker({
         position: {lat: parseFloat(event.lat), lng: parseFloat(event.lng)},
@@ -314,8 +316,12 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
         title: event.venue_name
       });
 
+      var contentString = "<div><h5>" + event.venue_name + "</h5></div>";
+      if (event.address)  contentString += "<div>" + event.address + "</div>";
+      if (event.description) contentString += "<div><p>"+ event.description + "</div>";
+
       var infowindow = new google.maps.InfoWindow({
-        content: event.venue_name,
+        content: contentString,
         maxWidth: 200
       });
 
@@ -379,7 +385,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     $http({method: "get", url: url}).then(function(data){
       var events = data.data;
       for (var i = 0; i < events.length; i++){
-        addMarker(events[i]);
+        addMarkerForEvent(events[i]);
       }
       addVotedFieldToEvents(events);
       $scope.data = events;
@@ -434,12 +440,37 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
           for (var i = 0; i < results.length; i++){
             if (!containsEvent(results[i])){
               $scope.places.push(results[i]);
+              addMarkerForPlace(results[i]);
             }
           }
         }
       });
 
     });
+  }
+
+  function addMarkerForPlace(place){
+    var marker = new google.maps.Marker({
+      position: place.geometry.location,
+      map: map,
+    });
+    var contentString = "<div><h5>" + place.name + "</h5></div>"
+                      + "<div>" + place.vicinity + "</div>";
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200
+    });
+
+    markers.push(marker);
+    console.log("added a marker")
+    google.maps.event.addListener(marker, 'click', function(){
+      infowindow.open(map, marker);
+      map.panTo(this.position);
+      if (map.getZoom() < 16){
+        map.setZoom(16);
+      }
+    })
   }
 
   function containsEvent(place){
