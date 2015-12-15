@@ -4,8 +4,7 @@ div.main {
 }
 
 #map {
-  min-height: 20em;
-  max-height: 40em;
+  height: 50vh;
   width: 100%;
 }
 
