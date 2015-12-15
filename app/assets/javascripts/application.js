@@ -15,8 +15,8 @@
 //= require jquery.remotipart
 //= require jquery.touchSwipe.min.js
 //= require foundation
-//= require angular.js
+
 //= require geolocation-marker.js
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });

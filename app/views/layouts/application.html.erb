@@ -7,6 +7,7 @@
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all'%>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
   <%= javascript_include_tag 'application'%>
   <script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
   <%= javascript_include_tag "vendor/modernizr" %>
@@ -14,7 +15,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body class="container">
-  <%=  "work pleasecurrent_user #{current_user.id}" if (current_user) %>
   <% if logged_in? %>
     <div class="row">
       <div class="small-1 columns">
