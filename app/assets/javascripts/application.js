@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery.touchSwipe.min.js
 //= require foundation
 //= require angular.js
 //= require geolocation-marker.js

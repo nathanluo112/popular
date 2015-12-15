@@ -42,4 +42,20 @@ $(document).ready(function(){
     $(event.target).parent().parent().prev().prev().show();
   });
 
+  $(".hate_form").on("submit", "form" ,function(event){
+    event.preventDefault();
+    debugger
+    $(event.target).parent().hide();
+    $(event.target).parent().parent().find(".remark_buttons").html
+    ("<span class='small-6 columns remarked_already centered'> remarked </span>");
+  });
+
+  $(".love_form").on("submit", "form" ,function(event){
+    event.preventDefault();
+    debugger
+    $(event.target).parent().hide();
+    $(event.target).parent().parent().find(".remark_buttons").html
+    ("<span class='small-6 columns remarked_already centered'> remarked </span>");
+  });
+
 });

@@ -169,18 +169,14 @@ div.picture img {
 }
 
 div.remark_vote {
-  font-size: 6em;
+  font-size: 2em;
   text-align: center;
   width: 100%;
 }
 
-div.remark_vote i{
-  color: white;
-  display: inline;
-}
-
 div.remark_vote input[type="submit"] {
-  font-size: .5em;
+  font-size: 1em;
+  width: 100px;
   color: white;
   background: none;
   border: none;
@@ -213,4 +209,24 @@ p.close_button {
 
 a.close_button {
   color: white;
+}
+
+form#new_vote {
+  margin-top: 5px;
+}
+
+span.remarked_already {
+  color: white;
+  background-color: #92a8d1;
+  width: 100%;
+  padding: 0px 2px 0px 2px;
+  float: right;
+}
+
+span.current_user {
+  color: white;
+  background-color: #9DC49D;
+  width: 100%;
+  padding: 0px 2px 0px 2px;
+  float: right;
 }
