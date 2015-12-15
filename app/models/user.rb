@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
     Remark.where(giver_id: self.id, receiver_id: receiver.id) > 0
   end
 
+  def voted_events
+    sql = "select events.*, votes.vote_direction from events inner join votes on votes.votable_id = events.id where events.is_active = true and votes.user_id = #{self.id}"
+    ActiveRecord::Base.connection.execute(sql).entries
+  end
+
 end

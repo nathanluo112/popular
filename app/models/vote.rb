@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
 
   before_save :add_popularity_to_votable
 
-private
+  private
   def add_popularity_to_votable
     self.votable.score += (self.user.popularity * self.vote_direction)
     self.votable.save

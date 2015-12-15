@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates_uniqueness_of :lat, scope: [:lng, :venue_name]
 
   def self.near(bound)
-    where("lat < ? and lat > ? and lng < ? and lng > ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f).order(score: :desc).limit(25)
+    where("lat < ? and lat > ? and lng < ? and lng > ? and is_active = true", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f).order(score: :desc).limit(25)
   end
 
   def calculate_popularity
