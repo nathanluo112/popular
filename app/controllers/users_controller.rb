@@ -51,7 +51,6 @@ class UsersController < ApplicationController
 
   def set_instagram_token
     session[:instagram_token] = params[:token]
-    render json: session[:instagram_token].to_json
   end
 
 
