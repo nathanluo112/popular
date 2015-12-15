@@ -17,6 +17,9 @@
 //= require foundation
 
 //= require geolocation-marker.js
-//= require_tree .
+//= require map.js
+//= require remark.js
+//= require votes.js
+//= require swipe.js
 
 // $(function(){ $(document).foundation(); });
