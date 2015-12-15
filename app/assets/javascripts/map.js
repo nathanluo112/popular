@@ -82,10 +82,11 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       address: place.vicinity,
       place_id: place.place_id
     };
-
+    var tok=$("meta[name='csrf-token']").attr("content");
+    var url = "/events?authenticity_token=" + tok;
     $http({
       method: 'post',
-      url: '/events',
+      url: url,
       data: {
         event: event,
         current_location: {

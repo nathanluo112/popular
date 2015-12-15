@@ -55,7 +55,6 @@ FB.Event.subscribe('auth.logout', logout_event);
   FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
     FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
     var tok=$("meta[name='csrf-token']").attr("content");
-    console.log(tok);
     $.post("/users?authenticity_token="+tok, {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url}, function(res) {console.log($('#get_user_link').attr("href")); $('#get_user_link').attr("href","/users/"+res.id)});
     } });
     $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
