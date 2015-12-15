@@ -17,7 +17,6 @@ class EventsController < ApplicationController
 
   def create
     event = Event.new(permitted_params)
-    binding.pry
     if with_in_range?(event)
       if event.save
         Vote.create(user: current_user, votable: event, vote_direction: 1)
@@ -51,7 +50,7 @@ class EventsController < ApplicationController
       current_lng = params[:current_location][:lng].to_f
       lat_diff = (event.lat - current_lat).abs
       lng_diff = (event.lng - current_lng).abs
-      if lat_diff < 0.0002 || lng_diff < 0.0002
+      if lat_diff < 0.0005 && lng_diff < 0.0005
         return true
       end
     end
