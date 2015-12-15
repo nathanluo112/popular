@@ -1,7 +1,6 @@
 <div ng-app="listing-event">
   <div ng-controller="listController">
     <div class="row">
-      <input id="search-box" ng-model="searchItem" placeholder="Search">
       <div id="map" class="small-12 columns"></div>
     </div>
     <div class="row small-collapse">
@@ -23,9 +22,9 @@
               <h4 class="venue-name">{{focusEvent.venue_name}}</h4>
               <p class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</p>
             </div>
-              <div ng-if="item.joinable">
-                <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
-              </div>
+            <div ng-if="item.joinable">
+              <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+            </div>
         </div>
       </div>
 
@@ -54,6 +53,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <div class="new-event-list" ng-if="mode == CREATE_MODE">
@@ -71,7 +71,7 @@
           <div class="small-8 columns">
             <div class="address"><p class="venue-address">{{item.vicinity}}</p></div>
           </div>
-          <div class="small-4 columns">
+          <div class="small-4 columns" ng-if="item.rating">
             <div><p class="rating">Rating: {{item.rating}}</p></div>
           </div>
         </div>

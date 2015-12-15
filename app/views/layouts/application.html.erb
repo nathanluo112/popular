@@ -3,7 +3,7 @@
 <head>
   <title>Popular</title>
 
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%=ENV['GOOGLE_API_KEY']%>"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDcdmzWshAoNT1jQDASmXcafk6VmDNYJhk"></script>
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all'%>
@@ -14,18 +14,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body class="container">
-    <% if logged_in? %>
+  <% if logged_in? %>
     <div class="row">
       <div class="small-1 columns">
       <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
       </div>
     </div>
-
-    <% end %>
-
     <%= yield %>
-
-    <% if !logged_in? %>
+  <% else %>
     <div class="center-div" id="connect-directions"><p class="fb-color">Login / Signup</p></div>
     <div class="center-div" id="fb-login-div">
       <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" onlogin="fb_login_after(this)" onclick="function() {console.log('hi');}">
@@ -34,6 +30,6 @@
     </div>
     <a id="get_user_link" href="tesref">User</a>
     <div class="center-div" id="fb-status"></div>
-    <% end %>
+  <% end %>
   </body>
 </html>
