@@ -1,6 +1,6 @@
 <div ng-app="listing-event">
   <div ng-controller="usercontroller">
-    
+
     <div class="top-stay row">
       <div class="row pad_top" >
         <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
@@ -26,7 +26,7 @@
     </ul>
 
     <div class="tabs-content row pad_top">
-      
+
       <div class="content active" id="events_tab">
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
          <div ng-repeat="x in user.events | orderBy: '-created_at'"
@@ -42,17 +42,17 @@
       <div class="content" id="love_hate_tab">
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
           <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'" class="love_detail">
-            <p> You had the following to say about 
+            <p> You had the following to say about
               {{x.receiver.first_name +" "+x.receiver.last_name}}
               : "
               {{x.description}}
-              " on  
+              " on
               {{x.created_at | date: "shortDate"}}
               , at
               {{x.event.venue_name}}
             </p>
             <p>
-              And this is how everyone felt about it: 
+              And this is how everyone felt about it:
               {{x.score}}
             </p>
           </div>
@@ -60,17 +60,17 @@
 
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
-            <p> You had the following to say about 
-              {{x.receiver.first_name +" "+x.receiver.last_name}}
+            <p> You had the following to say about
+              {{x.giver.first_name +" "+x.giver.last_name}}
               : "
               {{x.description}}
-              " on  
+              " on
               {{x.created_at | date: "shortDate"}}
               , at
               {{x.event.venue_name}}
             </p>
             <p>
-              And this is how everyone felt about it: 
+              And this is how everyone felt about it:
               {{x.score}}
             </p>
           </div>
