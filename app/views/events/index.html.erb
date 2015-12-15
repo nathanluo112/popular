@@ -38,15 +38,19 @@
                   <h5 class="venue-name">{{item.venue_name}}</h5>
                 </div>
               </div>
-              <div class="small-3 columns rose-quartz-highlighter">
-                <div class="check-in" ng-if="item.joinable">
-                <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+              <div class="check-in" ng-if="item.joinable">
+                <div class="small-3 columns rose-quartz-highlighter">
+                  <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
                 </div>
-                <div ng-if="!item.joinable && item.voted == '1'">
-                  <h4 class="join-link"><a class="up-link" ng-click="redirectTo(item.id); $event.stopPropagation()">bumped</a></h4>
+              </div>
+              <div ng-if="!item.joinable && item.voted == '1'">
+                <div class="small-3 columns green-highlighter">
+                  <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">bumped</a></h5>
                 </div>
-                <div ng-if="!item.joinable && item.voted == '-1'">
-                  <h4 class="join-link"><a class="down-link" ng-click="redirectTo(item.id); $event.stopPropagation()">noped</a></h4>
+              </div>
+              <div ng-if="!item.joinable && item.voted == '-1'">
+                <div class="small-3 columns red-highlighter">
+                  <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">noped</a></h5>
                 </div>
               </div>
             </div>

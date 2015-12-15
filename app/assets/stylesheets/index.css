@@ -33,7 +33,24 @@ a.join-link:hover {
 
 .rose-quartz-highlighter {
   background-color: #f7cac9;
-  border: 1px solid #FFF;
+  border: 0px 10px 0px 10px solid #000;
+  border-right: 2px solid #FFF;
+  border-left: 2px solid #FFF;
+  margin-top: 0.35em;
+}
+
+.red-highlighter {
+  background-color: #933f3d;
+  border-right: 2px solid #FFF;
+  border-left: 2px solid #FFF;
+  margin-top: 0.35em;
+}
+
+.green-highlighter {
+  background-color: #9DC49D;
+  border-right: 2px solid #FFF;
+  border-left: 2px solid #FFF;
+  margin-top: 0.35em;
 }
 
 .rose-quartz-host-highlighter {
