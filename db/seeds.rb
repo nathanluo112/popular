@@ -9,11 +9,11 @@ default_pic = "default_face.png"
 
 # Users
 User.create(first_name: "Tob", popularity: 100, profile_pic_url: default_pic) #1
-User.create(first_name: "Shaun", last_name:, "White" popularity: 100, profile_pic_url: default_pic) #2
-User.create(first_name: "Jay", last_name:, "Z" popularity: 100, profile_pic_url: default_pic) #3
+User.create(first_name: "Shaun", last_name: "White", popularity: 100, profile_pic_url: default_pic) #2
+User.create(first_name: "Jay", last_name: "Z", popularity: 100, profile_pic_url: default_pic) #3
 User.create(first_name: "Lorde", popularity: 100, profile_pic_url: default_pic) #4
-User.create(first_name: "Don", last_name:, "Trump" popularity: 50, profile_pic_url: default_pic) #5
-User.create(first_name: "Ruth", last_name:, "Ginsberg" popularity: 50, profile_pic_url: default_pic) #6
+User.create(first_name: "Don", last_name: "Trump", popularity: 50, profile_pic_url: default_pic) #5
+User.create(first_name: "Ruth", last_name: "Ginsberg", popularity: 50, profile_pic_url: default_pic) #6
 
 
 # House Parties
