@@ -27,7 +27,7 @@
   <div class="row description">
     <%= remark.description %>
   </div>
-  <div class="small-12 columns picture">
+  <div class="row columns picture">
     <%= image_tag(remark.photo) %>
   </div>
 
@@ -35,18 +35,17 @@
       <%= remark.score %>
     </div>
   
-
   <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
     <div class="row remark_vote">
       
-      <%= form_for [remark.event, remark, Vote.new], method: "POST", class:  "small-6" do |f| %>
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
       <%= f.hidden_field :vote_direction, value: "1" %>
-      <%= f.submit "yay" %>
+      <%= f.submit "yaas" %>
       <% end %>
       
-      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6" do |f| %>
+      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
       <%= f.hidden_field :vote_direction, value: "-1" %>
-      <%= f.submit "nay" %>
+      <%= f.submit "nahh" %>
       <% end %>
 
     </div>

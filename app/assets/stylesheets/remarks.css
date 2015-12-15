@@ -169,18 +169,14 @@ div.picture img {
 }
 
 div.remark_vote {
-  font-size: 6em;
+  font-size: 2em;
   text-align: center;
   width: 100%;
 }
 
-div.remark_vote i{
-  color: white;
-  display: inline;
-}
-
 div.remark_vote input[type="submit"] {
-  font-size: .5em;
+  font-size: 1em;
+  width: 100px;
   color: white;
   background: none;
   border: none;
@@ -213,4 +209,8 @@ p.close_button {
 
 a.close_button {
   color: white;
+}
+
+form#new_vote {
+  margin-top: 5px;
 }
