@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -57,3 +57,4 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 gem 'simplecov', :require => false, :group => :test
+gem 'rails_12factor', group: :production
