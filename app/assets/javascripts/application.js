@@ -18,7 +18,7 @@
 
 //= require geolocation-marker.js
 //= require map.js
-//= require remark.js
+//= require remarks.js
 //= require votes.js
 //= require swipe.js
 
