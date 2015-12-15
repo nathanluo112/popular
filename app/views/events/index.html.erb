@@ -18,34 +18,30 @@
     <div ng-if="mode == SEARCH_MODE">
       <div ng-if="showFocus">
         <div class="row">
-          <div class="small-12 columns">
-            <div class="small-6 columns focus-event" ng-click="focusEventItem()">
+            <div class="small-12 columns focus-event" ng-click="focusEventItem()">
               <i class="fi-minus close-icon" ng-click="closeFocus()"></i>
               <h4 class="venue-name">{{focusEvent.venue_name}}</h4>
-              <h5 class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</h5>
+              <p class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</p>
             </div>
-            <div class="small-6 columns">
               <div ng-if="item.joinable">
-                <h4 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h4>
+                <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
               </div>
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="event-list">
         <h4>Event List</h4>
         <div ng-repeat="item in data">
-          <div id="index-event-list" class="row collapse">
+          <div id="index-event-list" class="row">
             <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
-              <div class="small-7 columns">
+              <div class="small-9 columns">
                 <div class="venue-name">
-                  <h4 class="venue-name">{{item.venue_name}}</h4>
+                  <h5 class="venue-name">{{item.venue_name}}</h5>
                 </div>
               </div>
-              <div class="small-5 columns rose-quartz-highlighter">
+              <div class="small-3 columns rose-quartz-highlighter">
                 <div class="check-in" ng-if="item.joinable">
-                <h4 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h4>
+                <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
                 </div>
               </div>
             </div>
@@ -57,20 +53,20 @@
     <div class="new-event-list" ng-if="mode == CREATE_MODE">
       <h4>Bars, Clubs, and Venues</h4>
       <div id="place-list" ng-repeat="item in places">
-        <div id="new-index-event-list" class="row collapse">
+        <div id="new-index-event-list" class="row">
             <div class="small-9 columns">
-              <div class="name-block"><h4 class="venue-name">{{item.name}}</h4></div>
+              <div class="name-block"><h5 class="venue-name">{{item.name}}</h5></div>
             </div>
-            <div class="small-3 columns">
-              <h4 class="host-link"><a class="host-link" ng-click="createEvent(item)">Host</a></h4>
+            <div class="small-3 columns rose-quartz-host-highlighter">
+              <h5 class="host-link"><a class="host-link" ng-click="createEvent(item)">Host</a></h5>
             </div>
         </div>
         <div class="row">
-          <div class="small-9 columns">
-            <div class="address"><h5 class="venue-address">{{item.vicinity}}</h5></div>
+          <div class="small-8 columns">
+            <div class="address"><p class="venue-address">{{item.vicinity}}</p></div>
           </div>
-          <div class="small-3 columns">
-            <div><h5 class="rating">Rating: {{item.rating}}</h5></div>
+          <div class="small-4 columns">
+            <div><p class="rating">Rating: {{item.rating}}</p></div>
           </div>
         </div>
       </div>
@@ -79,26 +75,26 @@
     <div ng-if="mode == HOUSE_MODE">
       <form novalidate>
         <div class="row">
-          <div class="small-5 columns">
+          <div class="small-4 columns">
             <h5 class="house-party-name">Party Name:</h5>
           </div>
-          <div class="small-7 columns">
+          <div class="small-8 columns">
             <input class="round-form" type="text/css" ng-model="party.eventName" />
           </div>
         </div>
         <div class="row">
-          <div class="small-4 columns">
+          <div class="small-3 columns">
             <h5 class="house-party-address">Address:</h5>
           </div>
-          <div class="small-8 columns">
+          <div class="small-9 columns">
             <input class="round-form" type="text/css" ng-model="party.eventAddress" />
           </div>
         </div>
         <div class="row">
-          <div class="small-4 columns">
-            Description:
+          <div class="small-3 columns">
+            <h5 class="house-party-name">Description:</h5>
           </div>
-          <div class="small-8 columns">
+          <div class="small-9 columns">
             <textarea id="house-party-description" ng-model="party.eventDesc"></textarea>
           </div>
         </div>

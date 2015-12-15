@@ -17,7 +17,6 @@ class EventsController < ApplicationController
   def create
     event_params = permitted_params.merge(score: 0)
     event = Event.new(event_params)
-    binding.pry
     if with_in_range?(event)
       if event.save
         Vote.create(user: current_user, votable: event, vote_direction: 1)
