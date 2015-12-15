@@ -7,25 +7,60 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 default_pic = "default_face.png"
 
-Event.create(lat: 40.71766400377538, lng: -74.00004386901855, venue_name: "Aplace", score: 0)
-Event.create(lat: 40.715387077160194, lng: -74.00579452514648, venue_name: "Bplace", score: 11)
-Event.create(lat: 40.72449431636692, lng: -73.9793586730957, venue_name: "Cplace", score: 101)
-Event.create(lat: 40.706299941436384, lng: -74.0090936422348, venue_name: "DBC", score: 501)
-Event.create(lat: 40.72966400377538, lng: -74.00504386901855, venue_name: "hello", score: 1001)
-Event.create(lat: 40.716387077160194, lng: -74.00579452514648, venue_name: "i", score: 1200)
-Event.create(lat: 40.72049431636692, lng: -73.9723586730957, venue_name: "am", score: 700)
-Event.create(lat: 40.708299941436384, lng: -74.0060936422348, venue_name: "ian", score: 15)
+# Users
+User.create(first_name: "Tob", popularity: 100, profile_pic_url: default_pic) #1
+User.create(first_name: "Shaun", last_name:, "White" popularity: 100, profile_pic_url: default_pic) #2
+User.create(first_name: "Jay", last_name:, "Z" popularity: 100, profile_pic_url: default_pic) #3
+User.create(first_name: "Lorde", popularity: 100, profile_pic_url: default_pic) #4
+User.create(first_name: "Don", last_name:, "Trump" popularity: 50, profile_pic_url: default_pic) #5
+User.create(first_name: "Ruth", last_name:, "Ginsberg" popularity: 50, profile_pic_url: default_pic) #6
 
 
-User.create(first_name: "bob", popularity: 5, profile_pic_url: default_pic)
-User.create(first_name: "tob", popularity: 10, profile_pic_url: default_pic)
-User.create(first_name: "rob", popularity: 15, profile_pic_url: default_pic)
+# House Parties
+Event.create(lat: 40.7615435, lng: -73.9497317, address: "540 Main St Apt 474, New York, NY 10044", venue_name: "Ian's House Party", description: "It's going down y'all! BYOF (bring your own food)", score: 1000, house_party: true)
+Event.create(lat: 40.7870106, lng: -73.9753676, address: "85th and Amsterdam", venue_name: "Trashing my Aunt's place", description: "Everyone invited, ring 10F and say popular", score: 300, house_party: true)
+Event.create(lat: 40.7763909, lng: -73.963048, address: "10 E 79th Penthouse", venue_name: "Central Park Penthouse Bash", description: "You can come as long as you're a dude", score: 300, house_party: true)
+Event.create(lat: 40.7337966, lng: -73.9753676, address: "Palladium Dorm 1401", venue_name: "NYU Dorm Party", description: "NYU only", score: 100, house_party: true)
+Event.create(lat: 40.7161581, lng: -74.0000463, address: "101 Bayard", venue_name: "Chinatown Roof Blowout", description: "Yooooooo come party on my roof don't fall off lol", score: 200, house_party: true)
+Event.create(lat: 40.7637581, lng: -73.9918181, address: "10th and W 49th", venue_name: "Masked Vigilante Fighting Some Chick", description: "That dude in the mask is here fighting some chick, come watch", score: 250, house_party: true)
+Event.create(lat: 40.76399173, lng: -73.99163839, address: "ACROSS ST ON OTHER ROOF NOW", venue_name: "OMG CHICK HAS POWERS", description: "YO EVERYBODY GIRL IN BLACK IS A FREAK, HAS SUPER STRENGTH but way hotter than Cap lol ;)", score: 222, house_party: true)
+Event.create(lat: 40.70322257, lng: -73.99072741, venue_name: "Pizza rat j chillin'", description: "Rats only", score: 150, house_party: true)
+Event.create(lat: 40.75857141, lng: -73.93831061, address: "Placella Park", venue_name: "Wiccan Meetup", description: "Gonna cast some spells come on out", score: 100, house_party: true)
+Event.create(lat: 40.74023827, lng: -74.02584288, address: "Pier C", venue_name: "Hoboken Pier Hang", description: "Gonna look at Manhattan and dream big", score: 0, house_party: true)
+
+# Bars/Venues/Nightclubs
+Event.create(lat: 40.714079, lng: -73.9614, place_id: "ChIJeadrRGBZwokRk36FfurfOkE", venue_name: "Rosamunde Sausage Grill", score: 1300)
+Event.create(lat: 40.7043615, lng: -74.0100459, place_id: "ChIJV_vNLhRawokRt36u5nIPaVw", venue_name: "Ulysses A Folk House", score: 1500)
+Event.create(lat: 40.7408001, lng: -73.9883453, place_id: "ChIJTbD_UqFZwokRqrxlscGF3AE", venue_name: "Live Bait", score: 1000)
+Event.create(lat: 40.7272403, lng: -73.9923516, place_id: "ChIJeRqd0JpZwokRG4UKjO1bU4I", venue_name: "Swift Hibernian Lounge", score: 650)
+Event.create(lat: 40.7317696, lng: -73.9841161, place_id: "ChIJZ1fMFZ5ZwokRkYrV85CZorY", venue_name: "Nowhere", score: 400)
+Event.create(lat: 40.7318657, lng: -73.985616, place_id: "Place ID: ChIJs0crYZ5ZwokR-ydMbNtK_VM", venue_name: "Durden", score: 0)
+Event.create(lat: 40.7183226, lng: -73.9905281, place_id: "ChIJkYH3FodZwokR4fVpywN0gps", venue_name: "RPM Bar", score: 0)
+Event.create(lat: 40.802742, lng: -73.9673764, place_id: "ChIJrVMzMTv2wokRL99F1aKkyss", venue_name: "Tara Hill Irish Tavern", score: 1100)
+Event.create(lat: 40.8143006, lng: -73.9441025, place_id: "ChIJmU3ycHH2wokR6A8gMLe9sNY", venue_name: "Shrine", score: 500)
+Event.create(lat: 40.7120405, lng: -73.9510741, place_id: "ChIJCRZAjFhZwokRv6cEvR8K8Ik", venue_name: "Barcade", score: 700)
 
 Vote.create(user_id: 1, votable: Event.find(1), vote_direction: 1)
-Vote.create(user_id: 2, votable: Event.find(1), vote_direction: 1)
-Vote.create(user_id: 1, votable: Event.find(3), vote_direction: -1)
-Vote.create(user_id: 3, votable: Event.find(3), vote_direction: -1)
-Vote.create(user_id: 2, votable: Event.find(4), vote_direction: 1)
+Vote.create(user_id: 2, votable: Event.find(2), vote_direction: 1)
+Vote.create(user_id: 3, votable: Event.find(3), vote_direction: 1)
+Vote.create(user_id: 4, votable: Event.find(4), vote_direction: 1)
+Vote.create(user_id: 5, votable: Event.find(5), vote_direction: 1)
+Vote.create(user_id: 1, votable: Event.find(6), vote_direction: 1)
+Vote.create(user_id: 1, votable: Event.find(7), vote_direction: 1)
+Vote.create(user_id: 3, votable: Event.find(8), vote_direction: 1)
+Vote.create(user_id: 4, votable: Event.find(9), vote_direction: 1)
+Vote.create(user_id: 5, votable: Event.find(10), vote_direction: 1)
+
+Vote.create(user_id: 1, votable: Event.find(11), vote_direction: 1)
+Vote.create(user_id: 2, votable: Event.find(12), vote_direction: 1)
+Vote.create(user_id: 3, votable: Event.find(13), vote_direction: 1)
+Vote.create(user_id: 4, votable: Event.find(14), vote_direction: 1)
+Vote.create(user_id: 2, votable: Event.find(15), vote_direction: 1)
+Vote.create(user_id: 5, votable: Event.find(16), vote_direction: 1)
+Vote.create(user_id: 5, votable: Event.find(17), vote_direction: 1)
+Vote.create(user_id: 3, votable: Event.find(18), vote_direction: 1)
+Vote.create(user_id: 4, votable: Event.find(19), vote_direction: 1)
+Vote.create(user_id: 2, votable: Event.find(20), vote_direction: 1)
 
 Remark.create(description: "Her hair is wonderful", giver_id: 1, receiver_id: 2, event: Event.find(1), remark_direction: 1)
 Remark.create(description: "Those boots are terrible bruh",giver_id: 3, receiver_id: 1, event: Event.find(3), remark_direction: -1)
