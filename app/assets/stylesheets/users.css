@@ -39,6 +39,22 @@ span.user-popularity i{
   font-size: .8em;
 }
 
+#events_tab h5 {
+  font-family: 'Oleo Script', cursive;
+  color: white;
+  text-align: center;
+  background-color: #2f569f;
+}
+
+#events_tab p {
+  font-family: 'Abel', sans-serif;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
+
+}
+
 .user-name p{
   color: #425a86;
   font-size: 1.5em;
@@ -120,18 +136,22 @@ span.user-popularity i{
 
 .event_detail {
   background-color: #f1f1f1;
+  text-align: center;
 }
 
 .love_detail {
-  background-color: #f1f1f1;
+  background-color: #f7cac9;
+  text-align: center;
 }
 
 .hate_detail {
-  background-color: #f1f1f1;
+  background-color:  #933f3d;
+  color: white;
+  text-align: center;
 }
 
 .instagram_detail {
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #92a8d1;
 }
 

@@ -31,14 +31,10 @@
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
          <div ng-repeat="x in user.events | orderBy: '-created_at'"
          class="event_detail">
-            <h5>Venue</h5>
-            <p>{{x.venue_name}}</p>
-            <h5>Address</h5>
+            <h5>{{x.venue_name}}</h5>
             <p>{{x.address}}</p>
-            <h5>Date</h5>
             <p>{{x.created_at | date: "shortDate"}}</p>
-            <h5>Popularity</h5>
-            <p>{{x.score}}</p>
+            <p>score: {{x.score}}</p>
           </div>
         </div>
       </div>
@@ -46,39 +42,37 @@
       <div class="content" id="love_hate_tab">
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
           <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'" class="love_detail">
-            <h5>Description</h5>
-            <p>{{x.description}}</p>
-            <h5>Love or Hate</h5>
-            <p>{{x.remark_direction}}</p>
-            <h5>Directed At</h5>
-            <p>{{x.receiver.first_name +" "+x.receiver.last_name}} 
-            <img src='/assets/{{x.receiver.profile_pic_url}}'>
+            <p> You had the following to say about 
+              {{x.receiver.first_name +" "+x.receiver.last_name}}
+              : "
+              {{x.description}}
+              " on  
+              {{x.created_at | date: "shortDate"}}
+              , at
+              {{x.event.venue_name}}
             </p>
-            <h5>Date</h5>
-            <p>{{x.created_at | date: "shortDate"}}</p>
-            <h5>Venue</h5>
-            <p>{{x.event.venue_name}}</p>
-            <p>{{x.event.address}}</p>
-            <h5>Score</h5>
-            <p>{{x.score}}</p>
+            <p>
+              And this is how everyone felt about it: 
+              {{x.score}}
+            </p>
           </div>
         </div>
 
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
-            <h5>Description</h5>
-            <p>{{x.description}}</p>
-            <h5>Love or Hate</h5>
-            <p>{{x.remark_direction}}</p>
-            <h5>Made by</h5>
-            <p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
-            <h5>Date</h5>
-            <p>{{x.created_at | date: "shortDate"}}</p>
-            <h5>Venue</h5>
-            <p>{{x.event.venue_name}}</p>
-            <p>{{x.event.address}}</p>
-            <h5>Score</h5>
-            <p>{{x.score}}</p>
+            <p> You had the following to say about 
+              {{x.receiver.first_name +" "+x.receiver.last_name}}
+              : "
+              {{x.description}}
+              " on  
+              {{x.created_at | date: "shortDate"}}
+              , at
+              {{x.event.venue_name}}
+            </p>
+            <p>
+              And this is how everyone felt about it: 
+              {{x.score}}
+            </p>
           </div>
         </div>
       </div>
