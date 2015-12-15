@@ -44,7 +44,7 @@ $(document).ready(function(){
 
   $(".hate_form").on("submit", "form" ,function(event){
     event.preventDefault();
-    debugger
+    
     $(event.target).parent().hide();
     $(event.target).parent().parent().find(".remark_buttons").html
     ("<span class='small-6 columns remarked_already centered'> remarked </span>");
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
   $(".love_form").on("submit", "form" ,function(event){
     event.preventDefault();
-    debugger
+    
     $(event.target).parent().hide();
     $(event.target).parent().parent().find(".remark_buttons").html
     ("<span class='small-6 columns remarked_already centered'> remarked </span>");

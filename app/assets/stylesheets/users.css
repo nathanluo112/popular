@@ -1,80 +1,87 @@
 #user-search-bar {
   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
+  -moz-border-radius: 20px;
   border-radius: 20px;
   width: 20em;
   margin: auto;
-
 }
 
 .search-results-div {
   background-color: #f7cac9;
 }
+
 div.user_image img {
- -webkit-border-radius: 50%;
-   -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
-    width: 100px;
-  height: 100px;
-}
-
-div.user_image {
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    padding: 1em;
-    background-color: lightgray;
-    width: 100%;
-}
-
-.user-popularity {
-  background-color:#f7cac9;
-  font-size: 5em;
- -webkit-border-radius: 50%;
-   -moz-border-radius: 50%;
-  border-radius: 50%;
-  text-align: center;
-  display: inline-block;
   width: 100px;
   height: 100px;
 }
 
+div.user_image {
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  margin: 0;
+  background-color: #f1f1f1;
+}
 
+span.user-popularity {
+  color: black;
+  font-size: 2em;
+  font-weight: bolder;
+  width: 50%;
+  height: 50%;
+}
 
-.user-name h1{
+span.user-popularity i{
+  color: gold;
+  font-size: .8em;
+}
+
+#events_tab h5 {
+  font-family: 'Oleo Script', cursive;
+  color: white;
+  text-align: center;
+  background-color: #2f569f;
+}
+
+#events_tab p {
+  font-family: 'Abel', sans-serif;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
+
+}
+
+.user-name p{
   color: #425a86;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
 }
 
 .switch {
-  background-color: lightgray;
+  background-color: #f1f1f1;
   margin:0px;
   border-bottom: 1px solid gray;
 }
 
-
-.user-nav-bar {
-  text-align: center;
-}
-
-.user-nav-bar h5{
-  display: inline;
-  text-align: center;
-  padding: .3em;
-}
-
 .user-name {
+  display: block;
   text-align: center;
 
 }
 
-.Top-stay {
-  position: fixed;
-  top: 0px;
+.top-stay {
   width: 100%;
+  padding-top: 10px;
+  background-color: #f1f1f1;
 }
 
 .bottom-move {
-  margin-top: 350px;
+  margin-top: 400px;
 }
 
 .user-page-link {
@@ -100,3 +107,51 @@ div.user_image {
   border-radius: 50%;
   color: #92a8d1;
 }
+
+.pad_top {
+  margin-top: 10px;
+}
+
+.center {
+  text-align: center;
+  vertical-align: center;
+}
+
+.tabs a {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.tabs li {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.tabs > li > a {
+  font-family: 'Oleo Script', cursive;
+}
+
+.event_detail {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.love_detail {
+  background-color: #f7cac9;
+  text-align: center;
+}
+
+.hate_detail {
+  background-color:  #933f3d;
+  color: white;
+  text-align: center;
+}
+
+.instagram_detail {
+  text-align: center;
+  background-color: #92a8d1;
+}
+
