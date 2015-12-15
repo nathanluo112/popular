@@ -1,3 +1,4 @@
+<div id="reload row"></div>
 <div id="swipe">
 <div id="event_show">
   <div class="score"><%= @event.score || 0 %></div>
@@ -46,6 +47,7 @@
       <% end %>
     </div>
 
+
     <div class="remarks top_margin">
       <% if @event.remarks.count < 1 %>
         <span class="title"> No chatter yet </span>
@@ -59,5 +61,4 @@
   <% end %>
 
 <% end %>
-
 </div>
