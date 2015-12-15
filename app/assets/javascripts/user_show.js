@@ -1,5 +1,5 @@
 var token;
-app.controller('usercontroller', function($scope, $http) {
+app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     var t=''+window.location+'';
     t=t.split("#access_token=");
     if (t.length == 2)
@@ -104,7 +104,7 @@ app.controller('usercontroller', function($scope, $http) {
 
 
 
-}); // app.controller('usercontroller', fun
+}]); // app.controller('usercontroller', fun
 
 // app.directive("onEventsFinish", function() {
 //   return function($scope) {

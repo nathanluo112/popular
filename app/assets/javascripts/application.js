@@ -13,13 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery.form
 //= require jquery.touchSwipe.min.js
 //= require foundation
 
-//= require geolocation-marker.js
-//= require map.js
-//= require remarks.js
-//= require votes.js
-//= require swipe.js
+//= require geolocation-marker
+//= require map
+//= require remarks
+//= require votes
+//= require user_show
+//= require swipe
 
 // $(function(){ $(document).foundation(); });
