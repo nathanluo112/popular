@@ -27,8 +27,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
 
   }).then(function(coords){
       initMap(coords);
-  }).then(function(){
-    getVotedEvents();
+      getVotedEvents();
   }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
@@ -197,7 +196,11 @@ angular.module('listing-event').controller("listController", function($scope, $h
     });
     $scope.currentLocationMarker = new GeolocationMarker(map);
     $scope.currentLocationMarker.setCircleOptions({visible: false})
-    var input = document.getElementById('search-box');
+    var input = document.createElement("input");
+    input.setAttribute("ng-model", "searchItem");
+    input.setAttribute("placeholder", "Search");
+    input.setAttribute("id", "search-box");
+    // var input = document.getElementById('search-box');
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
     searchBox.addListener('places_changed', function(){
@@ -378,9 +381,9 @@ angular.module('listing-event').controller("listController", function($scope, $h
       for (var i = 0; i < events.length; i++){
         addMarker(events[i]);
       }
-
-      $scope.data = addVotedFieldToEvents(events);
-      console.log(markers);
+      addVotedFieldToEvents(events);
+      $scope.data = events;
+      console.log($scope.data);
     }, function(error){
       console.log(error);
     }).then(function(){
