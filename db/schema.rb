@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211223912) do
+ActiveRecord::Schema.define(version: 20151215194807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20151211223912) do
     t.string   "address"
     t.string   "venue_name",                  null: false
     t.string   "description"
-    t.integer  "score"
+    t.integer  "score",       default: 0
     t.boolean  "is_active",   default: true
     t.boolean  "house_party", default: false
     t.datetime "created_at",                  null: false

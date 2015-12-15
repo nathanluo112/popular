@@ -15,14 +15,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    event_params = permitted_params.merge(score: 0)
-    event = Event.new(event_params)
+    event = Event.new(permitted_params)
+    binding.pry
     if with_in_range?(event)
       if event.save
         Vote.create(user: current_user, votable: event, vote_direction: 1)
         render json: event.to_json
       else
-        render :nothing => true, status: 400
+        render :nothing => true, status: 422
       end
     else
       redirect_to root_path
