@@ -1,0 +1,93 @@
+<div ng-app="listing-event">
+  <div ng-controller="usercontroller">
+    <div class="Top-stay row">
+      <div class="user_image">
+        <div class="small-6 user-popularity">{{user.popularity}}
+        </div>
+        <img class="small-6" src={{user.profile_pic_url}}>
+      </div>
+      <div class="user-name">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+      </div>
+      <div>
+        <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="Search users">
+        <div class="search-results-div">
+          <p ng-repeat="x in search_results">
+            <a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
+          </p>
+        </div>
+      </div>
+
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#events_tab">events</a></li>
+  <li class="tab-title"><a href="#love_hate_tab">love/hate</a></li>
+  <li class="tab-title"><a href="#instagram_tab">instagram</a></li>
+</ul>
+
+<div class="tabs-content">
+  
+  <div class="content active" id="events_tab">
+    <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
+     <div ng-repeat="x in user.events | orderBy: '-created_at'">
+        <h5>Venue</h5>
+        <p>{{x.venue_name}}</p>
+        <h5>Address</h5>
+        <p>{{x.address}}</p>
+        <h5>Date</h5>
+        <p>{{x.created_at | date: "shortDate"}}</p>
+        <h5>Popularity</h5>
+        <p>{{x.score}}</p>
+      </div>
+    </div>
+
+  <div class="content" id="love_hate_tab">
+    <div id="user_remarks_made" ng-show="user.remarks_made.length">
+      <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'">
+        <h5>Description</h5>
+        <p>{{x.description}}</p>
+        <h5>Love or Hate</h5>
+        <p>{{x.remark_direction}}</p>
+        <h5>Directed At</h5>
+        <p>{{x.receiver.first_name +" "+x.receiver.last_name}} 
+        <img src='/assets/{{x.receiver.profile_pic_url}}'>
+        </p>
+        <h5>Date</h5>
+        <p>{{x.created_at | date: "shortDate"}}</p>
+        <h5>Venue</h5>
+        <p>{{x.event.venue_name}}</p>
+        <p>{{x.event.address}}</p>
+        <h5>Score</h5>
+        <p>{{x.score}}</p>
+      </div>
+    </div>
+
+    <div id="user_remarks_received" ng-show="user.remarks_received.length">
+      <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'">
+        <h5>Description</h5>
+        <p>{{x.description}}</p>
+        <h5>Love or Hate</h5>
+        <p>{{x.remark_direction}}</p>
+        <h5>Made by</h5>
+        <p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
+        <h5>Date</h5>
+        <p>{{x.created_at | date: "shortDate"}}</p>
+        <h5>Venue</h5>
+        <p>{{x.event.venue_name}}</p>
+        <p>{{x.event.address}}</p>
+        <h5>Score</h5>
+        <p>{{x.score}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="instagram_tab">
+    <div ng-show="!images_array.length">
+      <p>You have not tagged any images with "#popular" yet</p>
+    </div>
+    <div id="images_array_div" ng-show="images_array.length">
+      <div ng-repeat="x in images_array">
+        <p><img src='{{x.images.thumbnail.url}}'></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@
     <%= user.first_name %> <%= user.popularity.to_s + "p"%>
   </div>
   <% end %>
-  <% if current_user && current_user.has_remarked_on?(user) %>
+  <% if current_user && current_user.has_remarked_on?(user, event) %>
   <div class="small-3 large-3 columns remark_buttons">  
     <span class='small-6 columns remarked_already centered'> remarked </span>
   </div>
