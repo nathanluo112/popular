@@ -17,27 +17,25 @@ ActiveRecord::Schema.define(version: 20151215194807) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.float    "lat",                       null: false
-    t.float    "lng",                       null: false
+    t.float    "lat",                    null: false
+    t.float    "lng",                    null: false
     t.string   "place_id"
     t.string   "address"
-    t.string   "venue_name",                null: false
+    t.string   "venue_name",             null: false
     t.integer  "score",      default: 0
-    t.boolean  "is_active",  default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "remarks", force: :cascade do |t|
-    t.string   "description",        limit: 200,                null: false
+    t.string   "description",        limit: 200, null: false
     t.integer  "event_id"
     t.integer  "giver_id"
     t.integer  "receiver_id"
-    t.integer  "remark_direction",                              null: false
-    t.integer  "score",                          default: 0
-    t.boolean  "is_current",                     default: true
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.integer  "remark_direction",               null: false
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -45,7 +43,7 @@ ActiveRecord::Schema.define(version: 20151215194807) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "popularity",      default: 50
+    t.integer  "popularity",      default: 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "facebook_id"

@@ -9,12 +9,12 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require fb.js
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require jquery.form
 //= require jquery.touchSwipe.min.js
+//= require fb.js
 //= require foundation
 
 //= require geolocation-marker
