@@ -28,14 +28,15 @@ div.user_image {
 
 span.user-popularity {
   color: black;
-  font-size: 3em;
+  font-size: 2em;
+  font-weight: bolder;
   width: 50%;
   height: 50%;
 }
 
 span.user-popularity i{
   color: gold;
-  font-size: .5em;
+  font-size: .8em;
 }
 
 .user-name p{

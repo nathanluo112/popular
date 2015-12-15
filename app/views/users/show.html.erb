@@ -4,9 +4,9 @@
     <div class="top-stay row">
       <div class="row pad_top" >
         <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
-        <div class="search-results-div">
-          <p ng-repeat="x in search_results">
-            <a href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
+        <div class="row search-results-div">
+          <p class="small-12 columns center" ng-repeat="x in search_results">
+            <a class="small-12 columns" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
           </p>
         </div>
         <div class="row user_image">
