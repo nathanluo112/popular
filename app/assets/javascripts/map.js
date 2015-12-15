@@ -28,6 +28,8 @@ angular.module('listing-event').controller("listController", function($scope, $h
   }).then(function(coords){
       initMap(coords);
   }).then(function(){
+    getVotedEvents();
+  }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
       if ($scope.mode == $scope.SEARCH_MODE){
@@ -156,6 +158,17 @@ angular.module('listing-event').controller("listController", function($scope, $h
     return d;
   }
 
+  function getVotedEvents(){
+    $http({
+      method: 'get',
+      url: '/events/voted'
+    }).then(function(data){
+      $scope.votedEvents = data.data
+    }, function(error){
+      console.log(error);
+    });
+  }
+
   function findMarkerByEvent(event){
     for (var i = 0; i < markers.length; i ++) {
       if (markers[i].position.lat().toFixed(13) == event.lat.toFixed(13) && markers[i].position.lng().toFixed(13) == event.lng.toFixed(13) && markers[i].title == event.venue_name){
@@ -179,6 +192,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
       zoom: 12,
       mapTypeControl: false,
       rotateControl: false,
+      streetView: null
 
     });
     $scope.currentLocationMarker = new GeolocationMarker(map);
@@ -364,13 +378,25 @@ angular.module('listing-event').controller("listController", function($scope, $h
       for (var i = 0; i < events.length; i++){
         addMarker(events[i]);
       }
-      $scope.data = events;
+
+      $scope.data = addVotedFieldToEvents(events);
       console.log(markers);
     }, function(error){
       console.log(error);
     }).then(function(){
       setJoinableEvents();
     })
+  }
+
+  function addVotedFieldToEvents(events){
+    for(var i = 0; i < events.length; i++) {
+      for(var j = 0; j < $scope.votedEvents.length; j ++) {
+        if (events[i].id == $scope.votedEvents[j].id){
+          events[i].voted = $scope.votedEvents[j].vote_direction
+        }
+      }
+    }
+    return events;
   }
 
 
@@ -382,7 +408,7 @@ angular.module('listing-event').controller("listController", function($scope, $h
         lng: $scope.currentLocationMarker.position.lng()
       }
 
-      if (distance(eventPoint, currentPoint) < 100){
+      if (distance(eventPoint, currentPoint) < 100 && !$scope.data[i].voted){
         $scope.data[i].joinable = true;
       } else {
         $scope.data[i].joinable = false;
