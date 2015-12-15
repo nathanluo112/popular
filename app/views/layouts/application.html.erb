@@ -17,7 +17,10 @@
   <% if logged_in? %>
     <div class="row">
       <div class="small-1 columns">
-      <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
+        <a href="/events"><i class='fi-home home-page-link'></i><a>
+      </div>
+      <div class="small-1 small-offset-10 columns">
+        <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a>
       </div>
     </div>
     <%= yield %>
