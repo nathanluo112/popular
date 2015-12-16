@@ -23,8 +23,12 @@ class UsersController < ApplicationController
 
 
   def logout
+    res="";
+    if logged_in?
+      res = "reload"
+    end
     session.clear
-    render text: "Logged out"
+    render text: res
   end
 
   def show
