@@ -54,7 +54,7 @@
     <% else %>
       <span class="small-12 columns title centered"> Who else is here? </span>
     <% end %>
-    <% @event.users.each do |user| %>
+    <% @event.attendees.each do |user| %>
       <%= render partial: "attendee", locals: { event: @event, user: user } %>
     <% end %>
   </div>
