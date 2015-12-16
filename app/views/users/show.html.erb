@@ -1,31 +1,32 @@
+<div class="row">
 <div ng-app="listing-event">
   <div ng-controller="usercontroller">
 
-    <div class="top-stay row">
-      <div class="row pad_top" >
+    <div class="Top-stay">
+      <div class="pad_top" >
         <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
-        <div class="row search-results-div">
+        <div class=" search-results-div">
           <p class="small-12 columns center" ng-repeat="x in search_results">
             <a class="small-12 columns" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
           </p>
         </div>
-        <div class="row user_image">
+        <div class="user_image">
           <span class="small-6 user-popularity">{{user.popularity}}<i class="fi-star"></i></span>
           <img class="small-6" src={{user.profile_pic_url}}>
         </div>
-        <div class="row user-name">
+        <div class="user-name">
           <p>{{user.first_name}} {{user.last_name}}</p>
         </div>
       </div>
     </div>
 
-    <ul class="tabs row" data-tab>
+    <ul class="tabs" data-tab>
       <li class="small-4 columns tab-title active"><a href="#events_tab">events</a></li>
       <li class="small-4 columns tab-title"><a href="#love_hate_tab">love/hate</a></li>
       <li class="small-4 columns tab-title"><a href="#instagram_tab">instagram</a></li>
     </ul>
 
-    <div class="tabs-content row pad_top">
+    <div class="tabs-content pad_top">
 
       <div class="content active" id="events_tab">
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
@@ -34,7 +35,7 @@
             <h5>{{x.venue_name}}</h5>
             <p>{{x.address}}</p>
             <p>{{x.created_at | date: "shortDate"}}</p>
-            <p>score: {{x.score}}</p>
+            <p>{{x.score}}<i class="fi-star"></i></p>
           </div>
         </div>
       </div>
@@ -42,37 +43,26 @@
       <div class="content" id="love_hate_tab">
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
           <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'" class="love_detail">
+            <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
             <p> You had the following to say about
               {{x.receiver.first_name +" "+x.receiver.last_name}}
               : "
               {{x.description}}
-              " on
-              {{x.created_at | date: "shortDate"}}
-              , at
-              {{x.event.venue_name}}
+              "
             </p>
             <p>
-              And this is how everyone felt about it:
-              {{x.score}}
+              {{x.score}}<i class="fi-star"></i>
             </p>
           </div>
         </div>
 
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
-            <p> You had the following to say about
-              {{x.giver.first_name +" "+x.giver.last_name}}
-              : "
-              {{x.description}}
-              " on
-              {{x.created_at | date: "shortDate"}}
-              , at
-              {{x.event.venue_name}}
+            <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
+            <p>{{x.giver.first_name +" "+x.giver.last_name}} had the following to say about you: 
+            <p>"{{x.description}}"</p>
             </p>
-            <p>
-              And this is how everyone felt about it:
-              {{x.score}}
-            </p>
+            <p>{{x.score}}<i class="fi-star"></i></p>
           </div>
         </div>
       </div>
@@ -89,4 +79,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -36,40 +36,40 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     }
     }
 
-    $("#user-made-top").hide();
-        $("#user-received-top").hide();
-        $("#user-events-top").hide();
-        $("#user-events-top").slideDown();
-        $("user-instagram-top").hide();
+    // $("#user-made-top").hide();
+    //     $("#user-received-top").hide();
+    //     $("#user-events-top").hide();
+    //     $("#user-events-top").slideDown();
+    //     $("user-instagram-top").hide();
 
-    $(".user-nav-bar a").click(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      var nav = e.target.innerHTML;
-      if (nav == "Events") {
-        $("#user-made-top").hide();
-        $("#user-received-top").hide();
-        $("#user-events-top").hide();
-        $("#user-events-top").slideDown();
-        $("user-instagram-top").hide();
-      }
-      else if (nav == "Shade/Love Given") {
-        $("#user-made-top").hide();
-        $("#user-received-top").hide();
-        $("#user-events-top").hide();
-        $("#user-made-top").slideDown();
-        $("user-instagram-top").hide();
-      }
-      else if (nav == "Shade/Love Received") {
-        $("#user-made-top").hide();
-        $("#user-received-top").hide();
-        $("#user-events-top").hide();
-        $("#user-received-top").slideDown();
-        $("user-instagram-top").hide();
-      }
+    // $(".user-nav-bar a").click(function(e){
+    //   e.preventDefault();
+    //   e.stopImmediatePropagation();
+    //   var nav = e.target.innerHTML;
+    //   if (nav == "Events") {
+    //     $("#user-made-top").hide();
+    //     $("#user-received-top").hide();
+    //     $("#user-events-top").hide();
+    //     $("#user-events-top").slideDown();
+    //     $("user-instagram-top").hide();
+    //   }
+    //   else if (nav == "Shade/Love Given") {
+    //     $("#user-made-top").hide();
+    //     $("#user-received-top").hide();
+    //     $("#user-events-top").hide();
+    //     $("#user-made-top").slideDown();
+    //     $("user-instagram-top").hide();
+    //   }
+    //   else if (nav == "Shade/Love Received") {
+    //     $("#user-made-top").hide();
+    //     $("#user-received-top").hide();
+    //     $("#user-events-top").hide();
+    //     $("#user-received-top").slideDown();
+    //     $("user-instagram-top").hide();
+    //   }
 
 
-    });
+    // });
 
      // $(".switch").click(function(e){
      //    for (var x=0; x < 3; x++) {

@@ -32,7 +32,7 @@
   </div>
 
     <div class="row score">
-      <%= remark.score %>
+      <%= remark.score %><i class="fi-star emotion"></i>
     </div>
   
   <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
