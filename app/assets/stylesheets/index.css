@@ -87,7 +87,8 @@ a.host-link:hover {
 }
 
 #index-event-list {
-  border-top: 2px solid #f7cac9;
+  border-bottom: 2px solid #f7cac9;
+  padding-bottom: -1em;
   margin-bottom: -1em;
 }
 

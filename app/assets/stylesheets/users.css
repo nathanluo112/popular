@@ -1,3 +1,7 @@
+#user-top {
+  margin-top: -0.25em;
+}
+
 .full_width {
   width: 100%;
 }
@@ -6,7 +10,7 @@
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  width: 20em;
+  width: 18em;
   margin: auto;
 }
 
@@ -120,7 +124,6 @@ ul.tabs.tab-title > li > a{
 .user-page-link {
   position: absolute;
   top: 5px;
-  z-index: 5;
   margin-left: 0.5em;
   padding-left: 11px;
   padding-right: 11px;
@@ -133,7 +136,6 @@ ul.tabs.tab-title > li > a{
 .home-page-link {
   position: absolute;
   top: 5px;
-  z-index: 5;
   margin-left: 0.5em;
   padding-left: 10px;
   padding-right: 10px;
@@ -141,6 +143,11 @@ ul.tabs.tab-title > li > a{
   border: 1px solid #999;
   border-radius: 50%;
   color: #92a8d1;
+}
+
+#icon-header {
+  position: absolute;
+  z-index: 20;
 }
 
 p.icon {
