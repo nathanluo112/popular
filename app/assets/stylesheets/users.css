@@ -228,7 +228,7 @@ p.icon {
 }
 
 .flower-loader {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -241,10 +241,11 @@ p.icon {
               no-repeat;
 }
 
-body.loading {
+/*body.loading {
   overflow: hidden;
 }
 
 body.loading .flower-loader {
   display: block;
 }
+*/

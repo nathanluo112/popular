@@ -53,6 +53,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       google.maps.event.trigger(map, "resize");
       map.setCenter(center);
     });
+    $('.flower-loader').delay(1000).fadeOut("slow");
   });
 
   $scope.eventItem = function(){
