@@ -18,14 +18,14 @@
       </div>
     </div>
 
-    <div id="lists-fixed">
+
       <div ng-if="mode == SEARCH_MODE">
         <div ng-if="showFocus">
           <div class="row">
               <div class="small-12 columns focus-event" ng-click="focusEventItem()">
                 <i class="fi-minus close-icon" ng-click="closeFocus()"></i>
-                <h4 class="venue-name">{{focusEvent.venue_name}}</h4>
-                <p class="venue-address">{{focusEvent.address}} 1212 Dummy Address Ave., New York, NY 10003</p>
+                <h5 class="venue-name">{{focusEvent.venue_name}}</h5>
+                <p class="venue-address">{{focusEvent.address}}</p>
               </div>
                 <div ng-if="item.joinable">
                   <h5 class="join-link"><a class="join-link" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
@@ -34,28 +34,32 @@
         </div>
 
         <div class="event-list">
-          <h4>Event List</h4>
-          <div ng-repeat="item in data">
-            <div id="index-event-list" class="row">
-              <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
-                <div class="small-9 columns">
-                  <div class="venue-name">
-                    <h5 class="venue-name">{{item.venue_name}}</h5>
+          <div class="index-title">
+            <h4 class="pink-underline">Event List</h4>
+          </div>
+          <div class="lists-relative">
+            <div ng-repeat="item in data">
+              <div id="index-event-list" class="row">
+                <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
+                  <div class="small-9 columns">
+                    <div class="venue-name">
+                      <h5 class="venue-name">{{item.venue_name}}</h5>
+                    </div>
                   </div>
-                </div>
-                <div class="check-in" ng-if="item.joinable">
-                  <div class="small-3 columns">
-                    <h5 class="join-link"><a class="join-link-rose-quartz" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+                  <div class="check-in" ng-if="item.joinable">
+                    <div class="small-3 columns">
+                      <h5 class="join-link"><a class="join-link-rose-quartz" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+                    </div>
                   </div>
-                </div>
-                <div ng-if="!item.joinable && item.voted == '1'">
-                  <div class="small-3 columns">
-                    <h5 class="join-link"><a class="join-link-green" ng-click="redirectTo(item.id); $event.stopPropagation()">view</a></h5>
+                  <div ng-if="!item.joinable && item.voted == '1'">
+                    <div class="small-3 columns">
+                      <h5 class="join-link"><a class="join-link-green" ng-click="redirectTo(item.id); $event.stopPropagation()">view</a></h5>
+                    </div>
                   </div>
-                </div>
-                <div ng-if="!item.joinable && item.voted == '-1'">
-                  <div class="small-3 columns">
-                    <h5 class="join-link"><a class="join-link-red" ng-click="redirectTo(item.id); $event.stopPropagation()">ditched</a></h5>
+                  <div ng-if="!item.joinable && item.voted == '-1'">
+                    <div class="small-3 columns">
+                      <h5 class="join-link"><a class="join-link-red" ng-click="redirectTo(item.id); $event.stopPropagation()">ditched</a></h5>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -65,51 +69,60 @@
       </div>
 
       <div class="new-event-list" ng-if="mode == CREATE_MODE">
-        <h4>Bars, Clubs, and Venues</h4>
-        <div id="place-list" ng-repeat="item in places">
-          <div id="new-index-event-list" class="row">
-              <div class="small-9 columns">
-                <div class="name-block"><h5 class="venue-name">{{item.name}}</h5></div>
-              </div>
-              <div class="small-3 columns">
-                <h5 class="host-link"><a class="host-link" ng-click="createEvent(item)">Host</a></h5>
-              </div>
-          </div>
-          <div class="row new-index-address">
-            <div class="small-8 columns">
-              <div class="address"><p class="venue-address">{{item.vicinity}}</p></div>
+        <div class="index-title">
+          <h4 class="blue-underline">Bars, Clubs, and Venues</h4>
+        </div>
+        <div class="lists-relative">
+          <div id="place-list" ng-repeat="item in places">
+            <div id="new-index-event-list" class="row">
+                <div class="small-9 columns">
+                  <div class="name-block"><h5 class="venue-name">{{item.name}}</h5></div>
+                </div>
+                <div class="small-3 columns">
+                  <h5 class="host-link"><a class="host-link" ng-click="createEvent(item)">Host</a></h5>
+                </div>
             </div>
-            <div class="small-4 columns">
-              <div><p class="rating">Rating: {{item.rating}}</p></div>
+            <div class="row new-index-address">
+              <div class="small-8 columns">
+                <div class="address"><p class="venue-address">{{item.vicinity}}</p></div>
+              </div>
+              <div class="small-4 columns">
+                <div><p class="rating">Rating: {{item.rating}}</p></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div ng-if="mode == HOUSE_MODE">
-        <form novalidate>
-          <div class="row">
-            <div class="small-4 columns">
-              <h5 class="house-party-name">Party Name:</h5>
+        <div class="index-title">
+          <h4 class="green-underline">Throw a House Party</h4>
+        </div>
+        <div class="lists-relative">
+          <form novalidate>
+            <div class="row">
+              <div class="small-4 columns">
+                <h5 class="house-party-name">Party Name:</h5>
+              </div>
+              <div class="small-8 columns">
+                <input class="round-form" type="text/css" ng-model="party.eventName" />
+              </div>
             </div>
-            <div class="small-8 columns">
-              <input class="round-form" type="text/css" ng-model="party.eventName" />
+            <div class="row">
+              <div class="small-3 columns">
+                <h5 class="house-party-address">Address:</h5>
+              </div>
+              <div class="small-9 columns">
+                <input class="round-form" type="text/css" ng-model="party.eventAddress" />
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="small-3 columns">
-              <h5 class="house-party-address">Address:</h5>
-            </div>
-            <div class="small-9 columns">
-              <input class="round-form" type="text/css" ng-model="party.eventAddress" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-3 columns">
-              <h5 class="house-party-name">Description:</h5>
-            </div>
-            <div class="small-9 columns">
-              <textarea id="house-party-description" ng-model="party.eventDesc"></textarea>
+            <div class="row">
+              <div class="small-3 columns">
+                <h5 class="house-party-name">Description:</h5>
+              </div>
+              <div class="small-9 columns">
+                <textarea id="house-party-description" ng-model="party.eventDesc"></textarea>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -123,12 +136,12 @@
           <div class="row collapse">
             <div class="small-12 columns">
               <button class="turn-it-up" type="submit" ng-click="createHouseEvent(party)">turn it up</button>
+              </div>
             </div>
-          </div>
-        </form>
-        <div id="blue-bar"></div>
+          </form>
+          <div id="blue-bar"></div>
+        </div>
       </div>
-    </div>
 
   </div>
 </div>

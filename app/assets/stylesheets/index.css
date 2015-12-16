@@ -19,7 +19,7 @@ p.venue-address {
 h5.join-link {
   font-family: 'Abel', sans-serif;
   width: 100%;
-  text-align: center;
+  text-align: center
 }
 
 a.join-link-rose-quartz {
@@ -101,6 +101,7 @@ a.host-link:hover {
 }
 
 .new-index-address {
+  padding-bottom: -1em;
   border-bottom: 2px solid #92a8d1;
 }
 
@@ -153,18 +154,42 @@ textarea#house-party-description {
   border: 2px inset #999;
 }
 
-/*#fix-map {
+#fix-map {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 3;
 }
 
-#lists-fixed {
+.index-title {
   position: fixed;
-  top: vh;
-  bottom: 0;
+  top: 57vh;
   width: 100%;
-  z-index: 10;
+  z-index: 3;
+  background-color: #FFF;
 }
-*/
+
+.lists-relative {
+  position: relative;
+  top: 65vh;
+  width: 100%;
+}
+
+.pink-underline {
+  margin-top: -2px;
+  border-top: 3px solid #92a8d1;
+  border-bottom: 3px solid #f7cac9;
+}
+
+.blue-underline {
+  margin-top: -2px;
+  border-top: 3px solid #5c7cb8;
+  border-bottom: 3px solid #92a8d1;
+}
+
+.green-underline {
+  margin-top: -2px;
+  border-top: 3px solid #2f569f;
+  border-bottom: 3px solid #9DC49D;
+}
+

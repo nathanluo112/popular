@@ -109,10 +109,11 @@ ul.tabs.tab-title > li > a{
 
 .user-page-link {
   position: absolute;
-  top: 11px;
+  top: 5px;
   z-index: 5;
-  padding-left: 7px;
-  padding-right: 7px;
+  margin-left: 0.5em;
+  padding-left: 11px;
+  padding-right: 11px;
   background-color: #fff;
   border: 1px solid #999;
   border-radius: 50%;
@@ -121,14 +122,19 @@ ul.tabs.tab-title > li > a{
 
 .home-page-link {
   position: absolute;
-  top: 11px;
+  top: 5px;
   z-index: 5;
-  padding-left: 7px;
-  padding-right: 7px;
+  margin-left: 0.5em;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: #fff;
   border: 1px solid #999;
   border-radius: 50%;
   color: #92a8d1;
+}
+
+p.icon {
+  font-size: 1.4em;
 }
 
 .pad_top {
