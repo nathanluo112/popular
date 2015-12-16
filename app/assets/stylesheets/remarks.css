@@ -1,19 +1,16 @@
 div.remark_buttons {
   display: inline;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
   width: 50%;
-}
-
-div.remark_buttons {
-  padding-top: 5px;
+  padding: 5px;
 }
 
 div.remark_buttons a.love{
   color: white;
   background-color: #F7CAC9;
   width: 50%;
-  padding: 0px 2px 0px 2px;
+  padding: 0px 5px 0px 5px;
   float: right;
 }
 
@@ -21,7 +18,7 @@ div.remark_buttons a.hate{
   color: white;
   background-color: #933f3d;
   width: 50%;
-  padding: 0px 2px 0px 2px;
+  padding: 0px 5px 0px 5px;
   float: right;
 }
 

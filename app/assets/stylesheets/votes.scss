@@ -1,6 +1,17 @@
-#reload {
-  background-color: #f1f1f1;
+.refresh {
+  display: none;
+  vertical-align: center;
+  text-align: center;
+  background-color: white;
+  margin-top: 5px;
+  width: 100%;
   height: 50px;
+}
+
+.refresh img {
+  vertical-align: center;
+  width: 40px;
+  height: 40px;
 }
 
 div.vote input[type="submit"] {
@@ -93,7 +104,6 @@ div.user_row {
 }
 
 div.pos {
-
   background-color: #9DC49D;
 }
 

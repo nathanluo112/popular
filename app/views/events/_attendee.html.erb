@@ -11,7 +11,7 @@
   </div>
   <% elsif user.id != current_user.id %>
   <div class="small-3 large-3 columns remark_buttons">  
-    <%= link_to "hate", new_event_remark_path(event), data:{direction: -1}, class: "hate" %>
+    <%= link_to "shade", new_event_remark_path(event), data:{direction: -1}, class: "hate" %>
     <%= link_to "love", new_event_remark_path(event), data:{direction: 1}, class: "love"  %>
   </div>
   <% else %>
