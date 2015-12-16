@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 
     dissers = self.votes.where(vote_direction: -1).map {|vote| vote.user}
 
-    if positive_votes.count > 10 && self.score > 0
+    if positive_votes.count > 9 && self.score > 0
       ninetieth_percentile = (num_of_attendees * 0.1).to_i
       eightieth_percentile = (num_of_attendees * 0.2).to_i
       seventieth_percentile = (num_of_attendees * 0.3).to_i
@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
       attendees[(sixtieth_percentile + 1)..fiftieth_percentile].each {|u| u.popularity += (self.score * 0.04).to_i}
       attendees[(fiftieth_percentile + 1)..-1].each {|u| u.popularity += (self.score * 0.03).to_i}
 
-    elsif positive_votes.count > 5 && self.score > 0
+    elsif positive_votes.count > 2 && self.score > 0
       attendees.each {|u| u.popularity += (popularity_of_most_popular * 0.1).to_i}
 
     else
