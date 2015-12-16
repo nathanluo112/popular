@@ -22,7 +22,7 @@ Event.create(lat: 40.7870106, lng: -73.9753676, address: "85th and Amsterdam", v
 Event.create(lat: 40.7763909, lng: -73.963048, address: "10 E 79th Penthouse", venue_name: "Central Park Penthouse Bash", description: "You can come as long as you're a dude", score: 300, house_party: true)
 Event.create(lat: 40.7337966, lng: -73.9753676, address: "Palladium Dorm 1401", venue_name: "NYU Dorm Party", description: "NYU only", score: 100, house_party: true)
 Event.create(lat: 40.7161581, lng: -74.0000463, address: "101 Bayard", venue_name: "Chinatown Roof Blowout", description: "Yooooooo come party on my roof don't fall off lol", score: 200, house_party: true)
-Event.create(lat: 40.7637581, lng: -73.9918181, address: "10th and W 49th", venue_name: "Masked Vigilante Fighting Some Chick", description: "That dude in the mask is here fighting some chick, come watch", score: 250, house_party: true)
+Event.create(lat: 40.7637581, lng: -73.9918181, address: "10th and W 49th", venue_name: "Masked Guy Fighting Chick", description: "That dude in the mask is here fighting some chick, come watch", score: 250, house_party: true)
 Event.create(lat: 40.76399173, lng: -73.99163839, address: "ACROSS ST ON OTHER ROOF NOW", venue_name: "OMG CHICK HAS POWERS", description: "YO EVERYBODY GIRL IN BLACK IS A FREAK, HAS SUPER STRENGTH but way hotter than Cap lol ;)", score: 222, house_party: true)
 Event.create(lat: 40.70322257, lng: -73.99072741, venue_name: "Pizza rat j chillin'", description: "Rats only", score: 150, house_party: true)
 Event.create(lat: 40.75857141, lng: -73.93831061, address: "Placella Park", venue_name: "Wiccan Meetup", description: "Gonna cast some spells come on out", score: 100, house_party: true)
