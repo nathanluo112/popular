@@ -15,14 +15,12 @@
 </head>
 <body class="container">
   <% if logged_in? %>
-    <div id="icon-header" class="row collapse">
-      <div class="small-1 columns">
-        <p class="icon"><a href="/events"><i class='fi-home home-page-link'></i><a></p>
+      <div class="fl icon">
+        <a href="/events"><i class='fi-home home-page-link'></i></a>
       </div>
-      <div class="small-2 small-offset-9 columns">
-        <p class="icon"><a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i><a></p>
+      <div class="fr icon">
+        <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i></a>
       </div>
-    </div>
     <%= yield %>
   <% else %>
     <div class="main-body">
