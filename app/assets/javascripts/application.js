@@ -23,6 +23,5 @@
 //= require votes
 //= require user_show
 //= require swipe
-//= require loading-animation
 
 $(function(){ $(document).foundation(); });
