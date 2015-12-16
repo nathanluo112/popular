@@ -14,6 +14,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   $scope.places = [];
   $scope.showFocus = false;
 
+
   // searchBox = new google.maps.places.SearchBox(angular.element("#search-box"));
   new Promise(function(resolve, reject){
     window.navigator.geolocation.getCurrentPosition(function(args){
@@ -29,6 +30,14 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       getVotedEvents();
       getUserPopularity();
   }).then(function(){
+    document.getElementsByClassName("fi-home")[0].addEventListener("click", function(event){
+      if ($window.location.pathname == "/events"){
+        event.preventDefault();
+        map.panTo($scope.currentLocationMarker.position);
+        map.setZoom(12);
+      }
+    });
+
     var timeoutId;
     map.addListener("bounds_changed", function(){
       if ($scope.mode == $scope.SEARCH_MODE){
