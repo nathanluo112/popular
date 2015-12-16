@@ -168,13 +168,24 @@ ul.tabs.tab-title > li > a{
 }
 
 #icon-header {
-  position: fixed;
-  z-index: 20;
+
 }
 
-p.icon {
+.icon {
+  position: fixed;
+  top: 0;
+  z-index: 20;
   font-size: 1.4em;
+  text-align: center;
 }
+.fl{left: 2vw;}
+.fr{left: 82vw;}
+.icon a{
+  display: block;
+  margin-left: 0;
+  padding-left: 0;
+}
+
 
 .pad_top {
   margin-top: 10px;

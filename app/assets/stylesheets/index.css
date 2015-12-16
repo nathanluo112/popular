@@ -19,12 +19,14 @@ h5.venue-name {
 p.venue-address {
   font-family: 'Abel', sans-serif;
   color: #f7cac9;
+  margin-bottom: .2em;
 }
 
 h5.join-link {
   font-family: 'Abel', sans-serif;
   width: 100%;
-  text-align: center
+  text-align: center;
+  margin-top: .5em;
 }
 
 a.join-link-rose-quartz {
@@ -54,19 +56,15 @@ a.join-link:hover {
   color: #ac6b6a;
 }
 
-h5.host-link {
-  margin-top: -0.1em;
-  margin-bottom: -0.15em;
-  font-family: 'Abel', sans-serif;
-  width: 100%;
-  text-align: center;
-}
-
-a.host-link {
+.host-link {
   display: block;
   background-color: #f7cac9;
   color: #FFF;
   font-family: 'Abel', sans-serif;
+  text-align: center;
+  height: 2.5em;
+  line-height: 2.5em;
+  margin-top: 1.5em;
 }
 
 a.host-link:hover {
@@ -91,12 +89,10 @@ a.host-link:hover {
   padding: .8em 0em .8em 0em;
 }
 
-#index-event-list {
-  padding-bottom: -1em;
-  margin-bottom: -1em;
-}
+
 
 .event-list {
+  margin-top: 60vh;
   margin-bottom: 4px;
 }
 
@@ -104,21 +100,16 @@ a.host-link:hover {
   border-top: 2px solid #92a8d1;
 }
 
-.new-index-address {
-  padding-bottom: -1em;
-  border-bottom: 2px solid #92a8d1;
-}
-
 .rating {
   font-family: 'Abel', sans-serif;
   color: #92a8d1;
-  text-align: right;
+  margin-bottom: 0;
 }
 
 .round-form {
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
-  border-radius:6px;
+  border-radius:3px;
   border: 2px inset #999;
   margin-top: .7em;
   line-height: 2em;
@@ -154,8 +145,9 @@ h5.house-party-address {
 textarea#house-party-description {
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
-  border-radius:6px;
+  border-radius:3px;
   border: 2px inset #999;
+  margin-bottom: 0px;
 }
 
 #fix-map {
@@ -173,22 +165,27 @@ textarea#house-party-description {
   background-color: #FFF;
 }
 
-.lists-relative {
+.list {
   position: relative;
-  top: 65vh;
+  margin-top: 64.5vh;
   width: 100%;
 }
+
 
 .pink-underline {
   margin-top: -2px;
   border-top: 3px solid #92a8d1;
   border-bottom: 3px solid #f7cac9;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .blue-underline {
   margin-top: -2px;
   border-top: 3px solid #5c7cb8;
   border-bottom: 3px solid #92a8d1;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .green-underline {
