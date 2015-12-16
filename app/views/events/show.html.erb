@@ -34,11 +34,11 @@
 <% else %>
 
   <% if current_user.vote_direction_for(@event) == -1 %>
-    <div class="voted neg debug" <%= "style='display:none'" %>>
+    <div class="voted neg" <%= "style='display:none'" %>>
       <span class="checked_in">ditched this</span>
     </div>
   <% else %>
-    <div class="voted pos debug"<%= "style='display:none'" %>>
+    <div class="voted pos"<%= "style='display:none'" %>>
       <span class="checked_in">checked in</span>
     </div>
 
