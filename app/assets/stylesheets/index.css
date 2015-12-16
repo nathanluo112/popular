@@ -9,7 +9,6 @@ h5.venue-name {
   font-family: 'Abel', sans-serif;
   text-align: left;
   color: #5c7cb8;
-/*  border-bottom: 2px solid #f7cac9;*/
 }
 
 .event-splitter-pink {
@@ -22,33 +21,28 @@ p.venue-address {
   margin-bottom: .2em;
 }
 
-h5.join-link {
-  font-family: 'Abel', sans-serif;
-  width: 100%;
-  text-align: center;
+.event-item a{
   margin-top: .5em;
+  margin-bottom: .5em;
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  width: 4em;
+  color: #FFF;
+  font-family: 'Abel', sans-serif;
 }
 
 a.join-link-rose-quartz {
-  display: block;
-  height: 100%;
-  color: #FFF;
-  font-family: 'Abel', sans-serif;
   background-color: #f7cac9;
 }
 
 a.join-link-green {
-  display: block;
-  height: 100%;
-  color: #FFF;
-  font-family: 'Abel', sans-serif;
   background-color: #9DC49D;
 }
 
 a.join-link-red {
-  display: block;
-  color: #FFF;
-  font-family: 'Abel', sans-serif;
   background-color: #933f3d;
 }
 
