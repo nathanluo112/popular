@@ -52,8 +52,6 @@ class UsersController < ApplicationController
   def instragram_signin
     if !!session[:instagram_token]
       redirect_to "/users/#{current_user.id}"
-    else
-       render "users/instragram_signin"
     end
   end
 
