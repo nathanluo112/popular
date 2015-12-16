@@ -18,7 +18,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
           console.log("aaaa");
           console.log(res);
-
+          $("#instagram_tab").unbind();
           $("#instagram_tab").click(function(event) {getInstagramPics()});
 
 
@@ -26,8 +26,22 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     else
       $http.get("/get_instagram_token").then(function(res){
         token=res.data;
+
+        if (res.data=="No instagram") {
+          $("#instagram_tab").click(function(event) {
+         event.preventDefault();
+          console.log("it");
+          $("#instagram_form").submit();
+          });
+
+        }
+
+        else {
+
+
+         $("#instagram_tab").unbind();
          $("#instagram_tab").click(function(event) {getInstagramPics()});
-        getInstagramPics();
+        getInstagramPics(); }
       });
 
 
@@ -38,6 +52,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         url: "https://api.instagram.com/v1/users/self/media/recent/?access_token="+token,
         dataType: "jsonp"
       }).then(function(res){
+        console.log(res);
         var images=[];
         var images_counter = res.data.length;
         for (var i = 0; i< images_counter; i++) {
@@ -48,6 +63,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
               break; }
           }
         };
+        console.log(images);
         $scope.images_array = images;
         $scope.$apply();
       });

@@ -56,7 +56,11 @@ class UsersController < ApplicationController
   end
 
   def get_instagram_token
-    render json: session[:instagram_token].to_json
+    if session[:instagram_token]
+      render json: session[:instagram_token].to_json
+    else
+      render text: "No instagram"
+    end
   end
 
   def set_instagram_token

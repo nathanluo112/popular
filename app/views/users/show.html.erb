@@ -75,7 +75,7 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p><img ng-src='x.images.thumbnail.url'></p>
+            <p><img ng-src={{x.images.thumbnail.url}}></p>
           </div>
         </div>
       </div>
