@@ -14,7 +14,9 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     if (t.length == 2)
       {token=t[1];
         $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
-          $("#instagram_tab").unbind();
+          $("#instagram_tab").unbind("click");
+          $("#instagram_tab").bind("click",false);
+          $("#instagram_tab").unbind("click",false);
           $("#instagram_tab").bind("click",function(event) {getInstagramPics()});
 
 
@@ -24,6 +26,9 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         token=res.data;
 
         if (res.data=="No instagram") {
+                    $("#instagram_tab").unbind("click");
+          $("#instagram_tab").bind("click",false);
+          $("#instagram_tab").unbind("click",false);
           $("#instagram_tab").bind("click",function(event) {
          event.preventDefault();
           $("#instagram_form").submit();
@@ -33,8 +38,9 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
 
         else {
 
-
-         $("#instagram_tab").unbind();
+          $("#instagram_tab").unbind("click");
+          $("#instagram_tab").bind("click",false);
+          $("#instagram_tab").unbind("click",false);
          $("#instagram_tab").bind("click",function(event) {getInstagramPics()});
         getInstagramPics(); }
       });
