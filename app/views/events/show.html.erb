@@ -1,10 +1,16 @@
-<div id="reload row"></div>
-<div id="swipe">
-<div id="event_show">
-  <div class="score"><%= @event.score || 0 %></div>
-  <div class="name"><%= @event.venue_name || "PlaceHolder" %></div>
-  <div class="address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></div>
-</div>
+<% if @event.url %>
+  
+  <div class="row" id="event_show" style="background-image: url('<%=@event.url%>');">
+    <p class="small-12 columns name" ><%= @event.venue_name || "PlaceHolder" %></p>
+    <p class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></p>
+  </div>
+<% else %>
+  <div class="row" id="event_show" style="background-image: url('placeholder.jpg');">
+    <p class="small-12 columns name" ><%= @event.venue_name || "PlaceHolder" %></p>
+    <p class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></p>
+  </div>
+
+<% end %>
 
 <% if !current_user.voted_for?(@event) %>
 <div class="vote row">

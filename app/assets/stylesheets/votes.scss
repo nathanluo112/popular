@@ -3,13 +3,6 @@
   height: 50px;
 }
 
-div#event_show {
-  background-image: image-url("placeholder.jpg");
-  background-size: cover;
-  opacity: 0.8;
-  text-align: center;
-}
-
 div.vote input[type="submit"] {
   font-family: 'Abel', sans-serif;
   font-size: 2em;
@@ -26,21 +19,33 @@ span.checked_in {
   font-size: 1em;
 }
 
-div#event_show div.name {
-  display: inline;
-  font-size: 5em;
+div#event_show {
+  width: 100%;
+  height: 40%;
+  size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  vertical-align: center;
+  text-align: center;
+}
+
+div#event_show p.name {
+  top: 35px;  
+  display: block;
+  text-align: center;
+  font-size: 2.5em;
   font-weight: bolder;
   color: white;
+  margin: 0px;
+  padding: 0px;
 }
 
-div#event_show div.score {
-  display: none;
-  font-size: 5em;
+div#event_show p.address {
+  display: block;
+  text-align: center;
   color: white;
-}
-
-div#event_show div.address {
-  color: white;
+  margin: 0px;
+  padding-top: 20px;
 }
 
 div.voted {
@@ -76,6 +81,7 @@ div.user_row {
 }
 
 div.pos {
+  
   background-color: #9DC49D;
 }
 
