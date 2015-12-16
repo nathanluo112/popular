@@ -38,27 +38,29 @@
             <h4 class="pink-underline">Event List</h4>
           </div>
           <div class="lists-relative">
-            <div ng-repeat="item in data">
-              <div id="index-event-list" class="row">
+            <div id="index-event-list" ng-repeat="item in data">
+              <div class="row">
                 <div ng-click="eventItem()" data-id="{{item.id}}" class="event-item" >
-                  <div class="small-9 columns">
-                    <div class="venue-name">
-                      <h5 class="venue-name">{{item.venue_name}}</h5>
+                  <div class="event-splitter-pink">
+                    <div class="small-9 columns">
+                      <div class="venue-name">
+                        <h5 class="venue-name">{{item.venue_name}}</h5>
+                      </div>
                     </div>
-                  </div>
-                  <div class="check-in" ng-if="item.joinable">
-                    <div class="small-3 columns">
-                      <h5 class="join-link"><a class="join-link-rose-quartz" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+                    <div class="check-in" ng-if="item.joinable">
+                      <div class="small-3 columns">
+                        <h5 class="join-link"><a class="join-link-rose-quartz" ng-click="redirectTo(item.id); $event.stopPropagation()">check in</a></h5>
+                      </div>
                     </div>
-                  </div>
-                  <div ng-if="!item.joinable && item.voted == '1'">
-                    <div class="small-3 columns">
-                      <h5 class="join-link"><a class="join-link-green" ng-click="redirectTo(item.id); $event.stopPropagation()">view</a></h5>
+                    <div ng-if="!item.joinable && item.voted == '1'">
+                      <div class="small-3 columns">
+                        <h5 class="join-link"><a class="join-link-green" ng-click="redirectTo(item.id); $event.stopPropagation()">view</a></h5>
+                      </div>
                     </div>
-                  </div>
-                  <div ng-if="!item.joinable && item.voted == '-1'">
-                    <div class="small-3 columns">
-                      <h5 class="join-link"><a class="join-link-red" ng-click="redirectTo(item.id); $event.stopPropagation()">ditched</a></h5>
+                    <div ng-if="!item.joinable && item.voted == '-1'">
+                      <div class="small-3 columns">
+                        <h5 class="join-link"><a class="join-link-red" ng-click="redirectTo(item.id); $event.stopPropagation()">ditched</a></h5>
+                      </div>
                     </div>
                   </div>
                 </div>

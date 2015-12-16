@@ -146,7 +146,7 @@ ul.tabs.tab-title > li > a{
 }
 
 #icon-header {
-  position: absolute;
+  position: fixed;
   z-index: 20;
 }
 
