@@ -14,14 +14,14 @@
       console.log('Logged into both');
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      $.get("/logout", function(res){ return 0;}); //window.location.reload(true);
+      $.get("/logout", function(res){ res=res+""; console.log(res); if (res=="reload") window.location.reload(true);}); //window.location.reload(true);
       document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into this app.';
       console.log('Logged into FB not app');
       window.location.reload(true);
     } else {
       console.log('Other - Not Logged into FB or app');
-      $.get("/logout", function(res){ console.log(res);});
+      $.get("/logout", function(res){ res=res+""; console.log(res); if (res=="reload") window.location.reload(true);});
       $("#connect-directions").show();
       document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into Facebook.';
@@ -54,13 +54,13 @@
   });
 
 FB.Event.subscribe('auth.logout', logout_event);
-  function logout_event(){$.get("/logout", function(res) {console.log(res);})}
+  function logout_event(){$.get("/logout", function(res) {res=res+""; console.log(res); if (res=="reload") window.location.reload(true);})}
 
 
   fb_login_after = function($el) {
   FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
     FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
-    $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url}, function(res) {console.log($('#get_user_link').attr("href")); $('#get_user_link').attr("href","/users/"+res.id);});
+    $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url}, function(res) {if (res=="reload") window.location.reload(true);});
     } });
     $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
     });
