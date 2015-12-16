@@ -1,0 +1,8 @@
+<script type="text/javascript">
+var t=''+window.location+'';
+t=t.split("#access_token=");
+token=t[1];
+$http.post("/set_instagram_token", {token : t[1] }).then(function(res){return 0;});
+
+alert(token);
+</script>
