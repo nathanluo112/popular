@@ -36,3 +36,11 @@ h4 {
   font-size: 2em;
   color: #92a8d1;
 }
+
+h1.rose-quartz {
+  font-size: 4em;
+  margin-top: 3em;
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  color: #f7cac9;
+}

@@ -226,3 +226,38 @@ p.icon {
 .fi-star {
   color: gold;
 }
+
+.white-blank-page {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #FFF;
+}
+
+.flower-loader {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #FFF;
+  background: #FFF
+              url('ajax-loader.gif')
+              50% 50%
+              no-repeat;
+}
+
+/*body.loading {
+  overflow: hidden;
+}
+
+body.loading .flower-loader {
+  display: block;
+}
+*/
