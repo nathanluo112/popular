@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'logout' => 'users#logout'
   get 'current_user_data/:id' => 'users#get_user_data'
   get 'user_search' => 'users#search'
+  get 'users/current-user-popularity' => 'users#popularity'
   get 'auth' => 'users#instragram_signin'
   get 'get_instagram_token' => 'users#get_instagram_token'
   post 'set_instagram_token' => 'users#set_instagram_token'
