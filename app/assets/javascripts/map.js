@@ -83,8 +83,10 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       lng: place.geometry.location.lng(),
       venue_name: place.name,
       address: place.vicinity,
-      place_id: place.place_id
+      place_id: place.place_id,
     };
+
+    if (place.photos) event.url = place.photos[0].getUrl({maxWidth: 400, maxHeight: 400})
 
     $http({
       method: 'post',
@@ -225,7 +227,6 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     searchBox.addListener('places_changed', function(){
       searchBox.setBounds($scope.bounds);
       var places = searchBox.getPlaces();
-
       if (places.length == 0){
         return;
       }
