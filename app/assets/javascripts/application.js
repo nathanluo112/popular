@@ -16,6 +16,7 @@
 //= require jquery.touchSwipe.min.js
 //= require fb.js
 //= require foundation
+//= require angular.js
 
 //= require geolocation-marker
 //= require map
