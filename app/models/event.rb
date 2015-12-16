@@ -8,6 +8,10 @@ class Event < ActiveRecord::Base
     where("lat < ? and lat > ? and lng < ? and lng > ? and is_active = true and threshold <= ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f, user.popularity).order(score: :desc).limit(25)
   end
 
+  def attendees
+    self.votes.where(vote_direction: 1).map {|vote| vote.user}
+  end
+
   def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
