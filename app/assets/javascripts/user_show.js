@@ -98,6 +98,13 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         console.log(res);
         $scope.search_results=res;
         $scope.$apply();
+        //var a = $(".search-results-div a");
+        //console.log("sdf");
+       // console.log(a[0]);
+       // for (i = 0; i = a.length; i++ ){
+       //   console.log("aa");
+       //   console.log(a[i]);}
+          //if (a[i].attr("class") != ".a-show") a[i].attr("class",".a-dontshow"); }
       });
         }
      }); //$("#user-search-bar").keyup(function(
