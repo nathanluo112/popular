@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :set_instagram_token]
   def create
     # user = User.find_by(facebook_id: params["facebook_id"])
     # if !user
@@ -61,6 +61,7 @@ class UsersController < ApplicationController
 
   def set_instagram_token
     session[:instagram_token] = params[:token]
+    render json: session[:instagram_token].to_json
   end
 
   def popularity

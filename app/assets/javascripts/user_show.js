@@ -1,17 +1,35 @@
 var token;
+$(document).ready(function(){
+  $("#instagram_tab").click(function(event) {
+    event.preventDefault();
+    console.log("it");
+  $("#instagram_form").submit();
+});
+});
+
+
 // var app = angular.module('listing-event', []);
 app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     var t=''+window.location+'';
     t=t.split("#access_token=");
+    console.log(t);
     if (t.length == 2)
       {token=t[1];
         $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
+          console.log("aaaa");
+          console.log(res);
+
+          $("#instagram_tab").click(function(event) {getInstagramPics()});
+
+
         }); }
     else
       $http.get("/get_instagram_token").then(function(res){
         token=res.data;
+         $("#instagram_tab").click(function(event) {getInstagramPics()});
         getInstagramPics();
       });
+
 
     function getInstagramPics() {
     if (token!=null){

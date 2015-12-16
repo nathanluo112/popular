@@ -25,14 +25,18 @@
     </div>
     <%= yield %>
   <% else %>
+    <div class="main-body">
+    <div class="title">Popular</div>
+    <div id="fade-out-div">
     <div class="center-div" id="connect-directions"><p class="fb-color">Login / Signup</p></div>
     <div class="center-div" id="fb-login-div">
       <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" onlogin="fb_login_after(this)" onclick="function() {console.log('hi');}">
         Via Facebook
       </div>
     </div>
-    <a id="get_user_link" href="tesref">User</a>
     <div class="center-div" id="fb-status"></div>
+  </div>
+  </div>
   <% end %>
   </body>
 </html>
