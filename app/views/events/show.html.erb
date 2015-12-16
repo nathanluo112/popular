@@ -8,7 +8,7 @@
 
 <% if !current_user.voted_for?(@event) %>
 <div class="vote row">
-  
+
   <div class="small-12 large-4 columns vote_button">
     <%= form_for [@event, Vote.new], method: "POST" do |f| %>
     <%= f.hidden_field :vote_direction, value: "1" %>
@@ -28,20 +28,20 @@
 <% else %>
 
   <% if current_user.vote_direction_for(@event) == -1 %>
-    <div class="voted neg" <%= "style='display:none'" %>> 
+    <div class="voted neg" <%= "style='display:none'" %>>
       <span class="checked_in">ditched this</span>
     </div>
   <% else %>
-    <div class="voted pos"<%= "style='display:none'" %>> 
+    <div class="voted pos"<%= "style='display:none'" %>>
       <span class="checked_in">checked in</span>
     </div>
 
     <div class="attendees">
       <% if @event.users.count == 1 %>
-        <span class="small-12 columns title centered"> Just you so far... </span> 
+        <span class="small-12 columns title centered"> Just you so far... </span>
       <% else %>
         <span class="small-12 columns title centered"> Who else is here? </span>
-      <% end %>  
+      <% end %>
       <% @event.users.each do |user| %>
         <%= render partial: "attendee", locals: { event: @event, user: user } %>
       <% end %>

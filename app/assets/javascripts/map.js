@@ -27,6 +27,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }).then(function(coords){
       initMap(coords);
       getVotedEvents();
+      getUserPopularity();
   }).then(function(){
     var timeoutId;
     map.addListener("bounds_changed", function(){
@@ -116,8 +117,13 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       venue_name: party.eventName,
       address: party.eventAddress,
       description: party.eventDesc,
-      house_party: true
+      house_party: true,
+      threshold: 0
     };
+
+    if (party.eventThreshold) {
+      event.threshold = Math.min(party.eventThreshold, $scope.userPopularity);
+    }
 
     $http({
       method: 'post',
@@ -165,6 +171,17 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       url: '/events/voted'
     }).then(function(data){
       $scope.votedEvents = data.data
+    }, function(error){
+      console.log(error);
+    });
+  }
+
+  function getUserPopularity(){
+    $http({
+      method: 'get',
+      url: '/users/current-user-popularity'
+    }).then(function(data){
+      $scope.userPopularity = data.data.userPopularity;
     }, function(error){
       console.log(error);
     });

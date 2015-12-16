@@ -59,5 +59,9 @@ class UsersController < ApplicationController
     session[:instagram_token] = params[:token]
   end
 
+  def popularity
+    render json: {userPopularity: current_user.popularity}
+  end
+
 
 end

@@ -4,8 +4,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:id]) || Event.find(3)
-    if current_user.voted_for?(@event) || with_in_range?(@event)
+    @event = Event.find_by(id: params[:id])
+    if current_user.voted_for?(@event)
+      render "show"
+    elsif with_in_range?(@event)
       render "show"
     else
       redirect_to root_path, flash: {alert: "Event is out of range"}
@@ -30,7 +32,7 @@ class EventsController < ApplicationController
   end
 
   def near
-    events = Event.near(params[:bound])
+    events = Event.near(params[:bound], current_user)
     render json: events.to_json
   end
 
@@ -41,7 +43,7 @@ class EventsController < ApplicationController
 
   private
   def permitted_params
-    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id, :description, :house_party)
+    params.require(:event).permit(:lat, :lng, :address, :venue_name, :place_id, :description, :house_party, :threshold)
   end
 
   def with_in_range?(event)
