@@ -148,7 +148,7 @@ div.reveal-modal img{
 
 i.emotion {
   color: white;
-  font-size: 42px; 
+  font-size: 42px;
   text-indent: center;
 }
 
@@ -255,4 +255,14 @@ span.current_user {
   color: white;
   font-size: 2em;
   right: 10px;
+}
+
+.yaas {
+  display: block;
+  background-color: #f7cac9;
+}
+
+.nahh {
+  display: block;
+  background-color: #92a8d1;
 }
