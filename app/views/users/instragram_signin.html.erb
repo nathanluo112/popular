@@ -1,7 +1,10 @@
+<form id="ig_token_form" action="/set_instragram_token" method="post">
+  <input type="hidden" value="" name="token" id="token_field">
+</form>
 <script type="text/javascript">
-var t=''+window.location+'';
+var t=window.location.href;
 t=t.split("#access_token=");
 token=t[1];
-$http.post("/set_instagram_token", {token : t[1] }).then(function(res){window.location.href="/auth"});
-
+$('#token_field').val(token);
+$('#ig_token_form').submit();
 </script>

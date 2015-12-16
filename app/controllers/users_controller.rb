@@ -50,9 +50,9 @@ class UsersController < ApplicationController
   end
 
   def instragram_signin
-    if session[:instagram_token]
-      redirect_to "/users/#{current_user.id}"
-    end
+    # if session[:instagram_token]
+    #   redirect_to "/users/#{current_user.id}"
+    # end
   end
 
   def get_instagram_token
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
   def set_instagram_token
     session[:instagram_token] = params[:token]
-    render json: session[:instagram_token].to_json
+    redirect_to "/users/#{current_user.id}"
   end
 
   def popularity

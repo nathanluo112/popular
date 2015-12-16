@@ -9,17 +9,17 @@ $(document).ready(function(){
 
 // var app = angular.module('listing-event', []);
 app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
-    var t=''+window.location+'';
-    t=t.split("#access_token=");
-    if (t.length == 2)
-      {token=t[1];
-        $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
-          $("#instagram_tab").unbind("click");
-          $("#instagram_tab").bind("click",false);
-          $("#instagram_tab").unbind("click",false);
-          $("#instagram_tab").bind("click",function(event) {getInstagramPics();});
-        }); }
-    else
+    // var t=''+window.location+'';
+    // t=t.split("#access_token=");
+    // if (t.length == 2)
+    //   {token=t[1];
+    //     $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
+    //       $("#instagram_tab").unbind("click");
+    //       $("#instagram_tab").bind("click",false);
+    //       $("#instagram_tab").unbind("click",false);
+    //       $("#instagram_tab").bind("click",function(event) {getInstagramPics();});
+    //     }); }
+    // else
       $http.get("/get_instagram_token").then(function(res){
         token=res.data;
         if (res.data=="No instagram") {
