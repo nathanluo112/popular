@@ -1,16 +1,16 @@
-<div id="reload row"></div>
-<div id="swipe">
-<div class="top_pic">
-  <% if @event.url %>
-  <%= image_tag(@event.url) %>
-  <% else %>
-  <%= image_tag("placeholder.jpg") %>
-  <% end %>
-</div>
-<div id="event_show">
-  <div class="small-12 columns name"><%= @event.venue_name || "PlaceHolder" %></div>
-  <div class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></div>
-</div>
+<% if @event.url %>
+  
+  <div class="row" id="event_show" style="background-image: url('<%=@event.url%>');">
+    <p class="small-12 columns name" ><%= @event.venue_name || "PlaceHolder" %></p>
+    <p class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></p>
+  </div>
+<% else %>
+  <div class="row" id="event_show" style="background-image: url('placeholder.jpg');">
+    <p class="small-12 columns name" ><%= @event.venue_name || "PlaceHolder" %></p>
+    <p class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></p>
+  </div>
+
+<% end %>
 
 <% if !current_user.voted_for?(@event) %>
 <div class="vote row">
@@ -34,11 +34,11 @@
 <% else %>
 
   <% if current_user.vote_direction_for(@event) == -1 %>
-    <div class="voted neg" <%= "style='display:none'" %>>
+    <div class="voted neg debug" <%= "style='display:none'" %>>
       <span class="checked_in">ditched this</span>
     </div>
   <% else %>
-    <div class="voted pos"<%= "style='display:none'" %>>
+    <div class="voted pos debug"<%= "style='display:none'" %>>
       <span class="checked_in">checked in</span>
     </div>
 
