@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   has_many :votes, as: :votable, dependent: :destroy
   has_many :remarks
   has_many :users, through: :votes
-  validates_uniqueness_of :lat, scope: [:lng, :venue_name]
+  validates_uniqueness_of :lat, scope: [:lng, :venue_name, :is_active]
 
   def self.near(bound, user)
     where("lat < ? and lat > ? and lng < ? and lng > ? and is_active = true and threshold <= ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f, user.popularity).order(score: :desc).limit(25)
