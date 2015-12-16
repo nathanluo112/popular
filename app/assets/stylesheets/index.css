@@ -1,8 +1,13 @@
+body{border: 1px solid black;}
 #search-box {
   width: 66%;
   margin-top: 5px;
   border-radius: 20px;
   opacity: 0.75;
+}
+.pac-container {
+  position:fixed;
+  top: 10vh;
 }
 
 h5.venue-name {

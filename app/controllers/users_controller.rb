@@ -1,19 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery :except => [:create, :set_instagram_token]
   def create
-    # user = User.find_by(facebook_id: params["facebook_id"])
-    # if !user
-    #   user = User.new(first_name: params["first_name"], last_name: params["last_name"], facebook_id:
-    #   params["facebook_id"], profile_pic_url: params["profile_pic_url"])
-    #   if user.save
-    #     session[:user_id] = user.id
-    #     render json: user
-    #   end
-    # else
-    #   user.update(first_name: params["first_name"], last_name: params["last_name"],profile_pic_url: params["profile_pic_url"])
-    #   session[:user_id] = user.id
-    #   render json: user
-    # end
     user = User.find_or_create_by(facebook_id: params["facebook_id"])
     user.assign_attributes(first_name: params["first_name"], last_name: params["last_name"],profile_pic_url: params["profile_pic_url"])
     user.save if user.changed?
@@ -68,8 +55,8 @@ class UsersController < ApplicationController
     redirect_to "/users/#{current_user.id}"
   end
 
-  def popularity
-    render json: {userPopularity: current_user.popularity}
+  def info
+    render json: {user: current_user, last_voted: current_user.votes.last.created_at}
   end
 
 

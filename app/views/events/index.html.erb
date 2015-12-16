@@ -1,6 +1,6 @@
 <div ng-app="listing-event">
   <div ng-controller="listController">
-
+    <div id="searchbox-container"></div>
     <div id="fix-map">
       <div class="row">
         <div id="map" class="small-12 columns"></div>
@@ -80,7 +80,7 @@
           </div>
         </div>
 
-      <div ng-if="mode == HOUSE_MODE" class="event-list">
+      <div ng-if="mode == HOUSE_MODE && ableToCreate()" class="event-list">
         <div class="index-title">
           <h4 class="green-underline">Throw a House Party</h4>
         </div>
@@ -126,6 +126,12 @@
             </div>
           </form>
           <div id="blue-bar"></div>
+        </div>
+      </div>
+
+      <div ng-if="mode == HOUSE_MODE && !ableToCreate()">
+        <div class="list">
+          You have to wait {{timeToWait()}} hours to make your own party.
         </div>
       </div>
 
