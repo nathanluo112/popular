@@ -14,18 +14,44 @@
   margin: auto;
 }
 
+.search-together{
+  text-align: center;
+  margin: auto;
+}
+
+.search-results-div a {
+  display: none;
+}
+
+.a-dontshow {
+  display: none;
+}
+
+.a-show {
+  display: block;
+  font-size: 1.2em;
+}
+
 .search-results-div {
   background-color: white;
   display: block;
-  float: clear;
+  width: 15em;
+  margin: auto;
+  text-align: center;
+  -moz-box-shadow: -1px 1px 1px #999999;
+  -webkit-box-shadow: -1px 1px 1px #999999;
+  box-shadow: -1px 1px 1px #999999;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=225, Color='#999999')";
 }
 
-.searchresults {
+.search-results {
   background-color: white;
   color: #2f569f;
   border-bottom: 1px solid #dddddd;
-  width: 20em;
-  display: inline-block;
+  width: 15em;
+/*  font-size: 26px;
+  text-align: center;*/
 }
 
 div.user_image img {

@@ -18,7 +18,6 @@
       document.getElementById('fb-status').innerHTML = 'Please log ' +
         'into this app.';
       console.log('Logged into FB not app');
-      window.location.reload(true);
     } else {
       console.log('Other - Not Logged into FB or app');
       $.get("/logout", function(res){ res=res+""; console.log(res); if (res=="reload") window.location.reload(true);});
