@@ -1,13 +1,20 @@
-// $(document).ready(function(){
+$(document).ready(function(){
 
-//   $(function() {
-//     $("#swipe").swipe( {
-//       //Generic swipe handler for all directions
-//       swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
-//         // location.reload();
-//         console.log("you swiped " + direction );
-//       }
-//     });
-//   });
+  $(function() {
+    $("#event_show").swipe( {
+      
+      swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+        $(".name").toggle();
+        $(".address").toggle();
+        $(".description").toggle();
+      }
+      swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+        $(".name").toggle();
+        $(".address").toggle();
+        $(".description").toggle();
+      }
 
-// });
+    });
+  });
+
+});
