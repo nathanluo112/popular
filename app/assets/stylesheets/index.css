@@ -164,11 +164,12 @@ textarea#house-party-description {
   width: 100%;
   z-index: 3;
   background-color: #FFF;
+  font-size: .75em;
 }
 
 .list {
   position: relative;
-  margin-top: 64.5vh;
+  margin-top: 65vh;
   width: 100%;
 }
 
