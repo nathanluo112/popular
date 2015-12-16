@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
     popularity_of_most_popular = popularity_array.max
 
     dissers = self.votes.where(vote_direction: -1).map {|vote| vote.user}
-
+    # Think about making these rules data rather than code
     if positive_votes.count > 10 && self.score > 0
       ninetieth_percentile = (num_of_attendees * 0.1).to_i
       eightieth_percentile = (num_of_attendees * 0.2).to_i

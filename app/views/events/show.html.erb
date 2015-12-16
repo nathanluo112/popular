@@ -1,13 +1,16 @@
 <div id="event_show">
+  <!-- why would it be null - missing default? -->
   <div class="score"><%= @event.score || 0 %></div>
   <div class="name"><%= @event.venue_name || "PlaceHolder" %></div>
   <div class="address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></div>
 </div>
 
+<!-- prefer the +ve branch first -->
 <% if !current_user.voted_for?(@event) %>
 <div class="vote row">
   
   <div class="small-12 large-4 columns vote_button">
+    <!-- the method POST here should be inferred from the fact Vote.new is unsaved -->
     <%= form_for [@event, Vote.new], method: "POST" do |f| %>
     <%= f.hidden_field :vote_direction, value: "1" %>
     <%= f.submit "bumpin" %>

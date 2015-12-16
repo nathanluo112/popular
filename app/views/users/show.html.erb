@@ -18,6 +18,7 @@
             <p>You have not attended any events yet</p>
           </div>
           <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
+          <!-- x is not the best name -->
             <div ng-repeat="x in user.events | orderBy: '-created_at'">
               <h5>Venue</h5>
               <p>{{x.venue_name}}</p>
@@ -65,7 +66,8 @@
               <h5>Love or Hate</h5>
               <p>{{x.remark_direction}}</p>
               <h5>Made by</h5>
-              <p>{{x.giver.first_name +" "+x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
+              <!-- let angular do the concatenation -->
+              <p>{{x.giver.first_name}} {{x.giver.last_name}} <img src='/assets/{{x.giver.profile_pic_url}}'></p>
               <h5>Date</h5>
               <p>{{x.created_at | date: "shortDate"}}</p>
               <h5>Venue</h5>

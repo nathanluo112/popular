@@ -2,8 +2,12 @@ class RemarksController < ApplicationController
 
   
 
+  # Don't over-use merge with params
   def create
-    remark = Remark.new(permit_params.merge(giver_id: current_user.id, receiver_id: params[:remark][:user_id], event_id: params[:event_id]))
+    remark = Remark.new(permit_params)
+    remark.giver = current_user
+    remark.receiver_id = params[:remark][:user_id]
+    remark.event = params[:event_id]))
     # binding.pry
     if remark.save
       render text: "You've totally just put your rep on the line, person."

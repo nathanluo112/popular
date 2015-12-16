@@ -13,7 +13,7 @@ $(document).ready(function(){
       console.log("You've already voted.");
     });
   });
-  
+
   $(".remark_buttons").on("click", "a.hate", function(event){
     event.preventDefault();
     

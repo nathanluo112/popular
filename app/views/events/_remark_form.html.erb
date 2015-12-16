@@ -1,3 +1,4 @@
+<!-- You probably don't need the explicit method post here -->
   <%= form_for [event, Remark.new], :html => { :multipart => true }, :remote => true, method: "post" do |f| %>
   <%= f.hidden_field :remark_direction, value: val %>
   <%= f.hidden_field :user_id, value: user.id %>
