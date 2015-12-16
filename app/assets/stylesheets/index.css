@@ -1,4 +1,7 @@
-body{border: 1px solid black;}
+body{
+  border: 1px solid black;
+  clear: both;
+}
 #search-box {
   width: 66%;
   margin-top: 5px;
