@@ -9,6 +9,11 @@ h5.venue-name {
   font-family: 'Abel', sans-serif;
   text-align: left;
   color: #5c7cb8;
+/*  border-bottom: 2px solid #f7cac9;*/
+}
+
+.event-splitter-pink {
+  border-bottom: 2px solid #f7cac9;
 }
 
 p.venue-address {
@@ -87,12 +92,11 @@ a.host-link:hover {
 }
 
 #index-event-list {
-  border-top: 2px solid #f7cac9;
+  padding-bottom: -1em;
   margin-bottom: -1em;
 }
 
 .event-list {
-  border-bottom: 2px solid #f7cac9;
   margin-bottom: 4px;
 }
 

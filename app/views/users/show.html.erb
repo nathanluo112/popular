@@ -1,22 +1,20 @@
 <div class="row">
-<div ng-app="listing-event">
+<div id="user-top" ng-app="listing-event">
   <div ng-controller="usercontroller">
 
     <div class="Top-stay">
-      <div class="pad_top" >
-        <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
-        <div class="search-results-div">
-          <p class=" searchresults small-12 columns center" ng-repeat="x in search_results">
-            <a class="small-12 columns" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
-          </p>
-        </div>
-        <div class="user_image">
-          <span class="small-6 user-popularity">{{user.popularity}}<i class="fi-star"></i></span>
-          <img class="small-6" ng-src={{user.profile_pic_url}}>
-        </div>
-        <div class="user-name">
-          <p>{{user.first_name}} {{user.last_name}}</p>
-        </div>
+      <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
+      <div class="search-results-div">
+        <p class=" searchresults small-12 columns center" ng-repeat="x in search_results">
+          <a class="small-12 columns" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
+        </p>
+      </div>
+      <div class="user_image">
+        <span class="small-6 user-popularity">{{user.popularity}}<i class="fi-star"></i></span>
+        <img class="small-6" ng-src={{user.profile_pic_url}}>
+      </div>
+      <div class="user-name">
+        <p>{{user.first_name}} {{user.last_name}}</p>
       </div>
     </div>
 
