@@ -29,7 +29,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }).then(function(coords){
       initMap(coords);
       getVotedEvents();
-      getUserPopularity();
+      getUserInfo();
       $('.white-blank-page').toggle();
   }).then(function(){
     document.getElementsByClassName("fi-home")[0].addEventListener("click", function(event){
@@ -124,6 +124,14 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     $scope.mode = $scope.HOUSE_MODE;
   }
 
+  $scope.ableToCreate = function(){
+    return Date.now() - Date.parse($scope.user.last_voted) > 14400000;
+  }
+
+  $scope.timeToWait = function(){
+    return ((14400000 - (Date.now() - Date.parse($scope.user.last_voted)))/3600000).toFixed(1);
+  }
+
   $scope.createHouseEvent = function(party){
     var event = {
       lat: $scope.currentLocationMarker.position.lat(),
@@ -136,7 +144,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     };
 
     if (party.eventThreshold) {
-      event.threshold = Math.min(party.eventThreshold, $scope.userPopularity);
+      event.threshold = Math.min(party.eventThreshold, $scope.user.popularity);
     }
 
     $http({
@@ -190,12 +198,13 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     });
   }
 
-  function getUserPopularity(){
+  function getUserInfo(){
     $http({
       method: 'get',
-      url: '/users/current-user-popularity'
+      url: '/users/current-user-info'
     }).then(function(data){
-      $scope.userPopularity = data.data.userPopularity;
+      $scope.user = data.data.user;
+      $scope.user.last_voted = data.data.last_voted;
     }, function(error){
       console.log(error);
     });
