@@ -1,12 +1,12 @@
 <% if @event.url %>
-  
+
   <div class="row" id="event_show" style="background-image: url('<%=@event.url%>');">
     <p class="small-12 columns name" ><%= @event.venue_name || "Unknown" %></p>
     <p class="small-12 columns address"><%= @event.address || "Event address unavailable."%></p>
     <p class="small-12 columns description"><%= @event.address || "No description available."%>
   </div>
 <% else %>
-  <div class="row" id="event_show" style="background-image: url('placeholder.jpg');">
+  <div class="row" id="event_show">
     <p class="small-12 columns name" ><%= @event.venue_name || "PlaceHolder" %></p>
     <p class="small-12 columns address"><%= @event.address || "21 PlaceHolder St, New York, NY 10001"%></p>
   </div>
