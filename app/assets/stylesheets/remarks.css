@@ -121,7 +121,7 @@ div.attendees div.row {
 }
 
 div.reveal-modal.love{
-  background-color: #F7CAC9;
+  background-color: #de8a89;
 }
 
 div.reveal-modal.hate{
@@ -136,7 +136,7 @@ div.reveal-modal img{
 
 i.emotion {
   color: white;
-  font-size: 40px; 
+  font-size: 42px; 
   text-indent: center;
 }
 
@@ -163,7 +163,7 @@ div.picture img {
   width: 100%;
   height: 100%;
   max-width: 200px;
-  max-height: 200px;
+  max-height: 300px;
   size: cover;
   border-radius: 0%;
 }
@@ -229,4 +229,18 @@ span.current_user {
   width: 100%;
   padding: 0px 2px 0px 2px;
   float: right;
+}
+
+.fi-skull {
+  color: black;
+}
+
+.fi-heart {
+  color: red;
+}
+
+.close-reveal-modal.close_button {
+  color: white;
+  font-size: 2em;
+  right: 10px;
 }
