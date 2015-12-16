@@ -28,7 +28,9 @@
     <%= remark.description %>
   </div>
   <div class="row columns picture">
-    <%= image_tag(remark.photo) %>
+    <% if remark.photo %>
+      <%= image_tag(remark.photo) %>
+    <% end %>
   </div>
 
     <div class="row score">
