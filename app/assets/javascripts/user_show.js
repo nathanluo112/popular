@@ -22,7 +22,6 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     else
       $http.get("/get_instagram_token").then(function(res){
         token=res.data;
-        alert("get_insta");
         if (res.data=="No instagram") {
           $("#instagram_tab").unbind("click");
           $("#instagram_tab").bind("click",false);
@@ -35,7 +34,6 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         }
 
         else {
-          alert("else");
           $("#instagram_tab").unbind("click");
           $("#instagram_tab").bind("click",false);
           $("#instagram_tab").unbind("click",false);
