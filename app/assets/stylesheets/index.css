@@ -1,3 +1,6 @@
+body {
+    border: 1px solid transparent;
+}
 #search-box {
   width: 66%;
   margin-top: 5px;
@@ -134,6 +137,7 @@ h5.house-party-address {
   font-size: 2em;
   color: #FFF;
   background-color: #c55452;
+  margin-top: .2em;
   margin-bottom: 0em;
 }
 
@@ -192,5 +196,7 @@ textarea#house-party-description {
   margin-top: -2px;
   border-top: 3px solid #2f569f;
   border-bottom: 3px solid #9DC49D;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
