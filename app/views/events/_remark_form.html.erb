@@ -2,7 +2,7 @@
   <%= f.hidden_field :remark_direction, value: val %>
   <%= f.hidden_field :user_id, value: user.id %>
   <%= f.text_field :description %>
-  <%= f.file_field :photo %>
+  <%= f.file_field :photo, class: "photo_upload" %>
   <%= f.submit message, id: "create_remark" %>
   <%= f.button "nevermind", name: "back" %>
   <% end %>

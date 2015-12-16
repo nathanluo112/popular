@@ -85,6 +85,21 @@ div.hate_form button{
   height: 4em;
 }
 
+input#remark_description {
+  padding: 0px;
+  margin: 0px;
+}
+
+input#remark_photo {
+  font-family: 'Abel', sans-serif;
+  font-size: .5em;
+  background: none;
+  border: none;
+  background-color: #92A8D1;
+  color: white;
+  padding: 5px;
+}
+
 div.remark_display {
   display: none;
 }
