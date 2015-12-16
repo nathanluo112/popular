@@ -36,20 +36,21 @@
     <div class="row score">
       <%= remark.score %><i class="fi-star emotion"></i>
     </div>
-  
+
   <% if current_user.id != remark.giver.id && !remark.already_has_vote_from(current_user) %>
     <div class="row remark_vote">
-      
-      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
-      <%= f.hidden_field :vote_direction, value: "1" %>
-      <%= f.submit "yaas" %>
-      <% end %>
-      
-      <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
-      <%= f.hidden_field :vote_direction, value: "-1" %>
-      <%= f.submit "nahh" %>
-      <% end %>
-
+      <div class="yaas">
+        <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
+        <%= f.hidden_field :vote_direction, value: "1" %>
+        <%= f.submit "yaas" %>
+        <% end %>
+      </div>
+      <div class="nahh">
+        <%= form_for [remark.event, remark, Vote.new], method: "POST", class: "small-6 columns" do |f| %>
+        <%= f.hidden_field :vote_direction, value: "-1" %>
+        <%= f.submit "nahh" %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
