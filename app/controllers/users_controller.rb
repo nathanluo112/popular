@@ -50,9 +50,11 @@ class UsersController < ApplicationController
   end
 
   def instragram_signin
-    @t = request.fullpath
-    p "this should work:   #{params['#access_token']}"
-    redirect_to "/users/#{current_user.id}"
+    if !!session[:instagram_token]
+      redirect_to "/users/#{current_user.id}"
+    else
+       render "users/show"
+    end
   end
 
   def get_instagram_token

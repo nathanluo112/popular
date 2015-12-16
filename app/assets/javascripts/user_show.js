@@ -17,9 +17,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
           $("#instagram_tab").unbind("click");
           $("#instagram_tab").bind("click",false);
           $("#instagram_tab").unbind("click",false);
-          $("#instagram_tab").bind("click",function(event) {getInstagramPics()});
-
-
+          $("#instagram_tab").bind("click",function(event) {getInstagramPics();});
         }); }
     else
       $http.get("/get_instagram_token").then(function(res){
@@ -41,7 +39,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
           $("#instagram_tab").unbind("click");
           $("#instagram_tab").bind("click",false);
           $("#instagram_tab").unbind("click",false);
-         $("#instagram_tab").bind("click",function(event) {getInstagramPics()}); }
+         $("#instagram_tab").bind("click",function(event) {getInstagramPics();}); }
       });
 
 
