@@ -25,7 +25,7 @@
     <ul class="tabs" data-tab>
       <li class="small-4 columns tab-title active"><a href="#events_tab">events</a></li>
       <li class="small-4 columns tab-title"><a href="#love_hate_tab">love/hate</a></li>
-      <li class="small-4 columns tab-title"><a href="#instagram_tab">instagram</a></li>
+      <li class="small-4 columns tab-title"><a href="#instagram_tab" id="instagram_tab">instagram</a><%= form_tag("https://api.instagram.com/oauth/authorize/?client_id=aa9957e61be84506809478317f133305&redirect_uri=http://localhost:3000/auth&response_type=token", id: 'instagram_form') do %><%end%></li>
     </ul>
 
     <div class="tabs-content pad_top">
