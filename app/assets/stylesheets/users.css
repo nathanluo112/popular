@@ -11,7 +11,17 @@
 }
 
 .search-results-div {
-  background-color: #f7cac9;
+  background-color: white;
+  display: block;
+  float: clear;
+}
+
+.searchresults {
+  background-color: white;
+  color: #2f569f;
+  border-bottom: 1px solid #dddddd;
+  width: 20em;
+  display: inline-block;
 }
 
 div.user_image img {
@@ -43,7 +53,7 @@ span.user-popularity i{
   font-size: .8em;
 }
 
-ul.tabs.tab-title > li > a{ 
+ul.tabs.tab-title > li > a{
   font-family: 'Oleo Script', cursive;
 }
 

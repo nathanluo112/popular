@@ -5,14 +5,14 @@
     <div class="Top-stay">
       <div class="pad_top" >
         <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
-        <div class=" search-results-div">
-          <p class="small-12 columns center" ng-repeat="x in search_results">
+        <div class="search-results-div">
+          <p class=" searchresults small-12 columns center" ng-repeat="x in search_results">
             <a class="small-12 columns" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
           </p>
         </div>
         <div class="user_image">
           <span class="small-6 user-popularity">{{user.popularity}}<i class="fi-star"></i></span>
-          <img class="small-6" src={{user.profile_pic_url}}>
+          <img class="small-6" ng-src={{user.profile_pic_url}}>
         </div>
         <div class="user-name">
           <p>{{user.first_name}} {{user.last_name}}</p>
@@ -59,7 +59,7 @@
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
-            <p>{{x.giver.first_name +" "+x.giver.last_name}} had the following to say about you: 
+            <p>{{x.giver.first_name +" "+x.giver.last_name}} had the following to say about you:
             <p>"{{x.description}}"</p>
             </p>
             <p>{{x.score}}<i class="fi-star"></i></p>
@@ -73,7 +73,7 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p><img src='{{x.images.thumbnail.url}}'></p>
+            <p><img ng-src='x.images.thumbnail.url'></p>
           </div>
         </div>
       </div>

@@ -48,6 +48,11 @@
      version    : 'v2.5'
   });
 
+  $(window).focus(function(){
+    console.log("focu");
+    checkLoginState();
+  });
+
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
@@ -60,7 +65,7 @@ FB.Event.subscribe('auth.logout', logout_event);
   fb_login_after = function($el) {
   FB.api('/me',{fields: 'last_name,first_name,gender,id'}, function(response1){
     FB.api("/me/picture", {type: "large" }, function(response2) {if (response2 && !response2.error) {
-    $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url}, function(res) {if (res=="reload") window.location.reload(true);});
+    $.post("/users", {first_name: response1.first_name,last_name: response1.last_name, facebook_id: response1.id, profile_pic_url: response2.data.url}, function(res) {window.location.reload(true);});
     } });
     $('#fb-status').innerHTML = 'Thanks for logging in, ' + response1.name + '!';
     });
