@@ -2,7 +2,6 @@ var token;
 $(document).ready(function(){
   $("#instagram_tab").click(function(event) {
     event.preventDefault();
-    console.log("it");
   $("#instagram_form").submit();
 });
 });
@@ -12,12 +11,9 @@ $(document).ready(function(){
 app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
     var t=''+window.location+'';
     t=t.split("#access_token=");
-    console.log(t);
     if (t.length == 2)
       {token=t[1];
         $http.post("/set_instagram_token", {token : t[1] }).then(function(res){
-          console.log("aaaa");
-          console.log(res);
           $("#instagram_tab").unbind();
           $("#instagram_tab").click(function(event) {getInstagramPics()});
 
@@ -30,7 +26,6 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         if (res.data=="No instagram") {
           $("#instagram_tab").click(function(event) {
          event.preventDefault();
-          console.log("it");
           $("#instagram_form").submit();
           });
 
@@ -52,7 +47,6 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
         url: "https://api.instagram.com/v1/users/self/media/recent/?access_token="+token,
         dataType: "jsonp"
       }).then(function(res){
-        console.log(res);
         var images=[];
         var images_counter = res.data.length;
         for (var i = 0; i< images_counter; i++) {
@@ -63,7 +57,6 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
               break; }
           }
         };
-        console.log(images);
         $scope.images_array = images;
         $scope.$apply();
       });
@@ -123,13 +116,11 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
 
      $("#user-search-bar").keyup(function(){
       name=this.value;
-      console.log("test "+name);
       if (name=="") {
         $scope.search_results=[];
         $scope.$apply();}
       else {
       $.get("/user_search", {name: name}).done(function(res){
-        console.log(res);
         $scope.search_results=res;
         $scope.$apply();
         //var a = $(".search-results-div a");
