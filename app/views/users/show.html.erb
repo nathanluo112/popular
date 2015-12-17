@@ -1,15 +1,15 @@
 <div class="row">
 <div id="user-top" ng-app="listing-event">
-  <div ng-controller="usercontroller">
+<div ng-controller="usercontroller">
 
     <div class="Top-stay">
         <div class="search-together">
-        <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
-        <div class="search-results-div">
-          <p class="search-results" ng-repeat="x in search_results">
-            <a class="a-show" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
-          </p>
-        </div>
+            <input type="text" ng-model="usersearch" id="user-search-bar" placeholder="search users">
+            <div class="search-results-div">
+              <p class="search-results" ng-repeat="x in search_results">
+                <a class="a-show" href="/users/{{x.id}}">{{x.first_name + " "+ x.last_name}}</a>
+              </p>
+            </div> <!-- -->
         </div>
         <div class="user_image">
           <span class="small-6 user-popularity">{{user.popularity}}<i class="fi-star"></i></span>
@@ -64,7 +64,7 @@
 
         <div ng-show="!user.remarks_received.length" class="hate_detail">
           <p>No remarks received yet</p>
-        </div
+        </div>
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
@@ -86,7 +86,10 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+   </div> <!-- -->
+
+
+</div>
 </div>
 </div>
