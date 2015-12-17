@@ -144,6 +144,13 @@ ul.tabs.tab-title > li > a{
   font-size: 1.5em;
 }
 
+.content-header-user-page-spacer {
+  background-color: #4c576d;
+  color: white;
+  font-size: 1.5em;
+  margin-top: 3em;
+}
+
 .instagram_detail.ng-scope {
   border-bottom: 1px solid #c9c9c9;
   margin-bottom: 1em;
