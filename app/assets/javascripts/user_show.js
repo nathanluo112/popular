@@ -58,6 +58,7 @@ app.controller('usercontroller', ['$scope', '$http', function($scope, $http) {
               break; }
           }
         };
+        console.log(images);
         $scope.images_array = images;
         $scope.$apply();
       });

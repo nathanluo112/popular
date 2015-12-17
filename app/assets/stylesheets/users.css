@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.instagrams_pics_border {
+
+}
+
 #user-search-bar {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -235,7 +239,6 @@ ul.tabs.tab-title > li > a{
 
 .instagram_detail {
   text-align: center;
-  background-color: #92a8d1;
 }
 
 .fi-star {
