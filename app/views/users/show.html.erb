@@ -29,7 +29,7 @@
     <div class="tabs-content pad_top">
 
       <div class="content active" id="events_tab">
-        <div ng-show="!user.events.length" class="user-events-repeats">
+        <div ng-show="!user.events.length" class="event_detail">
           <p>You have not attended any events yet</p>
         </div>
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
@@ -44,7 +44,7 @@
       </div>
 
       <div class="content" id="love_hate_tab">
-        <div ng-show="!user.remarks_made.length" class="user-remarks-repeats">
+        <div ng-show="!user.remarks_made.length" class="love_detail">
           <p>You have not made any remarks yet</p>
         </div>
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div ng-show="!user.remarks_received.length" class="user-remarks-repeats">
+        <div ng-show="!user.remarks_received.length" class="hate_detail">
           <p>You have not received any remarks yet</p>
         </div
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
