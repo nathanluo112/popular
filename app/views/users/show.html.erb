@@ -84,8 +84,8 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p class="instagram_pics_border"><a ng-href='{{x.images.link}}'><img ng-src={{x.images.thumbnail.url}}></a></p>
-            <p ng-bind='x.images.caption.text'></p>
+            <p class="instagram_pics_border"><a ng-href={{x.link}}><img ng-src={{x.images.thumbnail.url}}></a></p>
+            <p ng-bind={{x.caption}}></p>
             <p></p>
           </div>
         </div>
