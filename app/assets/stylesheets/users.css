@@ -102,7 +102,7 @@ ul.tabs.tab-title > li > a{
   font-family: 'Oleo Script', cursive;
   color: white;
   text-align: center;
-  background-color: #c55452;
+  background-color: #ac6b6a;
   margin: 0px;
   padding: 0px;
 }
@@ -129,7 +129,9 @@ ul.tabs.tab-title > li > a{
   margin: 0;
   padding: 0;
 }
-
+.spacer{
+  margin:3em;
+}
 .switch {
   background-color: #f1f1f1;
   margin:0px;
@@ -137,8 +139,14 @@ ul.tabs.tab-title > li > a{
 }
 
 .content-header-user-page {
-  background-color:#2f569f;
+  background-color: #4c576d;
   color: white;
+  font-size: 1.5em;
+}
+
+.instagram_detail.ng-scope {
+  border-bottom: 1px solid #c9c9c9;
+  margin-bottom: 1em;
 }
 
 .user-name {
@@ -237,8 +245,7 @@ ul.tabs.tab-title > li > a{
 }
 
 .hate_detail {
-  background-color:  #933f3d;
-  color: white;
+  background-color:  #f1f1f1;
   text-align: center;
 }
 
