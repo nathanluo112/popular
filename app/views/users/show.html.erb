@@ -50,12 +50,8 @@
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
           <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'" class="love_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
-            <p> You had the following to say about
-              {{x.receiver.first_name +" "+x.receiver.last_name}}
-              : "
-              {{x.description}}
-              "
-            </p>
+            <p> You had the following to say about {{x.receiver.first_name +" "+x.receiver.last_name}}:</p>
+            <p>"{{x.description}}"</p>
             <p>
               {{x.score}}<i class="fi-star"></i>
             </p>
@@ -70,9 +66,8 @@
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
-            <p>{{x.giver.first_name +" "+x.giver.last_name}} had the following to say about you:
+            <p>{{x.giver.first_name +" "+x.giver.last_name}} had the following to say about you:</p>
             <p>"{{x.description}}"</p>
-            </p>
             <p>{{x.score}}<i class="fi-star"></i></p>
           </div>
         </div>
