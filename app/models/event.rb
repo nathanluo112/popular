@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :votes, as: :votable, dependent: :destroy
-  has_many :remarks
+  has_many :remarks, dependent: :destroy
   has_many :users, through: :votes
   validates_uniqueness_of :lat, scope: [:lng, :venue_name], if: :is_active
 

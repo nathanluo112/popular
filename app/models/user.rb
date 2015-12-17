@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :events, through: :votes, source: :votable, source_type: "Event"
   has_many :votes, dependent: :destroy
-  has_many :remarks_made, foreign_key: "giver_id", class_name: "Remark"
-  has_many :remarks_received, foreign_key: "receiver_id", class_name: "Remark"
+  has_many :remarks_made, foreign_key: "giver_id", class_name: "Remark", dependent: :destroy
+  has_many :remarks_received, foreign_key: "receiver_id", class_name: "Remark", dependent: :destroy
 
 
   def voted_for?(event)
