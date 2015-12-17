@@ -76,13 +76,13 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     $scope.places = [];
     $scope.mode = $scope.SEARCH_MODE;
     map.panTo($scope.currentLocationMarker.position)
-    map.setZoom(19);
+    map.setZoom(18);
     newBoundQuery();
   }
 
   $scope.listPlaces = function(){
     map.setCenter($scope.currentLocationMarker.position);
-    map.setZoom(19);
+    map.setZoom(18);
     removeAllMarkers();
     $scope.mode = $scope.CREATE_MODE;
     $scope.bounds = map.getBounds();
@@ -120,12 +120,13 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     $scope.places = [];
     removeAllMarkers();
     map.setCenter($scope.currentLocationMarker.position);
-    map.setZoom(19);
+    map.setZoom(18);
     $scope.mode = $scope.HOUSE_MODE;
   }
 
   $scope.ableToCreate = function(){
-    return Date.now() - Date.parse($scope.user.last_voted) > 14400000;
+    // return Date.now() - Date.parse($scope.user.last_voted) > 14400000;
+    return true;
   }
 
   $scope.timeToWait = function(){
