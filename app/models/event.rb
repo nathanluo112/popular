@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   has_many :votes, as: :votable, dependent: :destroy
   has_many :remarks
   has_many :users, through: :votes
-  validates_uniqueness_of :lat, scope: [:lng, :venue_name, :is_active]
+  validates_uniqueness_of :lat, scope: [:lng, :venue_name], if: :is_active
 
   def self.near(bound, user)
     where("lat < ? and lat > ? and lng < ? and lng > ? and is_active = true and threshold <= ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f, user.popularity).order(score: :desc).limit(25)
@@ -10,6 +10,10 @@ class Event < ActiveRecord::Base
 
   def attendees
     self.votes.where(vote_direction: 1).map {|vote| vote.user}
+  end
+
+  def self.end_all_active_events
+    where(is_active: true).each {|event| event.update_attributes(is_active: false); event.save;}
   end
 
   def calculate_popularity
