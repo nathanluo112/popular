@@ -136,7 +136,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     var event = {
       lat: $scope.currentLocationMarker.position.lat(),
       lng: $scope.currentLocationMarker.position.lng(),
-      venue_name: party.eventName,
+      venue_name: party.eventName || ($scope.user.first_name+ "'s Party"),
       address: party.eventAddress,
       description: party.eventDesc,
       house_party: true,
