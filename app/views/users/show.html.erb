@@ -61,7 +61,7 @@
             </p>
           </div>
         </div>
-        <p></p>
+        <p class="spacer"></p>
         <p></p>
         <h4 class="content-header-user-page">remarks received</h4>
         <div ng-show="!user.remarks_received.length" class="hate_detail">
@@ -85,7 +85,7 @@
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
             <p class="instagram_pics_border"><a ng-href={{x.link}}><img ng-src={{x.images.thumbnail.url}}></a></p>
-            <p ng-bind={{x.caption}}></p>
+            <p ng-bind={{x.caption.text}}></p>
             <p></p>
           </div>
         </div>
