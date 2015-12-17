@@ -43,6 +43,7 @@
       </div>
 
       <div class="content" id="love_hate_tab">
+        <h3 class="content-header-user-page">remarks made</h3>
         <div ng-show="!user.remarks_made.length" class="love_detail">
           <p>No remarks made yet</p>
         </div>
@@ -60,7 +61,9 @@
             </p>
           </div>
         </div>
-
+        <p></p>
+        <p></p>
+        <h3 class="content-header-user-page">remarks received</h3>
         <div ng-show="!user.remarks_received.length" class="hate_detail">
           <p>No remarks received yet</p>
         </div>
@@ -81,7 +84,9 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p class="instagram_pics_border"><img ng-src={{x.images.thumbnail.url}}></p>
+            <p class="instagram_pics_border"><a href='{{x.images.link}}'><img ng-src={{x.images.thumbnail.url}}></a></p>
+            <p ng-bind={{x.images.caption.text}}></p>
+            <p></p>
           </div>
         </div>
       </div>
