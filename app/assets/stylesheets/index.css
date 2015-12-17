@@ -226,4 +226,18 @@ textarea#house-party-description {
               no-repeat;
 }
 
+h1.rose-quartz {
+  font-size: 10vh;
+  margin-top: 30vh;
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  color: #f7cac9;
+}
 
+h5.enable-location {
+  font-size: 3vh;
+  margin-top: 40vh;
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  color: #f7cac9;
+}
