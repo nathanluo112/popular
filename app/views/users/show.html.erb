@@ -74,6 +74,7 @@
       </div>
 
       <div class="content" id="instagram_tab">
+        <% if @user.id == current_user.id %>
         <div ng-show="!images_array.length" class="instagram_detail">
           <p>No images tagged with "#popular" yet</p>
         </div>
@@ -84,6 +85,11 @@
             <p></p>
           </div>
         </div>
+        <% else %>
+        <div class="instagram_detail">
+          <p>You cannot view another person's instagram feed</p>
+        </div>
+        <% end %>
       </div>
 
    </div> <!-- -->
