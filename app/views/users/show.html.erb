@@ -33,8 +33,7 @@
           <p>No events attended yet</p>
         </div>
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
-         <div ng-repeat="x in user.events | orderBy: '-created_at'"
-         class="event_detail">
+         <div ng-repeat="x in user.events | orderBy: '-created_at'" class="event_detail">
             <h5>{{x.venue_name}}</h5>
             <p>{{x.address}}</p>
             <p>{{x.created_at | date: "shortDate"}}</p>
@@ -82,7 +81,7 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p class="instagrams_pics_border"><img ng-src={{x.images.thumbnail.url}}></p>
+            <p class="instagram_pics_border"><img ng-src={{x.images.thumbnail.url}}></p>
           </div>
         </div>
       </div>
