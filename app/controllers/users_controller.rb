@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def info
-    render json: {user: current_user, last_voted: current_user.votes.last.created_at}
+    render json: {user: current_user, last_voted: current_user.last_upvoted_at}
   end
 
 
