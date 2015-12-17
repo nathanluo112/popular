@@ -25,4 +25,4 @@
 //= require user_show
 //= require swipe
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });
