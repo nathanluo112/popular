@@ -29,6 +29,9 @@
     <div class="tabs-content pad_top">
 
       <div class="content active" id="events_tab">
+        <div ng-show="!user.events.length" class="user-events-repeats">
+          <p>You have not attended any events yet</p>
+        </div>
         <div id="user_events" ng-show="user.events.length" class="user-page-repeats">
          <div ng-repeat="x in user.events | orderBy: '-created_at'"
          class="event_detail">
@@ -41,6 +44,9 @@
       </div>
 
       <div class="content" id="love_hate_tab">
+        <div ng-show="!user.remarks_made.length" class="user-remarks-repeats">
+          <p>You have not made any remarks yet</p>
+        </div>
         <div id="user_remarks_made" ng-show="user.remarks_made.length">
           <div ng-repeat="x in user.remarks_made | orderBy: '-created_at'" class="love_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
@@ -56,6 +62,9 @@
           </div>
         </div>
 
+        <div ng-show="!user.remarks_received.length" class="user-remarks-repeats">
+          <p>You have not received any remarks yet</p>
+        </div
         <div id="user_remarks_received" ng-show="user.remarks_received.length">
           <div ng-repeat="x in user.remarks_received | orderBy: '-created_at'" class="hate_detail">
             <h5>{{x.created_at | date: "shortDate"}} at {{x.event.venue_name}}</h5>
@@ -73,7 +82,7 @@
         </div>
         <div id="images_array_div" ng-show="images_array.length">
           <div ng-repeat="x in images_array" class="instagram_detail">
-            <p><img ng-src={{x.images.thumbnail.url}}></p>
+            <p class="instagrams_pics_border"><img ng-src={{x.images.thumbnail.url}}></p>
           </div>
         </div>
       </div>
