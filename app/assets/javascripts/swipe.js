@@ -22,9 +22,18 @@ $(document).ready(function(){
 
     });
 
+    $(".reveal-modal").swipe({
+
+      swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+        $(".refresh").slideDown('fast').delay("1000");
+      }
+
+
+    });
+
     // $(".attendees").swipe({
     //   swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
-    //     console.log("you swiped" + direction);
+    //     
     //   }
     // });
 
