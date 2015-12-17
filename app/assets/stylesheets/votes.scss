@@ -121,3 +121,43 @@ div.neg {
 div.top_margin {
   margin-top: 10px;
 }
+
+div.most_popular {
+  position: relative;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  display: none;
+  text-align: center;
+  vertical-align: center;
+  clear: right;
+}
+
+div.most_popular img {
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  vertical-align: center;
+  border-radius: 50%;
+}
+
+div.most_popular span.title {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.most_popular i {
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+
+  font-size: 40px;
+  color: gold;
+  vertical-align: center;
+}
+
+div.most_popular p {
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+}

@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
     where(is_active: true).each {|event| event.update_attributes(is_active: false); event.save;}
   end
 
+  def most_pop_user
+    self.users.order(:popularity).last
+  end
+
   def calculate_popularity
     positive_votes = self.votes.where(vote_direction: 1)
     num_of_attendees = positive_votes.count
