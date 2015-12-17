@@ -59,6 +59,13 @@
     <% end %>
   </div>
 
+  <div class="most_popular row">
+    <p><i class="fi-crown"></i></p>
+    <span class="small-12 columns title centered"> Most Popular</span>
+    <%= image_tag(@event.most_pop_user.profile_pic_url) %>
+    <p><%= @event.most_pop_user.first_name %></p>
+  </div>
+
 
   <div class="remarks top_margin">
     <% if @event.remarks.count < 1 %>

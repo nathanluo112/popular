@@ -22,11 +22,28 @@ $(document).ready(function(){
 
     });
 
-    // $(".attendees").swipe({
-    //   swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
-    //     console.log("you swiped" + direction);
-    //   }
-    // });
+    $(".reveal-modal").swipe({
+      swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+        $(".reveal-modal").fadeOut().foundation('reveal', 'close');
+      }
+
+    });
+
+    $(".attendees").swipe({
+      swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+      $(".attendees").toggle();
+      $(".most_popular").toggle();
+      console.log("you swipes right");
+      }
+    });
+
+    $(".most_popular").swipe({
+      swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+      $(".most_popular").toggle();
+      $(".attendees").toggle();
+      console.log("you swipes right");
+      }
+    });
 
   });
 
