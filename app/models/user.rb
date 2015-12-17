@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     remarks_made.where(receiver: user, event: event).exists?
   end
 
+  def last_upvoted_at
+    self.votes.where(vote_direction: 1).last.created_at
+  end
+
 end
