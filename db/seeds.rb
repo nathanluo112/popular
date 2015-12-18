@@ -8,12 +8,12 @@
 default_pic = "default_face.png"
 
 # Users
-u1=User.create(first_name: "Tob", popularity: 100, profile_pic_url: default_pic) #1
-u2=User.create(first_name: "Shaun", last_name: "White", popularity: 100, profile_pic_url: default_pic) #2
-u3=User.create(first_name: "Jay", last_name: "Z", popularity: 100, profile_pic_url: default_pic) #3
-u4=User.create(first_name: "Lorde", popularity: 100, profile_pic_url: default_pic) #4
-u5=User.create(first_name: "Don", last_name: "Trump", popularity: 50, profile_pic_url: default_pic) #5
-u6=User.create(first_name: "Ruth", last_name: "Ginsberg", popularity: 50, profile_pic_url: default_pic) #6
+u1=User.find(10)
+u2=User.find(11)
+u3=User.find(12)
+u4=User.find(13)
+u5=User.find(14)
+u6=User.find(15)
 
 
 # House Parties

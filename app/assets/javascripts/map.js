@@ -76,13 +76,13 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     $scope.places = [];
     $scope.mode = $scope.SEARCH_MODE;
     map.panTo($scope.currentLocationMarker.position)
-    map.setZoom(18);
+    map.setZoom(17);
     newBoundQuery();
   }
 
   $scope.listPlaces = function(){
     map.setCenter($scope.currentLocationMarker.position);
-    map.setZoom(18);
+    map.setZoom(17);
     removeAllMarkers();
     $scope.mode = $scope.CREATE_MODE;
     $scope.bounds = map.getBounds();
@@ -373,8 +373,8 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
         $scope.showFocus = true;
         infowindow.open(map, marker);
         map.panTo(this.position);
-        if (map.getZoom() < 16){
-          map.setZoom(16);
+        if (map.getZoom() < 15){
+          map.setZoom(15);
         }
       })
     }
