@@ -52,7 +52,7 @@ class EventsController < ApplicationController
       current_lng = params[:current_location][:lng].to_f
       lat_diff = (event.lat - current_lat).abs
       lng_diff = (event.lng - current_lng).abs
-      if lat_diff < 0.0005 && lng_diff < 0.0005
+      if lat_diff < 0.002 && lng_diff < 0.002
         return true
       end
     end
