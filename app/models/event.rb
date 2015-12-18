@@ -8,14 +8,20 @@ class Event < ActiveRecord::Base
     where("lat < ? and lat > ? and lng < ? and lng > ? and is_active = true and threshold <= ?", bound["maxlat"].to_f, bound["minlat"].to_f, bound["maxlng"].to_f, bound["minlng"].to_f, user.popularity).order(score: :desc).limit(25)
   end
 
+  def self.end_all_active_events
+    self.where(is_active: true).each do |event|
+      event.end
+    end
+  end
+
   def attendees
     self.votes.where(vote_direction: 1).map {|vote| vote.user}
   end
 
   def end
-    calculate_popularity
-    event.is_active = false
-    event.save
+    self.calculate_popularity
+    self.is_active = false
+    self.save
   end
 
   def most_pop_user

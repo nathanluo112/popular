@@ -7,12 +7,24 @@ class Remark < ActiveRecord::Base
 
   has_attached_file :photo,
   styles: { medium: "300x300>", thumb: "100x100>" },
-  default_url: "missing.png"  
+  default_url: "missing.png"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
+  def self.end_all_remarks
+    self.where(is_current: true).each do |remark|
+      remark.end
+    end
+  end
+
   def already_has_vote_from(user)
     self.votes.where(user_id: user.id).count > 0
+  end
+
+  def end
+    self.calculate_popularity
+    self.is_current = false
+    self.save
   end
 
   def calculate_popularity
