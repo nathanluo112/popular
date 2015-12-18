@@ -12,8 +12,10 @@ class Event < ActiveRecord::Base
     self.votes.where(vote_direction: 1).map {|vote| vote.user}
   end
 
-  def self.end_all_active_events
-    where(is_active: true).each {|event| event.update_attributes(is_active: false); event.save;}
+  def end
+    calculate_popularity
+    event.is_active = false
+    event.save
   end
 
   def most_pop_user
