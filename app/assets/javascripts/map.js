@@ -32,6 +32,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       getUserInfo();
       $('.white-blank-page').toggle();
   }).then(function(){
+    $scope.bounds = map.getBounds();
     document.getElementsByClassName("fi-home")[0].addEventListener("click", function(event){
       if ($window.location.pathname == "/events"){
         event.preventDefault();
@@ -235,8 +236,8 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       mapTypeControl: false,
       rotateControl: false,
       streetView: null
-
     });
+
     $scope.currentLocationMarker = new GeolocationMarker(map);
     $scope.currentLocationMarker.setCircleOptions({visible: false})
     var input = document.createElement("input");
