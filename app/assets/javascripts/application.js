@@ -17,12 +17,12 @@
 //= require fb.js
 //= require foundation
 //= require angular.js
-
 //= require geolocation-marker
+//= require swipe
+
 //= require map
 //= require remarks
 //= require votes
 //= require user_show
-//= require swipe
 
 $(function(){ $(document).foundation(); });
