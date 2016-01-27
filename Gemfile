@@ -6,7 +6,7 @@ gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -31,7 +31,7 @@ gem 'aws-sdk-v1'
 gem 'remotipart'
 
 # Foundation for styling
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.3.2'
 gem 'coffee-rails'
 gem 'foundation-icons-sass-rails'
 
