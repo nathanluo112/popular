@@ -417,10 +417,11 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   function newBoundQuery(){
     removeMarkers();
     $scope.bounds = map.getBounds();
-    var maxlat = Math.max($scope.bounds.R.j, $scope.bounds.R.R);
-    var minlat = Math.min($scope.bounds.R.j, $scope.bounds.R.R);
-    var maxlng = Math.max($scope.bounds.j.R, $scope.bounds.j.j);
-    var minlng = Math.min($scope.bounds.j.R, $scope.bounds.j.j);
+    var temp = $scope.bounds.toJSON();
+    var maxlat = Math.max(temp.east, temp.west);
+    var minlat = Math.min(temp.east, temp.west);
+    var maxlng = Math.max(temp.north, temp.south);
+    var minlng = Math.min(temp.north, temp.south);
     var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
 
     $http({method: "get", url: url}).then(function(data){
