@@ -418,10 +418,10 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
     removeMarkers();
     $scope.bounds = map.getBounds();
     var temp = $scope.bounds.toJSON();
-    var maxlat = Math.max(temp.east, temp.west);
-    var minlat = Math.min(temp.east, temp.west);
-    var maxlng = Math.max(temp.north, temp.south);
-    var minlng = Math.min(temp.north, temp.south);
+    var maxlat = Math.max(temp.south, temp.north);
+    var minlat = Math.min(temp.south, temp.north);
+    var maxlng = Math.max(temp.east, temp.west);
+    var minlng = Math.min(temp.east, temp.west);
     var url = "/events/near?"+ "bound[maxlat]=" + maxlat +"&bound[minlat]=" + minlat +"&bound[maxlng]=" + maxlng + "&bound[minlng]=" + minlng;
 
     $http({method: "get", url: url}).then(function(data){
@@ -431,7 +431,6 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
       }
       addVotedFieldToEvents(events);
       $scope.data = events;
-      console.log($scope.data);
     }, function(error){
       console.log(error);
     }).then(function(){
