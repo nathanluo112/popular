@@ -244,7 +244,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   foundation-icons-sass-rails
-  foundation-rails
+  foundation-rails (= 5.5.3.2)
   jbuilder (~> 2.0)
   jquery-rails
   launchy
@@ -267,4 +267,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.0.pre.2
+   1.11.2
