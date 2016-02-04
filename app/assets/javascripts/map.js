@@ -359,7 +359,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
 
       var contentString = "<div><h5>" + event.venue_name + "</h5></div>";
       if (event.address)  contentString += "<div>" + event.address + "</div>";
-      if (event.description) contentString += "<div><p>"+ event.description + "</div>";
+      if (event.description) contentString += "<div><p>"+ event.description + "</p></div>";
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
