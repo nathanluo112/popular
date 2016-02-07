@@ -1,4 +1,4 @@
-app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', function($http, $q, markerService, eventService){
+app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', 'placeService', function($http, $q, markerService, eventService, placeService){
 	var map;
 	var markers = [];
 	var focusMarker;
@@ -6,20 +6,6 @@ app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', funct
 	function getMap(){
 		return map;
 	}
-
-  function removeMarkers(){
-    var tmp = [];
-    for(var i = 0; i < markers.length; i++) {
-      if ((markers[i].position.lat() != map.center.lat() || markers[i].position.lng() != map.center.lng()) && (markers[i] != focusMarker)) {
-
-        markers[i].setMap(null);
-
-      } else {
-        tmp.push(markers[i]);
-      }
-    }
-    markers = tmp;
-  }
 
   function addInfoWindow(event) {
   	var contentString = "<div><h5>" + event.venue_name + "</h5></div>";
@@ -33,6 +19,9 @@ app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', funct
 		return infoWindow;
   }
 
+  // --------------------------------------------
+  // ----------- General map utilities ----------
+  // --------------------------------------------
   function initMap(div){
 		var deferred = $q.defer();
 		if (map) {
@@ -51,20 +40,24 @@ app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', funct
 					rotateControl: false,
 					streetView: null
 				});
-				var timeoutId;
-				map.addListener("bounds_changed", function(){
-					clearTimeout(timeoutId);
-					timeoutId = setTimeout(function(){
-						removeMarkers();
-						eventService.boundChangeQuery(map.getBounds()).then(function(events){
-							addMarkers(map, events);
-						})
-					}, 200);
-				})
 				deferred.resolve(map);
     	});
 		}
 		return deferred.promise;
+  }
+
+  function removeMarkers(){
+    var tmp = [];
+    for(var i = 0; i < markers.length; i++) {
+      if ((markers[i].position.lat() != map.center.lat() || markers[i].position.lng() != map.center.lng()) && (markers[i] != focusMarker)) {
+
+        markers[i].setMap(null);
+
+      } else {
+        tmp.push(markers[i]);
+      }
+    }
+    markers = tmp;
   }
 
   function initSearchBox(){
@@ -84,6 +77,27 @@ app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', funct
 			map.setZoom(13);
 		})
 	}
+
+	// --------------------------------------------
+  // ---------- Events utilities ----------------
+  // --------------------------------------------
+  function attachBoundChangeQuery(){
+  	var timeoutId;
+  	map.addListener("bounds_changed", function(){
+  		clearTimeout(timeoutId);
+			timeoutId = setTimeout(function(){
+				removeMarkers();
+				eventService.boundChangeQuery(map.getBounds()).then(function(events){
+					addEventMarkers(map, events);
+				})
+			}, 200);
+  	});
+  }
+
+  function clearListenerCallbacks(){
+  	google.maps.event.clearListeners(map, 'bounds_changed');
+  }
+
 
 	function addEventMarker(map, event){
 		var marker = new google.maps.Marker({
@@ -105,19 +119,67 @@ app.factory('mapService', ['$http', '$q', 'markerService', 'eventService', funct
 		markers.push(marker);
 	}
 
-	function addMarkers(map, events){
+	function addEventMarkers(map, events){
 		for (var i = 0; i < events.length; i++){
 			addEventMarker(map, events[i]);
 		}
 	}
-	
+
+	// --------------------------------------------
+	// ------------ Places utilities --------------
+	// --------------------------------------------
+	function listPlaces() {
+  	placeService.nearbySearch(map, eventService.getEvents()).then(function(places){
+  		addPlaceMarkers(map, places);
+  	})
+  }
+
+  function addPlaceMarker(map, place) {
+  	var position = {
+			lat: place.geometry.location.lat(),
+			lng: place.geometry.location.lng()
+		};
+
+		var marker = new google.maps.Marker({
+      position: position,
+      map: map
+    });
+
+    var contentString = "<div><h5>" + place.name + "</h5></div>"
+                      + "<div>" + place.vicinity + "</div>";
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200
+    });
+    
+    google.maps.event.addListener(marker, 'click', function(){
+			infoWindow.open(map, marker);
+			map.panTo(this.position);
+			if (map.getZoom() < 15) {
+				map.setZoom(15);
+			}
+		})
+		markers.push(marker);
+  }
+
+	function addPlaceMarkers(map, places) {
+		for (var i = 0; i < places.length; i++){
+			addPlaceMarker(map, places[i]);
+		}
+	}
+
+
 
 	return {
 		initMap: initMap,
 		getMap: getMap,
+		initSearchBox: initSearchBox,
+		attachBoundChangeQuery: attachBoundChangeQuery,
+		clearListenerCallbacks: clearListenerCallbacks,
 		removeMarkers: removeMarkers,
-		addMarkers: addMarkers,
-		initSearchBox: initSearchBox
+		listPlaces: listPlaces
+
 	}
 
 }]);

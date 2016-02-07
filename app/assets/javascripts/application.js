@@ -26,9 +26,7 @@
 
 //= require map
 //= require controllers/eventsController
-//= require services/eventService
-//= require services/mapService
-//= require services/markerService
+//= require_tree ./services
 //= require remarks
 //= require votes
 //= require user_show
