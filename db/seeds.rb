@@ -8,12 +8,12 @@
 default_pic = "default_face.png"
 
 # Users
-u1=User.find(10)
-u2=User.find(11)
-u3=User.find(12)
-u4=User.find(13)
-u5=User.find(14)
-u6=User.find(15)
+u1=User.find(1)
+u2=User.find(2)
+u3=User.find(3)
+u4=User.find(4)
+u5=User.find(5)
+u6=User.find(6)
 
 
 # House Parties

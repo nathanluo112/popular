@@ -1,7 +1,3 @@
-var map;
-var markers = [];
-
-var app = angular.module('listing-event', []);
 app.controller("listController", ['$scope', '$http', '$window', function($scope, $http, $window){
   $scope.SEARCH_MODE = 1;
   $scope.CREATE_MODE = 0;

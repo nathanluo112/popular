@@ -17,10 +17,18 @@
 //= require fb.js
 //= require foundation
 //= require angular.js
+//= require angular-route.js
+//= require angular-resource.js
 //= require geolocation-marker
 //= require swipe
 
+//= require_tree ../templates
+
 //= require map
+//= require controllers/eventsController
+//= require services/eventService
+//= require services/mapService
+//= require services/markerService
 //= require remarks
 //= require votes
 //= require user_show
