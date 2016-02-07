@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="popular-app">
 <head>
   <title>Popular</title>
 
@@ -15,10 +15,10 @@
 <body class="container">
   <% if logged_in? %>
       <div class="fl icon">
-        <a href="/events"><i class='fi-home home-page-link'></i></a>
+        <a href="#/"><i class='fi-home home-page-link'></i></a>
       </div>
       <div class="fr icon">
-        <a href="/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i></a>
+        <a href="#/users/<%= current_user.id%>"><i class='fi-torso user-page-link'></i></a>
       </div>
     <%= yield %>
   <% else %>

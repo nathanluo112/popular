@@ -2,6 +2,11 @@ body{
   border: 1px solid transparent;
 }
 
+#debugger{
+  position: fixed;
+  top: 80vh;
+}
+
 #search-box {
   width: 66%;
   margin-top: 5px;

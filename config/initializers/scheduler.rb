@@ -1,6 +1,6 @@
 scheduler = Rufus::Scheduler.singleton
 
-scheduler.every '30m' do
+scheduler.every '1h' do
   events_to_close = Event.where("is_active = true and created_at < ?", (Time.now - 32000));
   if events_to_close
     events_to_close.each do |event|
