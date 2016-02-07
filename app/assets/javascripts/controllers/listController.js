@@ -2,7 +2,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   $scope.SEARCH_MODE = 1;
   $scope.CREATE_MODE = 0;
   $scope.HOUSE_MODE = 2;
-  $scope.data = [];
+  $scope.events = [];
   $scope.currentLocationMarker;
   $scope.focusEvent;
   $scope.focusMarker;
@@ -217,9 +217,9 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }
 
   function findEventById(id){
-    for (var i = 0; i < $scope.data.length; i++) {
-      if ($scope.data[i].id == id){
-        return $scope.data[i];
+    for (var i = 0; i < $scope.events.length; i++) {
+      if ($scope.events[i].id == id){
+        return $scope.events[i];
       }
     }
   }
@@ -426,7 +426,7 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
         addMarkerForEvent(events[i]);
       }
       addVotedFieldToEvents(events);
-      $scope.data = events;
+      $scope.events = events;
     }, function(error){
       console.log(error);
     }).then(function(){
@@ -447,17 +447,17 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
 
 
   function setJoinableEvents() {
-    for(var i = 0; i < $scope.data.length; i++) {
-      var eventPoint = {lat: $scope.data[i].lat, lng: $scope.data[i].lng}
+    for(var i = 0; i < $scope.events.length; i++) {
+      var eventPoint = {lat: $scope.events[i].lat, lng: $scope.events[i].lng}
       var currentPoint = {
         lat: $scope.currentLocationMarker.position.lat(),
         lng: $scope.currentLocationMarker.position.lng()
       }
 
-      if (distance(eventPoint, currentPoint) < 100 && !$scope.data[i].voted){
-        $scope.data[i].joinable = true;
+      if (distance(eventPoint, currentPoint) < 100 && !$scope.events[i].voted){
+        $scope.events[i].joinable = true;
       } else {
-        $scope.data[i].joinable = false;
+        $scope.events[i].joinable = false;
       }
     }
   }
@@ -511,8 +511,8 @@ app.controller("listController", ['$scope', '$http', '$window', function($scope,
   }
 
   function containsEvent(place){
-    for (var i = 0; i < $scope.data.length; i++){
-      if (place.name.toLowerCase() == $scope.data[i].venue_name.toLowerCase()){
+    for (var i = 0; i < $scope.events.length; i++){
+      if (place.name.toLowerCase() == $scope.events[i].venue_name.toLowerCase()){
         return true;
       }
     }
